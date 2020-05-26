@@ -123,47 +123,35 @@ Page({
   },
   // 切换规格
   checkSku(e){
-     var that = this;
-     var _index = e.currentTarget.dataset.index;
-     var _indexs = e.currentTarget.dataset.i;
-     var _sku = that.data.skuArr;//sku数组
-     console.log(e,'sssssss')
-  //    var par=[];//选择规格id数组
-  //    var idStr = '';//选择规格id字符串
-  //    var sel_skuname='';//选择规格名字的字符串
-  //    _sku.spec_attr.forEach((item,index)=>{
-  //     par.push(item.spec_items[_index])
-  //   })
+      var that = this;
+      var _index = e.currentTarget.dataset.index;
+      var _indexs = e.currentTarget.dataset.i;
+      var _sku = that.data.skuArr;
+      var idStr = that.data.idStr.split("_");
+      idStr[_indexs] = _sku.spec_attr[_indexs].spec_items[_index].item_id;
+      idStr = idStr.join("_");
+      that.setData({
+        idStr:idStr
+      })
+      _sku.spec_list.forEach(val => {
+          if(val.spec_sku_id == idStr){
+              that.setData({
+                skuPrice: val.form.goods_price + '(' + idStr + ')'
+              })
+          }
+      })
+      _sku.spec_attr = _sku.spec_attr.map((item,index) => {
+        if(_indexs == index){
+          item.select = _index;
+          return item;
+        }
+        item.spec_items[item.select].spec_value
+        return item;
+      })
 
-  //   par.forEach((item,index)=>{
-  //     idStr += item.item_id+'_';
-  //     sel_skuname += item.spec_value+'、';
-  //  })
-  //  idStr = idStr.substr(0,idStr.length-1);
-  //  sel_skuname = sel_skuname.substr(0,sel_skuname.length-1);
-  //  // 寻找默认规格的价格
-  //  var defSku_price = _sku.spec_list.filter((value,index)=>{
-  //   if(value.spec_sku_id == idStr){
-  //       return value
-  //   }
-  // })
-  console.log(_sku,'sku')
-  _sku.spec_attr = _sku.spec_attr.map((item,index) => {
-    if(_indexs == index){
-      item.select = _index;
-      // console.log(item.spec_items[item.select].spec_value,"马云")
-      return item;
-    }
-    item.spec_items[item.select].spec_value
-    return item;
-  })
-
-  that.setData({
-      // skuPrice:defSku_price[0].form.goods_price,
-      // select_skuName:sel_skuname,
-      skuArr:_sku
-  })
-  console.log(this.data.skuArr.spec_attr)
+      that.setData({
+          skuArr:_sku
+      })
   },
   // 关闭选择规格弹框
   closeguige(){
