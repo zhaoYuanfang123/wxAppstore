@@ -10,6 +10,8 @@ var goodsList_url = '/api/goods/lists';//商品列表
 var shopDetail_url='/api/shop/detail';//店铺详情
 var cartList_url= '/api/cart/lists'; //购物车列表
 var addCart_url='/api/cart/add';//加入购物车
+var buyGrade_url='/api/user.grade.order/submit';//购买会员级别
+var addressList_url='/api/address/lists';//收货地址列表
 
 // 请求数据接口函数
 function request(method, url, data, fnc){
@@ -154,3 +156,21 @@ function addCart(data,addCartFnc){
   }
 }
 module.exports.addCart = addCart
+
+// 购买会员级别
+function buyGrade(data,buyGradeFnc){
+  request('post',buyGrade_url,data,fnc);
+  function fnc(res){
+    buyGradeFnc(res)
+  }
+}
+module.exports.buyGrade = buyGrade
+
+// 收货地址列表
+function addressList(data,addressListFnc){
+  request('get',addressList_url,data,fnc);
+  function fnc(res){
+    addressListFnc(res)
+  }
+}
+module.exports.addressList = addressList

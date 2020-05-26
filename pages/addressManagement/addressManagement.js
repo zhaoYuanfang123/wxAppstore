@@ -1,4 +1,5 @@
 // pages/addressManagement/addressManagement.js
+var utils = require('../../utils/util.js');
 Page({
 
   /**
@@ -18,6 +19,13 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  // 获取收货地址列表
+  getList(){
+    var that = this;
+    utils.addressList({},(res)=>{
+        console.log(res,'收货地址列表')
+    })
   },
 
   /**

@@ -59,7 +59,6 @@ Page({
                user_data:JSON.parse(res.data)
              })
              that.user_Detail();
-             that.user_grade();
           }
         }
       })
@@ -94,7 +93,6 @@ Page({
                  console.log(loginres,'111');
                  wx.setStorageSync('token', loginres.data.data.token);
                  that.user_Detail();
-                 that.user_grade();
               }
             })
           } else {
@@ -123,14 +121,7 @@ Page({
       //  console.log(res,'会员信息')
     }
   },
-  // 会员级别
-  user_grade(){
-    var that = this;
-    utils.userGrade(fnc);
-    function fnc(res){
-      console.log(res,'会员级别')
-    }
-  },
+
   toLink(e){
     console.log(e);
     var id = e.currentTarget.dataset.id;
@@ -143,6 +134,11 @@ Page({
         url: '/pages/addressManagement/addressManagement',
       })
     }
+  },
+  toMemberService(){
+    wx.navigateTo({
+      url: '/pages/memberService/memberService',
+    })
   },
 
   /**

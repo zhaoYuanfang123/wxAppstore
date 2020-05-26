@@ -12,6 +12,7 @@ function computePrice(productPrice, count) {
 Page({
 
   data: {
+    idStr:'',
     scrollHeight: 0, // 滚动视图的高度
     toView: 'position0' ,// 滚动视图跳转的位置
     scrollTopLeft: 0, //  左边滚动位置随着右边分类而滚动
@@ -91,10 +92,6 @@ Page({
     console.log(e);
    var _sku = e.currentTarget.dataset.sku;
    _sku.spec_attr.forEach((item,index)=>{
-     item.spec_items.forEach((it,j)=>{
-       it['sec']=false;
-     })
-     item.spec_items[0].sec=true;
      par.push(item.spec_items[0])
    })
     par.forEach((item,index)=>{
@@ -102,6 +99,9 @@ Page({
        sel_skuname += item.spec_value+'、';
     })
     idStr = idStr.substr(0,idStr.length-1);
+    that.setData({
+      idStr:idStr
+    })
     sel_skuname = sel_skuname.substr(0,sel_skuname.length-1)
     // 寻找默认规格的价格
     var defSku_price = _sku.spec_list.filter((value,index)=>{

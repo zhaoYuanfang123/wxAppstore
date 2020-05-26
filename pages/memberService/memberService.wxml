@@ -1,10 +1,10 @@
 <!--pages/memberService/memberService.wxml-->
 <view class="memberService">
      <view class="top">
-         <image src="/images/shopImg.png" mode="widthFix" class="avatar"></image>
+         <image src="{{user_data.avatarUrl}}" mode="widthFix" class="avatar"></image>
          <view class="info">
             <view class="name">
-               <view class="title">番茄炒鸡蛋</view>
+               <view class="title">{{user_data.nickName}}</view>
                <view class="member_dj">
                   <image src="/images/user/hg.png" mode="widthFix"></image>
                   <text>黄金会员</text>
@@ -20,8 +20,8 @@
                 <view class="checkItem {{checkIndex == index ? 'checked':''}}" data-index = "{{index}}" bindtap="choose">
                     <view class="tj" wx:if="{{index==0}}">推荐</view>
                     <view class="n1">{{item.name}}</view>
-                    <view class="n2"><text>￥</text><text>{{item.mainprice}}</text></view>
-                    <view class="n3">￥{{item.price}}/天</view>
+                    <view class="n2"><text>￥</text><text>{{item.upgrade.buy_money}}</text></view>
+                    <view class="n3">￥3/天</view>
                 </view>
             </block>
           </view>
@@ -40,5 +40,5 @@
             <view class="item"><text>黄金会员</text><text>返实际支付金额的2%</text></view>
         </view>
      </view>
-     <view class="footer">立即支付￥10.00</view>
+     <view class="footer" bindtap="pay">立即支付￥{{payMoney}}</view>
 </view>

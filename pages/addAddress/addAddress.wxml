@@ -13,7 +13,21 @@
      <view class="item">
        <text>地区</text>
        <input type="number" placeholder-style="color:'#999'" placeholder="请输入手机号"></input>
+       <image src="/images/user/right.png" mode="widthFix"></image>
+     </view>
+     <view class="item">
+       <text>详细地址</text>
+       <textarea placeholder="街道、门牌号"></textarea>
+       <image src="/images/user/right.png" mode="widthFix"></image>
+     </view>
+     <view class="item default">
+       <text>默认地址</text>
+       <switch style='zoom:.6;' checked />
      </view>
    </view>
   </form>
+  <view style="padding:20rpx;">
+      <view class="save">保存并使用</view>
+      <view class="del">删除地址</view>
+  </view>
 </view>
