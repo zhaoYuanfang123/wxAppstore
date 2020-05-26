@@ -136,11 +136,11 @@ Page({
     var id = e.currentTarget.dataset.id;
     if(id == 3){
       wx.navigateTo({
-        url: '/pages/myRebate',
+        url: '/pages/myRebate/myRebate',
       })
     }else if(id == 1){
       wx.navigateTo({
-        url: '/pages/addressManagement',
+        url: '/pages/addressManagement/addressManagement',
       })
     }
   },
