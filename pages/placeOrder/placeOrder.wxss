@@ -1,0 +1,280 @@
+/* pages/placeOrder/placeOrder.wxss */
+page{
+  background: #f5f5f5;
+}
+.placeOrder .topChoose{
+   padding: 0 20rpx;
+   background: #fff;
+}
+.placeOrder .topChoose .chooseAddress{
+   border-bottom: 1px solid #ddd;
+   display: flex;
+   align-items: center;
+   padding: 20rpx 0;
+}
+.placeOrder .topChoose .chooseAddress text{
+  color: #666;
+  font-size: 28rpx;
+}
+.placeOrder .topChoose .chooseAddress image{
+  max-width: 15rpx;
+  margin-left: 20rpx;
+}
+.placeOrder .topChoose .addressBox{
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+.placeOrder .topChoose .more{
+  max-width: 15rpx;
+}
+.placeOrder .topChoose .addressBox .leftAddress{
+  display: flex;
+  align-items: center;
+}
+.placeOrder .topChoose .addressBox .leftAddress image{
+  max-width: 25rpx;
+}
+.placeOrder .topChoose .addressBox .leftAddress .info{
+  margin-left: 20rpx;
+}
+.placeOrder .topChoose .addressBox .leftAddress .info .address{
+ font-size: 28rpx;
+ color: #666;
+}
+.placeOrder .topChoose .addressBox .leftAddress .info .otherInfo{
+  font-size: 26rpx;
+  color: #888;
+  margin-top: 5rpx;
+}
+.placeOrder .topChoose .addressBox .leftAddress .info .otherInfo text{
+  margin-right: 15rpx;
+}
+.placeOrder .chooseWay{
+  display: flex;
+  align-items: center;
+  padding: 50rpx 0;
+  background: #fff;
+}
+.placeOrder .chooseWay .wayItem{
+  flex: 1;
+  text-align: center;
+}
+
+.placeOrder .chooseWay .wayItem:nth-child(1){
+  border-right: 1px solid #ddd;
+}
+.placeOrder .chooseWay .wayItem text{
+  padding: 15rpx 20rpx;
+  background: #f1f1f1;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  cursor: pointer;
+}
+.placeOrder .chooseWay .choose text{
+  background: #fff8e7;
+  border: 1px solid #ffc44c;
+  color: #ffc44c;
+}
+.list{
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 20rpx;
+}
+.list .name{
+  color: #444;
+  font-size: 30rpx;
+  padding: 20rpx 0;
+}
+.list .listItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-top: 1px solid #ddd;
+}
+.list .listItem .leftB{
+  display: flex;
+}
+.list .listItem .leftB image{
+  max-width: 150rpx;
+}
+.list .listItem .leftB .info{
+  margin-left: 20rpx;
+}
+.list .listItem .leftB .info .title{
+  color: #212121;
+  font-size: 30rpx;
+}
+.list .listItem .leftB .info .guige{
+  color: #888;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.list .listItem .rightB .price{
+   color: #222;
+   font-size: 28rpx;
+}
+.list .listItem .rightB .num{
+  color:#888;
+  font-size: 24rpx;
+  text-align: right;
+  margin-top: 20rpx;
+}
+.list .zk{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0 40rpx;
+}
+.list .zk text{
+  color: #888;
+  font-size: 26rpx;
+}
+.list .zk image{
+  max-width: 20rpx;
+  margin-left: 10rpx;
+}
+.list .psf{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.list .psf .psf_c,
+.list .psf .psf_p{
+  color: #222;
+  font-size: 30rpx;
+}
+.list .amount{
+  padding: 30rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.list .amount text:nth-child(1){
+  color: #222;
+  font-size: 30rpx;
+}
+.list .amount text:nth-child(2){
+  color: #f26c60;
+  font-size: 30rpx;
+}
+.remarkBox{
+  margin-top: 30rpx;
+  background: #fff;
+  padding: 20rpx;
+}
+.remarkBox .item{
+  padding: 25rpx 0;
+  /* border-top: 1px solid #ddd; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #222;
+  font-size: 30rpx;
+}
+.remarkBox .item:nth-child(1){
+  border: 0;
+}
+.remarkBox .item .rig{
+  display: flex;
+  align-items: center;
+}
+.remarkBox .item image{
+  max-width: 15rpx;
+}
+.remarkBox .item .rig image{
+  margin-left: 10rpx;
+}
+.tipsbox{
+  padding: 20rpx;
+  color: #888;
+  font-size:26rpx;
+  margin-bottom: 140rpx;
+}
+.footer{
+  font-size:30rpx;
+  color:#fff;
+  position:fixed;
+  left:0;
+  width:100%;
+  z-index: 1;
+  bottom:0;
+  top:auto;
+  padding:15rpx 25rpx;
+  text-align: left;
+  z-index: 3;
+  margin: 0;
+  box-sizing: border-box;
+}
+.footerBox{
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+}
+.footerBox .cart{
+  background: #1890ff;
+  color: #fff;
+  border-right: 1px solid #fff;
+  height: 100%;
+  font-size: 60rpx;
+  border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.footerBox .cart image{
+  max-width: 50rpx;
+}
+.footerBox .cart .cartNum{
+   position: absolute;
+   top: 0;
+   color: #fff;
+   border-radius: 50%;
+   width: 40rpx;
+   height: 40rpx;
+   background: #f26c60;
+   font-size: 26rpx;
+   text-align: center;
+   right: 0;
+}
+.footerBox  .text{
+  background: #1890ff;
+  padding: 10rpx 40rpx;
+  box-sizing: border-box;
+  height: 100%;
+  flex: 2;
+}
+.footerBox  .text .priceps{
+  color: #fff;
+  font-size: 34rpx;
+}
+.footerBox  .text .priceps text{
+  font-size: 24rpx;
+}
+.footerBox  .text .psf{
+  font-size: 22rpx;
+}
+.footerBox .settlement{
+  height: 100%;
+  background: #ffc44c;
+  color: #282828;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  border-top-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

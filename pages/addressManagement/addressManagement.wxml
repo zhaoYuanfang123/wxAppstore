@@ -1,0 +1,18 @@
+<!--pages/addressManagement/addressManagement.wxml-->
+<view class="addressManagement">
+  <view class="listBox">
+      <view class="listItem" wx:for="{{list}}" wx:key="index">
+         <view class="p1"><text>{{item.name}}</text><text>{{item.phone}}</text></view>
+         <view class="address">
+            <view class="lb">
+                <view class="default" wx:if="{{item.default}}">[ 默认 ]</view>
+                <view class="addressInfo">{{item.address}}</view>
+            </view>
+            <view class="rb">
+               <image src="/images/user/right.png" mode="widthFix"></image>
+            </view>
+         </view>
+      </view>
+   </view>
+   <view class="footer">新增地址信息</view>
+</view>

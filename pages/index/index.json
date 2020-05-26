@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "index_nav": "../components/index_nav/index_nav"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTitleText": ""
+}

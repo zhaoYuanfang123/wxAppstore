@@ -1,0 +1,25 @@
+<!--pages/myRebate/myRebate.wxml-->
+<view class="myRebate">
+  <view class="top">
+     <view class="topInfo">
+         <view class="lb">
+            <image src="/images/money.png" mode="widthFix"></image>
+            <text>可提现金额 </text>
+         </view>
+         <view class="rb" bindtap="toDetail">明细</view>
+     </view>
+     <view class="priceInfo">
+        <text>￥</text>{{price}}
+     </view>
+  </view>
+  <view class="cashBox">
+     <view class="title">提现到微信钱包</view>
+     <view class="input-group">
+        <text>￥</text>
+        <input type="number" value="{{cashNum}}" placeholder="最低1元起" placeholder-style="color:'#aaa'"></input>
+        <view class="all" bindtap="cashAll">全部</view>
+     </view>
+  </view>
+  <view class="tips">提现免手续费，1个工作日到账</view>
+  <view class="btn">立即提现</view>
+</view>

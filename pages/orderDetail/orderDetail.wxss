@@ -1,0 +1,144 @@
+/* pages/orderDetail/orderDetail.wxss */
+/* pages/placeOrderSuccess/placeOrderSuccess.wxss */
+page{
+  background: #f5f5f5;
+}
+.top{
+  background: #fff;
+  padding: 40rpx 20rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.top image{
+  max-width: 20rpx;
+  margin-left: 20rpx;
+}
+.top view{
+  color: #333;
+  font-size: 34rpx;
+}
+.list{
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 20rpx;
+}
+.list .name{
+  color: #222;
+  font-size: 30rpx;
+  padding: 20rpx 0;
+  font-weight: bold;
+}
+.list .listItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-top: 1px solid #ddd;
+}
+.list .listItem .leftB{
+  display: flex;
+}
+.list .listItem .leftB image{
+  max-width: 150rpx;
+}
+.list .listItem .leftB .info{
+  margin-left: 20rpx;
+}
+.list .listItem .leftB .info .title{
+  color: #212121;
+  font-size: 30rpx;
+}
+.list .listItem .leftB .info .guige{
+  color: #888;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.list .listItem .rightB .price{
+   color: #222;
+   font-size: 28rpx;
+}
+.list .listItem .rightB .num{
+  color:#888;
+  font-size: 24rpx;
+  text-align: right;
+  margin-top: 20rpx;
+}
+.list .zk{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0 40rpx;
+}
+.list .zk text{
+  color: #888;
+  font-size: 26rpx;
+}
+.list .zk image{
+  max-width: 20rpx;
+  margin-left: 10rpx;
+}
+.list .psf{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.list .psf .psf_c,
+.list .psf .psf_p{
+  color: #222;
+  font-size: 30rpx;
+}
+.list .amount{
+  padding: 30rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.list .amount text:nth-child(1){
+  color: #222;
+  font-size: 30rpx;
+}
+.list .amount text:nth-child(2){
+  color: #f26c60;
+  font-size: 30rpx;
+}
+.ps_address{
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 40rpx 20rpx;
+}
+.ps_address .ps_info{
+  color: #222;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.ps_address  .ps_item{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-top: 30rpx;
+   font-size: 30rpx;
+}
+.ps_address  .ps_item .dzinfo text{
+   display: block;
+   text-align: right;
+}
+.arr_bottom{
+  padding: 40rpx 0;
+  text-align: center;
+  color: #bbb;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arr_bottom .line{
+  width: 100rpx;
+  height: 1px;
+  background: #bbb;
+}
+.arr_bottom .text{
+  margin: 0 20rpx;
+}

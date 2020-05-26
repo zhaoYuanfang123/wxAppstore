@@ -1,0 +1,90 @@
+/* pages/myRebate/myRebate.wxss */
+page{
+  background: #f5f5f5;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.myRebate .top{
+  background: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.myRebate .top .topInfo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.myRebate .top .topInfo .lb{
+  display: flex;
+  align-items: center;
+  color: #222;
+  font-size: 28rpx;
+}
+.myRebate .top .topInfo .lb image{
+  max-width: 35rpx;
+  margin-right: 10rpx;
+}
+.myRebate .top .topInfo .rb{
+  border: 1px solid #ddd;
+  color: #666;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+}
+.priceInfo{
+  color: #ffba33;
+  font-size: 60rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+.priceInfo text{
+  font-size: 28rpx;
+}
+.cashBox{
+  background: #fff;
+  padding: 40rpx 20rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+.cashBox .title{
+  text-align: center;
+  font-size: 32rpx;
+  color: #222;
+  margin-bottom: 30rpx;
+}
+.cashBox .input-group{
+  border-bottom:1px solid #ddd;
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+}
+.cashBox .input-group text{
+  color: #222;
+}
+.cashBox .input-group input{
+  width: 100%;
+}
+.cashBox .input-group .all{
+  border: 1px solid #1890ff;
+  color: #1890ff;
+  padding: 10rpx;
+  font-size: 28rpx;
+  width: 100rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}
+.tips{
+  color: #999;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}
+.btn{
+  width: 100%;
+  background: #0c94ff;
+  color: #fff;
+  text-align: center;
+  font-size: 34rpx;
+  border-radius: 80rpx;
+  padding: 30rpx 0;
+  margin-top: 80rpx;
+}

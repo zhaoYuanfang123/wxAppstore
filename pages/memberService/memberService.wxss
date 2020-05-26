@@ -1,0 +1,176 @@
+/* pages/memberService/memberService.wxss */
+.memberService{
+  background: #f5f5f5;
+}
+.memberService .top{
+  background: #fff;
+  padding: 40rpx 20rpx;
+  display: flex;
+  align-items: center;
+}
+.memberService .top .avatar{
+  max-width: 160rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.memberService .top .info .name{
+  display: flex;
+  align-items: center;
+}
+.memberService .top .info .name .title{
+  color: #222;
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+.memberService .top .info .name .member_dj{
+ display: flex;
+ align-items: center;
+ border: 1px solid #ffc44c;
+ color: #ffc44c;
+ border-radius: 30rpx;
+ font-size: 28rpx;
+ padding: 10rpx 15rpx;
+}
+.memberService .top .info .name .member_dj image{
+  max-width: 30rpx;
+  margin-right: 10rpx;
+}
+.memberService .top .info .time{
+   font-size: 28rpx;
+   color: #999;
+   margin-top: 20rpx;
+}
+.checkBox{
+  background: #fff;
+  margin-top: 20rpx;
+  padding: 40rpx 20rpx;
+}
+.checkBox .title{
+  color: #222;
+  font-size: 34rpx;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+}
+.checkBox .cck{
+  display: flex;
+  align-items: center;
+}
+.checkBox .cck .checkItem{
+  flex: 1;
+  position: relative;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  padding:80rpx 0;
+  border-radius: 10rpx;
+}
+.checkBox .cck .checkItem:nth-child(2){
+  margin: 0 20rpx;
+}
+.checkBox .cck .checkItem view{
+  text-align: center;
+}
+.checkBox .cck .checkItem .tj{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #1890ff;
+  color: #fff;
+  border-top-right-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+  font-size: 26rpx;
+  padding: 5rpx 10rpx;
+}
+.checkBox .cck .checkItem .n1{
+  color: #222;
+  font-size: 32rpx;
+}
+.checkBox .cck .checkItem .n2{
+  color: #ffba33;
+}
+.checkBox .cck .checkItem .n2 text:nth-child(1){
+  font-size: 26rpx;
+}
+.checkBox .cck .checkItem .n2 text:nth-child(2){
+  font-size: 80rpx;
+}
+.checkBox .cck .checkItem .n3{
+  font-size: 30rpx;
+  color: #999;
+  text-decoration: line-through;
+}
+.checkBox .cck .checked{
+  background: #fff8e7;
+  border-color: #ffc44c;
+}
+.checkBox .cck .checked .n1,
+.checkBox .cck .checked .n3{
+  color: #d5b371;
+}
+.checkBox .cck .checked .n2{
+  color: #ffba33;
+}
+.checkBox .xy{
+  display: flex;
+  align-items: center;
+  color: #999;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}
+.checkBox .xy image{
+  max-width: 40rpx;
+  margin-right: 10rpx;
+}
+.grade{
+  background: #fff;
+  margin-top: 20rpx;
+  padding: 40rpx 20rpx 140rpx;
+}
+.grade .title{
+  color: #222;
+  font-size: 34rpx;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+}
+.grade .f_title{
+  color: #222;
+  font-size: 30rpx;
+  margin-bottom: 30rpx;
+}
+.grade .item{
+  display: flex;
+  align-items: center;
+}
+.grade .item text:nth-child(1){
+  flex: 1;
+}
+.grade .item text:nth-child(2){
+  flex: 2;
+}
+.grade .item text{
+  text-align: center;
+  padding: 20rpx 0;
+}
+.grade .itemBox .item:nth-child(1){
+  background: #ffc44c;
+  color: #222;
+  font-size: 34rpx;
+}
+.grade .itemBox .item:nth-child(2),
+.grade .itemBox .item:nth-child(4){
+  background: #fff8e7;
+  color: #666;
+  font-size: 30rpx;
+}
+.grade .itemBox .item:nth-child(3){
+  background: #ffe0a2;
+  color: #666;
+  font-size: 30rpx;
+}
+.footer{
+  background: #1890ff;
+  color: #fff;
+  text-align: center;width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 30rpx 0;
+}

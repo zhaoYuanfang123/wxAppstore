@@ -1,0 +1,96 @@
+<!--提交订单-->
+<view class="placeOrder">
+   <view class="topChoose">
+      <view class="chooseAddress" wx:if="{{!defaultAddress}}">
+        <text>选择收货地址</text>
+        <image src="/images/user/right.png" mode="widthFix"></image>
+      </view>
+      <view class="addressBox" wx:else>
+          <view class="leftAddress">
+             <image src="/images/position_c.png" mode="widthFix"></image>
+             <view class="info">
+                <view class="address">卓邦大厦</view>
+                <view class="otherInfo">
+                    <text>小丸子</text>
+                    <text>女士</text>
+                    <text>17867876544</text>
+                </view>
+             </view>
+          </view>
+          <image src="/images/user/right.png" mode="widthFix" class="more"></image>
+      </view>
+   </view>
+   <view class="chooseWay">
+      <view class="wayItem choose">
+          <text>选择送餐时间</text>
+      </view>
+      <view class="wayItem">
+           <text>选择自提时间</text>
+      </view>
+   </view>
+   <view class="list">
+      <view class="name">有家小店（南城店）</view>
+      <view class="listItem" wx:for="{{list}}" wx:key="index">
+          <view class="leftB">
+             <image src="{{item.pic}}" mode="widthFix"></image>
+             <view class="info">
+                 <view class="title">{{item.name}}</view>
+                 <view class="guige">{{item.guige}}</view>
+             </view>
+          </view>
+          <view class="rightB">
+             <view class="price">￥{{item.price}}</view>
+             <view class="num">×{{item.num}}</view>
+          </view>
+      </view>
+      <view class="zk">
+          <text>展开全部4件商品</text>
+          <image src="/images/dowm.png" mode="widthFix"></image>
+      </view>
+      <view class="psf">
+         <view class="psf_c">配送费</view>
+         <view class="psf_p">￥12.00</view>
+      </view>
+      <view class="amount">
+          <text>合计：</text>
+          <text>￥136.8</text>
+      </view>
+   </view>
+   <view class="remarkBox">
+      <view class="item">
+          <view>一次性餐具</view>
+          <view class="rig"> 
+              <text>4人</text>
+              <image src="/images/user/right.png" mode="widthFix"></image>
+          </view>
+      </view>
+      <view class="item">
+          <view>备注</view>
+          <view> 
+              <image src="/images/user/right.png" mode="widthFix"></image>
+          </view>
+      </view>
+      <view class="item">
+          <view>支付方式</view>
+          <view> 
+              <text>微信支付</text>
+          </view>
+      </view>
+   </view>
+   <view class="tipsbox">温馨提示：提交订单后，请于30分钟之内完成支付，超过30分钟
+，系统将自动取消订单。
+   </view>
+   <view class="footer">
+     <view class="footerBox">
+         <view class="cart">
+             <image src="/images/cart.png" mode="widthFix"></image>
+             <text class="cartNum">2</text>
+          </view>
+         <view class="text">
+            <view class="priceps"><text>合计：￥</text>139.80</view>
+            <view class="psf">送费￥12.00</view>
+         </view>
+         <view class="settlement">提交订单</view>
+     </view>
+  </view>
+</view>

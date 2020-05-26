@@ -1,0 +1,223 @@
+page{
+  padding: 30rpx;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+}
+.heard{
+  width: 100%;
+  /* padding: 50rpx;
+  box-sizing: border-box; */
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0 50rpx;
+}
+.userinfo{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  /* background-color: black; */
+  overflow: hidden;
+  
+
+}
+ .infoimg{
+  width: 100%;
+  height: 100%;
+}
+.userinfo_right{
+  flex: 1;
+  padding:0 50rpx;
+  box-sizing: border-box;
+}
+.username{
+  margin-bottom: 20rpx;
+}
+.userlv{
+  border: 1px solid gold;
+  border-radius: 30rpx;
+  display: flex;
+  align-items: center;
+  width: 180rpx;
+  justify-content: center;
+  padding: 5rpx 0;
+}
+.userlv text{
+  font-size: 28rpx;
+}
+.userlv2{
+  padding: 10rpx 20rpx;
+  text-align: center;
+  border: 1px solid #999;
+  border-radius:40rpx;
+  font-size: 28rpx;
+  display: inline;
+  background: transparent;
+  color: #999;
+}
+.userlv2:after{
+   border: none; 
+}
+.btnshouq{
+  text-align: left;
+}
+.userlv image{
+  max-width: 30rpx;
+  margin-right: 10rpx;
+}
+.user_card{
+  position: relative;
+  width: 100%;
+  display: flex;
+  background-size: 100% 100%;
+  justify-content: center;
+  align-items: center;
+}
+.bg{
+  width: 100%;
+  height: 100%;
+  position: static;
+}
+.bg image{
+  width: 100%;
+}
+.vipcar,.car_pic,.user_cardright{
+  position:absolute;
+  top: 0;
+  left:50rpx;
+}
+.user_cardright{
+  left: 480rpx;
+  top: 50rpx;
+}
+.car_pic{
+  top: 75rpx;
+}
+.user_cardleft{
+flex: 1;
+text-align: center;
+padding: 50rpx;
+box-sizing: border-box;
+position: absolute;
+top: 0;
+width: 100%;
+
+}
+.user_cardright{
+  width: 30%;
+  text-align: center;
+  top: 30rpx;
+}
+.vipcar{
+margin-bottom: 20rpx;
+color: #ffffff;
+text-align: left;
+
+}
+.car_pic{
+  color: #ffffff;
+  text-align: left;
+  font-size: 24rpx;
+}
+.user_cardright .btn {
+  background-color: gold;
+  width: 180rpx;
+  height: 70rpx;
+  border-radius: 70rpx 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 28rpx;
+}
+.vip{
+  font-size: 60rpx;
+}
+.my_order{
+  width: 100%;
+  box-sizing: border-box;
+  background-color:#ffffff ;
+  margin-top: 30rpx;
+}
+.top{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  border-bottom: 1rpx solid #efefef;
+  padding: 20rpx;
+  box-sizing: border-box;
+  align-items: center;
+}
+.rightiocn{
+  max-width: 15rpx;
+  margin-left: 20rpx;
+}
+
+.my_order .left,.my_order .right {
+  flex: 1;
+}
+.my_order .top .right{
+  text-align: right;
+}
+.my_order .top .right text{
+  color: #aaaaaa;
+  font-size: 28rpx;
+}
+.order_icon{
+  width: 50rpx;
+  height: 50rpx;
+}
+.all{
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  padding-top: 10%;
+  padding: 40rpx 0;
+}
+.all_item{
+  flex: 1;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  line-height: 100%;
+}
+.car_bottom{
+  width: 100%;
+  background-color:#ffffff ;
+  margin-top: 20rpx;
+  min-height: 500rpx;
+}
+.content{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  border-bottom: 1rpx solid #efefef;
+}
+.content .left{
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+.content .left text{
+  color: #666;
+}
+.content .icon{
+  max-width: 40rpx;
+  /* margin-top: 40rpx; */
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.content .right{
+flex: 1;
+padding: 0 20rpx;
+text-align: right;
+  
+}
+.all_item .title{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #666;
+
+}

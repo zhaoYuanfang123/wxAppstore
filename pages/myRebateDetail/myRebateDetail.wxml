@@ -1,0 +1,41 @@
+<!--pages/myRebateDetail/myRebateDetail.wxml-->
+<view class="myRebateDetail">
+ <view class="top">
+     <view class="topInfo">
+         <view class="lb">
+            <image src="/images/money.png" mode="widthFix"></image>
+            <text>可提现金额 </text>
+         </view>
+     </view>
+     <view class="priceInfo">
+        <text>￥</text>5.21
+     </view>
+  </view>
+  <view class="listBox">
+     <view class="t_op">
+        <text class="title">返利历史明细</text>
+        <view class="j_d"><text>即将到账返利:</text><text>￥0.8</text></view>
+     </view>
+     <view class="listItem">
+       <view class="info">
+         <text>订单返利：有间茶馆（南城店）</text> 
+         <text>2020-05-21</text>
+       </view>
+       <view class="sp">+￥0.70</view>
+     </view>
+     <view class="listItem">
+       <view class="info">
+          <text>订单返利：有间茶馆（南城店）</text> 
+          <text>2020-05-21</text>
+       </view>
+       <view class="sp">+￥0.70</view>
+     </view>
+     <view class="listItem">
+       <view class="info">
+         <text>返利提现</text>
+         <text>2020-05-21</text>
+      </view>
+       <view class="jian">-￥3.70</view>
+     </view>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+<!--pages/memberService/memberService.wxml-->
+<view class="memberService">
+     <view class="top">
+         <image src="/images/shopImg.png" mode="widthFix" class="avatar"></image>
+         <view class="info">
+            <view class="name">
+               <view class="title">番茄炒鸡蛋</view>
+               <view class="member_dj">
+                  <image src="/images/user/hg.png" mode="widthFix"></image>
+                  <text>黄金会员</text>
+               </view>
+            </view>
+            <view class="time">2020-09-01到期，续费可延长有效期</view>
+         </view>
+     </view>
+     <view class="checkBox">
+        <view class="title">选择优惠套餐</view>
+        <view class="cck">
+            <block wx:for="{{list}}" wx:key="index">
+                <view class="checkItem {{checkIndex == index ? 'checked':''}}" data-index = "{{index}}" bindtap="choose">
+                    <view class="tj" wx:if="{{index==0}}">推荐</view>
+                    <view class="n1">{{item.name}}</view>
+                    <view class="n2"><text>￥</text><text>{{item.mainprice}}</text></view>
+                    <view class="n3">￥{{item.price}}/天</view>
+                </view>
+            </block>
+          </view>
+          <view class="xy">
+             <image src="/images/agreen.png" mode="widthFix"></image>
+             <text>您已同意《多门店小程序会员协议》</text>
+          </view>
+     </view>
+     <view class="grade">
+        <view class="title">会员等级与权益</view>
+        <view class="f_title">会员在平台成功下单后，即可获得返利红包；红包可提现到微信钱包。</view>
+        <view class="itemBox">
+            <view class="item"><text>会员等级</text><text>返利比例</text></view>
+            <view class="item"><text>普通会员</text><text>返实际支付金额的1%</text></view>
+            <view class="item"><text>白银会员</text><text>返实际支付金额的1.5%</text></view>
+            <view class="item"><text>黄金会员</text><text>返实际支付金额的2%</text></view>
+        </view>
+     </view>
+     <view class="footer">立即支付￥10.00</view>
+</view>

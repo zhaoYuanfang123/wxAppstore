@@ -1,0 +1,112 @@
+<!--index.wxml-->
+<!-- <index_nav title-text="首页" back-icon="/images/left.png" background="#f2f2f2" bindback="back"></index_nav> -->
+<index_nav title-text="首页" bindback="back"></index_nav>
+<view class="index" style="margin-top:{{status + navHeight}}px">
+    <view class="bg">
+        <view class="topBox">
+            <view class="leftPosition">
+              <image src="../../images/position.png" mode="widthFix"></image>
+              <text>{{address}}</text>
+            </view>
+            <view class="search">
+              <view class="searchBox">
+                  <input type="text" placeholder="请输入门店名称" placeholder-style="color:#999999"></input>
+                  <image src="../../images/search.png" mode="widthFix"></image>
+              </view>
+            </view>
+        </view>
+        <view class="banner">
+           <swiper class='bannerSwiper' indicator-dots='true' indicator-color='{{swiperSet.indicatorCcolor}}' indicator-active-color='{{swiperSet.indicatorActiveColor}}' autoplay='{{swiperSet.autoplay}}' circular='{{swiperSet.circular}}' duration='{{swiperSet.duration}}'>
+          <block wx:for='{{swiperBanner}}' wx:key='index'>
+              <swiper-item>
+                 <image src='{{item.image.file_path}}' mode='aspectFill' bindtap="toLink" data-url="{{item.banner_url}}"></image>
+              </swiper-item>
+          </block>
+      </swiper>
+        </view>
+    </view>
+    <view class="regBox">
+       <image src="/images/index_reg.png" mode="widthFix"></image>
+    </view>
+    <view class="centerMenu">
+        <image src="/images/fk.png" mode="widthFix"></image>
+        <image src="/images/wm.png" mode="widthFix"></image>
+    </view>
+    <view class="menuBox">
+        <view class="menu">
+             <view class="item" wx:for="{{menu}}" wx:key="index">
+                  <image src="{{item.icon}}" mode="widthFix"></image>
+                  <text>{{item.text}}</text>
+             </view>
+        </view>
+    </view>
+    <view class="shopList">
+        <view class="topscreen">
+          	<view class="sx">
+				<view class="checkText" bindtap="submitzh"><text>综合排序</text>
+					<image src="/images/dowm.png" mode="widthFix"></image>
+				</view>
+			</view>
+			<view class="sx">
+				<view class="checkText" bindtap="submitsx"><text>筛选</text>
+					<image src="/images/dowm.png" mode="widthFix"></image>
+				</view>
+			</view>
+        </view>
+        <view class="listItem" wx:for="{{storeList}}" wx:key="index" bindtap="toshopDetail" data-id="{{item.shop_id}}">
+            <image src="/images/shopImg.png" mode="widthFix" class="shopImg"></image>
+            <view class="rightInfo">
+               <view class="title"><text>外卖</text>{{item.shop_name}}</view>
+               <view class="star">
+                    <view class="stLf">
+                          <!-- <view class="pf"><image src="/images/star.png" mode="widthFix"></image><text>4.8</text></view> -->
+                          <view class="xl">销量{{item.shop_sales}}</view>
+                    </view>
+                    <view class="stRt">
+                          <!-- <view class="xl">30分钟</view> -->
+                          <view class="rj">{{item.distance_unit}}</view>
+                    </view>
+               </view>
+               <view class="ps">
+                  <view>起送￥{{item.delivery_fee}}</view>
+                  <view>配送￥{{item.express_price}}</view>
+                  <!-- <view>人均￥21</view> -->
+               </view>
+               <!-- <view class="tips">
+                  <view>满100元免配送费</view>
+                   <view>团购优惠</view>
+               </view> -->
+            </view>
+        </view>
+    </view>
+    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" bindtap="go"></view>
+
+<view class="modalDlg" wx:if="{{showModal}}">
+	<view class="checktitle">
+		<view class="check_ZH" bindtap="showzh">
+			<text>综合</text>
+			<van-icon name="arrow-down" />
+		</view>
+		<view class="check_SX" bindtap="showsx" >
+			<text :class="redcolor?showsx===true">筛选</text>
+			<van-icon name="filter-o" />
+		</view>
+	</view>
+	<view class="zh__content" wx:if="{{showzh}}">
+		<view>
+			<text>起送价</text>
+		</view>
+		<view>
+			<text>配送费</text>
+		</view>
+	</view>
+	<view class="zh__content" wx:if="{{showsx}}" >
+		<view>
+			<text>距离</text>
+		</view>
+		<view>
+			<text>销量</text>
+		</view>
+	</view>
+</view>
+</view>
