@@ -49,19 +49,59 @@
             <view class="sales_volume">销量127</view>
             <view class="priceBox">
                 <view class="price">
-                     <view class="mainPrice"><text>￥</text>{{food.goods_min_price}}</view>
-                     <view class="linePrice">￥{{food.goods_max_price}}</view>
+                     <view class="mainPrice"><text>￥</text>{{food.goods_sku.goods_price}}</view>
+                     <view class="linePrice">￥{{food.goods_sku.line_price}}</view>
                 </view>
-               <view 
+                <view wx:if="{{food.goods_multi_spec}}" class="haveg"
+                  data-goodsid="{{food.goods_id}}" 
+                  data-skuid="{{food.sku[0].spec_sku_id}}" 
+                  catchtap="{{food.goods_multi_spec?'showgg':'addNum'}}"
+                  data-sku="{{food.goods_multi_spec}}" 
+                  data-goodname="{{food.goods_name}}"
+                  data-parentIndex="{{index}}"
+                  data-childIndex="{{foodidx}}"
+                >选规格<i wx:if="{{food.addNum}}">{{food.addNum}}</i></view>
+                <view wx:if="{{!food.goods_multi_spec && food.addNum==0}}"
+                  class="food__add"
+                  data-goodsid="{{food.goods_id}}" 
+                  data-skuid="{{food.sku[0].spec_sku_id}}" 
+                  catchtap="{{food.goods_multi_spec?'showgg':'add'}}"
+                  data-sku="{{food.goods_multi_spec}}" 
+                  data-goodname="{{food.goods_name}}"
+                  data-parentIndex="{{index}}"
+                  data-childIndex="{{foodidx}}">+</view>
+                <view wx:if="{{!food.goods_multi_spec && food.addNum!=0}}" class="listRight">
+                     <image src="/images/reduce.png" mode="widthFix" class="reduce"      bindtap="reduceF"
+                       data-goodsid="{{food.goods_id}}" 
+                        data-skuid="{{food.sku[0].spec_sku_id}}" 
+                        data-sku="{{food.goods_multi_spec}}" 
+                        data-goodname="{{food.goods_name}}"
+                        data-parentIndex="{{index}}"
+                        data-childIndex="{{foodidx}}"
+                     ></image>
+                     <view class="num">{{food.addNum}}</view>
+                     <image src="/images/add.png" mode="widthFix" class="add" bindtap="add"
+                        data-goodsid="{{food.goods_id}}" 
+                        data-skuid="{{food.sku[0].spec_sku_id}}" 
+                        data-sku="{{food.goods_multi_spec}}" 
+                        data-goodname="{{food.goods_name}}"
+                        data-parentIndex="{{index}}"
+                        data-childIndex="{{foodidx}}"
+                     ></image>
+                </view>
+
+               <!-- <view
                   class="{{food.goods_multi_spec?'haveg':'food__add'}}" 
                   data-goodsid="{{food.goods_id}}" 
                   data-skuid="{{food.sku[0].spec_sku_id}}" 
                   catchtap="{{food.goods_multi_spec?'showgg':'addNum'}}"
                   data-sku="{{food.goods_multi_spec}}" 
                   data-goodname="{{food.goods_name}}"
+                  data-parentIndex="{{index}}"
+                  data-childIndex="{{foodidx}}"
                >
                {{food.goods_multi_spec?'选规格':'+'}}
-               </view>
+               </view> -->
             </view>
           </view>
         </view>
@@ -70,15 +110,15 @@
   </view>
   <view class="footer">
      <view class="footerBox">
-         <view class="cart">
+         <view class="cart" bindtap="showPurchase">
              <image src="/images/cart.png" mode="widthFix"></image>
-             <text class="cartNum">2</text>
+             <text class="cartNum">{{order_total_num}}</text>
           </view>
          <view class="text">
-            <view class="priceps"><text>￥</text>50.00 起送</view>
+            <view class="priceps"><text>￥</text>{{order_price}}</view>
             <view class="psf">另需配送费￥3.00</view>
          </view>
-         <view class="settlement">去结算</view>
+         <view class="settlement" bindtap="payaddCart">去结算</view>
      </view>
   </view>
 
@@ -117,12 +157,13 @@
                <view class="num">1</view>
                <view class="add">+</view>
             </view>
-            <view class="g_addCart">加入购物车</view>
+            <view class="g_addCart" bindtap="addCart">加入购物车</view>
         </view>
   </view>
 
   <!-- 购物车展开 -->
-  <view bindtap="showPurchase" class="purchaseLayer {{isPurchase?'isShow action_skew1':'isHide'}}">
+  <view class="purchaseLayer {{isPurchase?'isShow action_skew1':'isHide'}}" bindtap="hideCartList"></view>
+  <view class="{{isPurchase?'isShow action_skew1':'isHide'}}">
     <scroll-view scrollY class="purchaseList">
         <view class="operation" style="" >
              <image src="/images/del.png" mode="widthFix" ></image>
@@ -130,20 +171,28 @@
         </view>
         <view class="shopcart__item" style="" wx:for="{{cartList}}">
            <view class="leftInfo">
-                <image src="/images/shopImg.png" mode="widthFix" class="productImg"></image>
+                <image src="{{item.goods_image}}" mode="widthFix" class="productImg"></image>
                 <view class="infoText">
-                    <view class="title">海鲜披萨</view>
+                    <view class="title">{{item.goods_name}}</view>
                     <view class="guig">8寸、至尊海鲜口味</view>
                      <view class="price">
-                        <view class="mainPrice"><text>￥</text>52.8</view>
-                        <view class="yprice">￥90.00</view>
+                        <view class="mainPrice"><text>￥</text>{{item.goods_sku.goods_price}}</view>
+                        <view class="yprice">￥{{item.goods_sku.line_price}}</view>
                      </view>
                 </view>
            </view>
            <view class="rightNum">
-               <image src="/images/reduce.png" mode="widthFix" class="reduce"></image>
-               <view class="num">1</view>
-               <image src="/images/add.png" mode="widthFix" class="add"></image>
+               <image src="/images/reduce.png" mode="widthFix" class="reduce"
+                  data-goodsid="{{item.goods_id}}" 
+                  data-skuid="{{item.goods_sku.spec_sku_id}}" 
+                  bindtap="cartReduce"
+               ></image>
+               <view class="num">{{item.total_num}}</view>
+               <image src="/images/add.png" mode="widthFix" class="add"
+                  data-goodsid="{{item.goods_id}}" 
+                  data-skuid="{{item.goods_sku.spec_sku_id}}" 
+                  bindtap="cartAdd"
+               ></image>
            </view> 
            
         </view>

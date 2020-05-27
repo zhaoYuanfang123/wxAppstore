@@ -6,26 +6,53 @@ Page({
    * 页面的初始数据
    */
   data: {
-     list:[
-       {name:'荔枝',phone:'18712345678',address:'广东省南城司岩区橄榄路水木蓝山E区7楼A112',default:true},
-       {name:'荔枝',phone:'18712345678',address:'广东省南城司岩区橄榄路水木蓝山E区7楼A112',default:false},
-       {name:'荔枝',phone:'18712345678',address:'广东省南城司岩区橄榄路水木蓝山E区7楼A112',default:false},
-       {name:'荔枝',phone:'18712345678',address:'广东省南城司岩区橄榄路水木蓝山E区7楼A112',default:false}
-     ]
+     list:[],
+     default_id:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.showLoading({
+      title:'加载中'
+    })
+    this.getList()
   },
   // 获取收货地址列表
   getList(){
     var that = this;
     utils.addressList({},(res)=>{
+        that.setData({
+          list:res.data.data.list,
+          default_id:res.data.data.default_id
+        })
+        wx.hideLoading();
         console.log(res,'收货地址列表')
     })
+  },
+  addAddress(){
+    wx.navigateTo({
+      url: '/pages/addAddress/addAddress?type=add',
+    })
+  },
+  edit(e){
+    wx.navigateTo({
+      url: '/pages/addAddress/addAddress?type=edit&address_id='+e.currentTarget.dataset.id,
+    })
+  },
+  // 默认地址
+  radioDefault:function(e){
+    var id = e.currentTarget.dataset.id;
+    var that = this;
+    let data = {
+      address_id :id
+    }
+     utils.setDefaultAddress(data,res=>{
+       if(res.data.code == 1){
+         that.getList()
+       }
+     })
   },
 
   /**

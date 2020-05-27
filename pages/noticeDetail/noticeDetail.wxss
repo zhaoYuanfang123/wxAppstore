@@ -1,0 +1,18 @@
+/* pages/noticeDetail/noticeDetail.wxss */
+.top .title{
+  font-size: 34rpx;
+  color: #666;
+}
+.top .time{
+  font-size: 28rpx;
+  color: #bababa;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.wxParse,.top{
+  padding: 20rpx;
+}
+.wxParse image{
+  display: block;
+  margin: 0 auto;
+}

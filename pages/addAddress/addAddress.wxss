@@ -12,8 +12,12 @@ page{
   padding: 30rpx 0;
   border-bottom: 1px solid #ebebeb;
 }
-.input-group .item:last-child{
-  border: none;
+.input-group .item .pick{
+  width: 100%;
+  color: #999;
+}
+.input-group .item .pick1{
+  width: 100%;
 }
 .input-group .item text{
   width: 200rpx;
@@ -30,7 +34,7 @@ page{
 }
 .save{
    width: 100%;
-   padding: 20rpx 0;
+   padding: 25rpx 0;
    text-align: center;
    background: #1890ff;
    color: #fff;
@@ -39,7 +43,7 @@ page{
 }
 .del{
   width: 100%;
-  padding: 20rpx 0;
+  padding: 25rpx 0;
   text-align: center;
   background: #fff;
   color: #999;

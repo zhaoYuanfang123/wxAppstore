@@ -165,7 +165,7 @@
 }
 .mune-bar{
   float: left;
-  width:25%;
+  width:23%;
   background:#f7f7f7;
   /* border-right:2px solid #eaeaea; */
   font-size:27rpx;
@@ -186,7 +186,7 @@
 }
 .mune-list{
   float: right;
-  width:73%;
+  width:75%;
   box-sizing: border-box;
   background:#ffffff;
   height: 100%;
@@ -221,7 +221,7 @@
 }
 
 .food-right {
-    width: 53%;
+    width: 55%;
     text-align: right;
     float: right;margin-right: 5%;
 }
@@ -281,6 +281,21 @@
   font-size: 26rpx;
   color: #fff;
   border-radius: 10rpx;
+  position: relative;
+}
+.haveg i{
+  position:absolute;
+  width:40rpx;
+  height:40rpx;
+  border-radius:50%;
+  background:red;
+  color:#fff;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: -10rpx;
+  top: -19rpx;
 }
 .food__add {
     width: 50rpx;
@@ -412,10 +427,11 @@ line-height:63rpx;
   font-size: 24rpx;
 }
 .tkFot .linfo .chooText{
-   font-size: 26rpx;
+   font-size: 28rpx;
    color: #888;
    margin-top: 5rpx;
    display: flex;
+   line-height: 20rpx;
 }
 .tkFot .rnum{
    display: flex;
@@ -477,6 +493,7 @@ line-height:63rpx;
   font-size: 25rpx;
   border-top-left-radius: 40rpx;
   border-top-right-radius: 40rpx;
+  z-index: 2;
 }
 .purchaseItem {
   padding: 10rpx 20rpx;
@@ -564,9 +581,9 @@ line-height:63rpx;
   content: ' ';
   display: table;
 }
-.action_skew1 {
+/* .action_skew1 {
   animation: action_skew1 0.5s forwards;
-}
+} */
 
 @-webkit-keyframes action_skew1 {
   0% {
@@ -633,4 +650,16 @@ line-height:63rpx;
 }
 .operation text{
   color: #888;
+}
+.listRight{
+  display: flex;
+  align-items: center;
+}
+.listRight image{
+  max-width: 40rpx;
+}
+.listRight .num{
+  margin: 0 10rpx;
+  font-size: 34rpx;
+  color: #222222;
 }

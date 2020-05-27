@@ -1,2 +1,18 @@
 <!--pages/notice.wxml-->
-<text>pages/notice.wxml</text>
+<view class="notice">
+   <view class="topTab">
+      <view class="{{checkIndex == index ? 'active' :''}}" wx:for="{{tabText}}" data-index = "{{index}}" data-id="{{item.id}}" bindtap="choose" wx:key="index"><text>{{item.name}}</text></view>
+   </view>
+   <view class="listBox">
+       <view class="listItem" wx:for="{{list.data}}" wx:key="index" bindtap="toDetail" data-id="{{item.article_id}}">
+          <view class="time"><text>{{item.view_time}}</text></view>
+          <view class="box">
+             <view class="top">{{item.article_title}}</view>
+             <view class="bottom">
+                 <text>查看详情</text>
+                 <image src="/images/user/right.png" mode="widthFix"></image>
+             </view>
+          </view>
+       </view>
+   </view>
+</view>

@@ -1,0 +1,19 @@
+<!--pages/payinPerson/payinPerson.wxml-->
+<view class="payinPerson">
+   <view class="topBox">
+       <image class="logImg" src="/images/shopImg.png" mode="widthFix"></image>
+       <view class="shopName">有间茶馆（南城店）</view>
+       <view class="checkShop">
+          <text>切换门店</text>
+          <image src="/images/user/right.png" mode="widthFix"></image>
+       </view>
+   </view>
+   <view class="payBox">
+       <view class="text">消费金额</view>
+       <view class="priceBox">
+          <text>￥</text>
+          <input type="number" placeholder="请询问店员后输入" placeholder-style="color:#bfbfbf"></input>
+       </view>
+   </view>
+   <view class="pay">立即支付</view>
+</view>

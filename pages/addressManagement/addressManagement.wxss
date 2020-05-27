@@ -1,48 +1,32 @@
 /* pages/addressManagement/addressManagement.wxss */
 page{
-  background: #f5f5f5;
+	background: #fff;
 }
-.listBox{
-  box-sizing: border-box;
-  padding-bottom: 100rpx;
+.address-phonenum{
+    text-align: right;
 }
-.listItem{
-  margin-bottom: 20rpx;
-  padding: 40rpx 20rpx;
-  background: #fff;
+.defult-address{
+color: orangered;
 }
-.listItem .p1{
-  color: #222;
-  font-size: 34rpx;
+.addresslistAdd{
+	background: white;
+	height: 80rpx;
+	color: red;
+	line-height: 80rpx;
+	text-align: center;
+	width: 80%;
+  font-size:37rpx;
+  border-radius: 70rpx;
+  margin: auto;
+
 }
-.listItem .p1 text:nth-child(2){
-  margin-left: 20rpx;
-}
-.listItem .address{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20rpx;
-}
-.listItem .address image{
-  max-width: 20rpx;
-  flex: 1;
-}
-.listItem .address .lb{
-  display: flex;
-  flex: 3;
-}
-.listItem .address .lb .default{
-  color: #ffc44c;
-  width: 170rpx;
-}
-.listItem .address .lb .addressInfo{
-  color: #999;
-  width: 100%;
-}
-.listItem .address .rb{
-  width: 100rpx;
-  text-align: right;
+.addresslist{
+	background:rgb(252,252,252);margin-bottom:27rpx;padding: 26rpx;
+  padding:0 3%;
+  padding-top:3%;
+  border-top:0.5rpx solid rgb(238,238,238);
+  border-bottom:0.5rpx solid rgb(238,238,238);
+
 }
 .footer{
   background: #1890ff;
@@ -51,4 +35,35 @@ page{
   position: fixed;
   bottom: 0;
   padding: 30rpx 0;
+}
+.bottom{
+  height:70rpx;
+  width:100%;
+  line-height:70rpx;
+  border-top: 0.5rpx solid rgb(238,238,238);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bot_l{
+  color:#1890ff;
+}
+.bot_ri{
+  display: flex;
+  align-items: center;
+}
+.bot_ri .editBox,
+.bot_ri .delBox{
+  display: flex;
+  align-items: center;
+  color: #808080;
+}
+.bot_ri .editBox image,
+.bot_ri .delBox image{
+    width: 35rpx;
+    height: 35rpx;
+    margin-left: 10rpx;
+}
+.bot_ri .delBox{
+ margin-left: 40rpx;
 }

@@ -119,13 +119,17 @@ this.setData({
         status: statusHeight,
         navHeight: navHeight
     })
-
-    utils.indexBanner(fnc);//首页banner图
-    function fnc(res){
+    wx.showLoading({
+      title:'加载中'
+    })
+    //首页banner图
+    utils.indexBanner(res=>{
       that.setData({
         swiperBanner:res.data.data.list
       })
-    }
+      wx.hideLoading();
+    });
+
    
   },
   openConfirm: function () {

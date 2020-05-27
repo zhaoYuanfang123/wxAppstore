@@ -1,18 +1,48 @@
 <!--pages/addressManagement/addressManagement.wxml-->
-<view class="addressManagement">
-  <view class="listBox">
-      <view class="listItem" wx:for="{{list}}" wx:key="index">
-         <view class="p1"><text>{{item.name}}</text><text>{{item.phone}}</text></view>
-         <view class="address">
-            <view class="lb">
-                <view class="default" wx:if="{{item.default}}">[ 默认 ]</view>
-                <view class="addressInfo">{{item.address}}</view>
-            </view>
-            <view class="rb">
-               <image src="/images/user/right.png" mode="widthFix"></image>
-            </view>
-         </view>
+<!-- 收货地址列表 -->
+<view wx:if="{{list==null||list==''}}" style="text-align: center;padding: 20rpx;">
+  <view class="no-orders">
+      <view class="text-center" style="margin-top: 100rpx;">
+            <view class="mt-20" style="margin-top: 10rpx;color: #999;">暂无地址</view>
+        </view>
+    </view>
+</view>
+<view style="">
+ <!-- 线 -->
+  <block wx:for="{{list}}"> 
+    <radio-group class="radio-group" bindchange="radioChange">
+    <view style="padding:0 5%;padding-top:3%;" class="ui-padding-10 addresslist">
+      <view style="width:100%;display: inline-block;font-size: 30rpx;color: #999;" class="">
+        <view class="">
+          <view style="margin-bottom: 15rpx;" class="" data-index="{{index}}" bindtap="{{pay==1?'selectAddress':''}}">
+            <text class="ui-width-50"><text style="color: #444;margin-right: 30rpx;">{{item.name}}</text>{{item.phone}} <text wx:if="{{pay==1}}" style="color:red;opacity:0.5;text-align:right;float:right;">点击选定</text></text>
+          </view>
+          <view class="ui-pt-10" style="margin-bottom: 20rpx;">
+            <text>{{item.region.city}} {{item.region.province}} {{item.region.region}} {{item.detail}}</text>
+          </view>
+        </view>
+        <view class="bottom">
+             <view class="bot_l">
+                  <label class="radio">
+                  <radio value='' data-id="{{item.address_id}}" bindtap="radioDefault" color="#1890ff" style="transform:scale(.6)" checked="{{item.address_id==default_id}}"/>默认地址
+                  </label>
+               </view>
+               <view class="bot_ri">
+                     <view class="editBox" catchtap="edit" data-id="{{item.address_id}}">
+                        <image src="/images/address_edit.png"></image>
+                        <text>编辑</text>
+                     </view>
+                     <view class="delBox" data-id="{{item.address_id}}" catchtap="del">
+                        <image src="/images/address_del.png"></image>
+                        <text>删除</text>
+                     </view>
+               </view>
+        
+        </view>
       </view>
-   </view>
-   <view class="footer">新增地址信息</view>
+        
+    </view>
+    </radio-group>
+  </block>
+  <view class="footer" bindtap="addAddress">新增地址信息</view>
 </view>

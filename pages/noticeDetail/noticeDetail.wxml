@@ -1,0 +1,11 @@
+<!--pages/noticeDetail/noticeDetail.wxml-->
+<view class="noticeDetail">
+    <view class="top">
+       <view class="title">{{content.article_title}}</view>
+       <view class="time">{{content.view_time}}</view>
+    </view>
+    <import src="../../wxParse/wxParse.wxml"/> 
+    <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    </view>
+</view>

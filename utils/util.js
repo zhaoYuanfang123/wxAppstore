@@ -12,6 +12,17 @@ var cartList_url= '/api/cart/lists'; //购物车列表
 var addCart_url='/api/cart/add';//加入购物车
 var buyGrade_url='/api/user.grade.order/submit';//购买会员级别
 var addressList_url='/api/address/lists';//收货地址列表
+var reductCart_url='/api/cart/sub';//减少购物车
+var Settleorder_url='/api/order/cart';//结算订单
+var getRegion_url='/api/region/index';//获取地区
+var noticeList_url = '/api/article/lists';//公告列表
+var noticeDetail_url = '/api/article/detail';//公告详细
+var noticeRead_url = '/api/user.article/readed';//公告标记已读
+var addAddress_url = '/api/address/add';///新增收货地址
+var editAddress_url = '/api/address/edit';//编辑收货地址
+var setDefaultAddress_url = '/api/address/setDefault';//设置默认地址
+var addressDetail_url = '/api/address/detail';//地址详情
+
 
 // 请求数据接口函数
 function request(method, url, data, fnc){
@@ -157,6 +168,15 @@ function addCart(data,addCartFnc){
 }
 module.exports.addCart = addCart
 
+// 减少购物车
+function reductCart(data,reductCartFnc){
+  request('post',reductCart_url,data,fnc);
+  function fnc(res){
+    reductCartFnc(res)
+  }
+}
+module.exports.reductCart = reductCart
+
 // 购买会员级别
 function buyGrade(data,buyGradeFnc){
   request('post',buyGrade_url,data,fnc);
@@ -174,3 +194,84 @@ function addressList(data,addressListFnc){
   }
 }
 module.exports.addressList = addressList
+
+// 结算订单
+function Settleorder(data,SettleorderFnc){
+  request('post',Settleorder_url,data,fnc);
+  function fnc(res){
+    SettleorderFnc(res)
+  }
+}
+module.exports.Settleorder = Settleorder
+
+// 获取地区
+function getRegion(data,getRegionFnc){
+  request('get',getRegion_url,data,fnc);
+  function fnc(res){
+    getRegionFnc(res)
+  }
+}
+module.exports.getRegion = getRegion
+
+// 公告列表
+function noticeList(data,noticeListFnc){
+  request('get',noticeList_url,data,fnc);
+  function fnc(res){
+    noticeListFnc(res)
+  }
+}
+module.exports.noticeList = noticeList
+
+// 公告详细
+function noticeDetail(data,noticeDetailFnc){
+  request('get',noticeDetail_url,data,fnc);
+  function fnc(res){
+    noticeDetailFnc(res)
+  }
+}
+module.exports.noticeDetail = noticeDetail
+
+// 公告标记已读
+function noticeRead(data,noticeReadFnc){
+  request('post',noticeRead_url,data,fnc);
+  function fnc(res){
+    noticeReadFnc(res)
+  }
+}
+module.exports.noticeRead = noticeRead
+
+// 新增收货地址
+function addAddress(data,addAddressFnc){
+  request('post',addAddress_url,data,fnc);
+  function fnc(res){
+    addAddressFnc(res)
+  }
+}
+module.exports.addAddress = addAddress
+
+// 编辑收货地址
+function editAddress(data,editAddressFnc){
+  request('post',editAddress_url,data,fnc);
+  function fnc(res){
+    editAddressFnc(res)
+  }
+}
+module.exports.editAddress = editAddress
+
+// 设置默认地址    
+function setDefaultAddress(data,setDefaultAddressFnc){
+  request('post',setDefaultAddress_url,data,fnc);
+  function fnc(res){
+    setDefaultAddressFnc(res)
+  }
+}
+module.exports.setDefaultAddress = setDefaultAddress
+
+// 地址详情    
+function addressDetail(data,addressDetailFnc){
+  request('get',addressDetail_url,data,fnc);
+  function fnc(res){
+    addressDetailFnc(res)
+  }
+}
+module.exports.addressDetail = addressDetail

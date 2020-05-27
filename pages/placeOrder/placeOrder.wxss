@@ -2,15 +2,40 @@
 page{
   background: #f5f5f5;
 }
+.topTab{
+  background: #fff;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.topTab view{
+  color: #9c9c9c;
+  flex: 1;
+  text-align: center;
+}
+.topTab .active{
+  color: #1890ff;
+  position: relative;
+}
+.topTab text{
+  padding: 40rpx 0;
+  display: inline-block;
+}
+.topTab .active text{
+  border-bottom: 1px solid #1890ff;
+}
 .placeOrder .topChoose{
    padding: 0 20rpx;
    background: #fff;
+   margin-top: 120rpx;
 }
 .placeOrder .topChoose .chooseAddress{
    border-bottom: 1px solid #ddd;
    display: flex;
    align-items: center;
-   padding: 20rpx 0;
+   padding: 40rpx 0;
 }
 .placeOrder .topChoose .chooseAddress text{
   color: #666;
@@ -51,6 +76,28 @@ page{
 }
 .placeOrder .topChoose .addressBox .leftAddress .info .otherInfo text{
   margin-right: 15rpx;
+}
+.person_info{
+  padding: 40rpx 20rpx;
+  background: #fff;
+}
+.person_info .item-group{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f8f8f8;
+  padding: 30rpx 0;
+}
+.person_info .item-group:last-child{
+  border: none;
+}
+.person_info .item-group text{
+  width: 200rpx;
+  color: #444;
+  font-size: 28rpx;
+}
+.person_info .item-group input{
+  width: 100%;
+  font-size: 28rpx;
 }
 .placeOrder .chooseWay{
   display: flex;
@@ -95,7 +142,7 @@ page{
   align-items: center;
   justify-content: space-between;
   padding: 20rpx 0;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #f8f8f8;
 }
 .list .listItem .leftB{
   display: flex;
@@ -277,4 +324,58 @@ page{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.tk_mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.3;
+  overflow: hidden;
+}
+.tk_remarkBox{
+  width: 75%;
+  overflow: hidden;
+  position: fixed;
+  top: 15%;
+  z-index: 1001;
+  background: #FFFFFF;
+  margin: auto;
+  left: 0;
+  right: 0;
+  border-radius: 30rpx;
+  padding: 20rpx;
+  font-size: 34rpx;
+}
+.tk_remarkBox textarea{
+  background: #f5f5f5;
+  width: 100%;
+  font-size: 28rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.tk_remarkBox .btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+.tk_remarkBox .btn view{
+  padding: 20rpx 50rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+}
+.tk_remarkBox .btn view:nth-child(1){
+  background: #f7f7f7;
+  color: #999;
+  margin-right: 20rpx;
+  border:1px solid #ddd;
+}
+.tk_remarkBox .btn view:nth-child(2){
+  background: #1890ff;
+  color: #fff;
+  margin-left: 20rpx;
 }

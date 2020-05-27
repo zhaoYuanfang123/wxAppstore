@@ -5,27 +5,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[
-      {pic:'/images/shopImg.png',name:'红烧牛肉面',guige:'大份、辣、双份牛肉',price:'32.80',num:1},
-      {pic:'/images/shopImg.png',name:'红烧牛肉面',guige:'大份、辣、双份牛肉',price:'32.80',num:1},
-      {pic:'/images/shopImg.png',name:'红烧牛肉面',guige:'大份、辣、双份牛肉',price:'32.80',num:1}
-    ]
+    order_id:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.setData({
+        order_id:options.order_id
+      })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    
+  },
+  toDetail(){
+    wx.navigateTo({
+      url: '/pages/placeOrderDetail/placeOrderDetail',
+    })
+  },
+  // 继续下单
+  buy(){
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
