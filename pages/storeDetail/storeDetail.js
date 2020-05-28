@@ -444,12 +444,21 @@ Page({
     }
 },
   payaddCart(){
-    var data = {
-      shop_id:this.data.shopId,
-      shopName:this.data.shopInfo.shop_name
+    if(this.data.cartList.length){
+      var data = {
+        shop_id:this.data.shopId,
+        shopName:this.data.shopInfo.shop_name
+      }
+      wx.navigateTo({
+        url: '/pages/placeOrder/placeOrder?data='+JSON.stringify(data),
+      })
+    }else{
+      wx.showToast({
+          title: '请选择商品',
+          icon: 'none',
+          duration: 2000
+      })
     }
-    wx.navigateTo({
-      url: '/pages/placeOrder/placeOrder?data='+JSON.stringify(data),
-    })
+    
   }
 })

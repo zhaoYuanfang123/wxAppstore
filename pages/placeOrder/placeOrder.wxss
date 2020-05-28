@@ -50,7 +50,7 @@ page{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20rpx 0;
+  padding: 50rpx 0;
 }
 .placeOrder .topChoose .more{
   max-width: 15rpx;
@@ -60,13 +60,13 @@ page{
   align-items: center;
 }
 .placeOrder .topChoose .addressBox .leftAddress image{
-  max-width: 25rpx;
+  max-width: 30rpx;
 }
 .placeOrder .topChoose .addressBox .leftAddress .info{
   margin-left: 20rpx;
 }
 .placeOrder .topChoose .addressBox .leftAddress .info .address{
- font-size: 28rpx;
+ font-size: 30rpx;
  color: #666;
 }
 .placeOrder .topChoose .addressBox .leftAddress .info .otherInfo{

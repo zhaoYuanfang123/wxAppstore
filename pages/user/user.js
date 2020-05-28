@@ -133,6 +133,10 @@ Page({
       wx.navigateTo({
         url: '/pages/addressManagement/addressManagement',
       })
+    }else{
+      wx.navigateTo({
+        url: '/pages/memberService/memberService',
+      })
     }
   },
   toMemberService(){

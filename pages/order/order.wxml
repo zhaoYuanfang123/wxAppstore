@@ -1,2 +1,62 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<view class="order">
+     <view class="topTab">
+      <view class="{{checkIndex == index ? 'active' :''}}" wx:for="{{tabText}}" data-index = "{{index}}" data-type="{{item.type}}" bindtap="choose" wx:key="index"><text>{{item.name}}</text></view>
+   </view>
+   <!-- 全部订单 -->
+   <view class="all" wx:if="{{checkIndex == 0 || checkIndex == 1 || checkIndex == 2}}">
+    <scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
+          <view class="listBox" wx:for="{{goodsList}}">
+              <view class="listTop" bindtap="toDetail" data-name="{{item.shop.shop_name}}" data-shopid="{{item.shop.shop_id}}" data-price="{{item.total_price}}" data-goods="{{item.goods}}">
+                <view class="top_l">
+                    <text class="label">返利订单</text>
+                    <text class="title">有家小店（南城店）</text>
+                </view>
+                <view class="top_r">
+                    <text>{{item.state_text}}</text>
+                </view>
+              </view>
+              <view class="listContent" bindtap="toDetail">
+                  <image src="{{item.shop.logo.file_path}}" mode="widthFix"></image>
+                  <view class="info">
+                      <view>下单时间：{{item.create_time}}</view>
+                      <view>总价：￥{{item.total_price}}</view>
+                      <view>返利：￥1.18</view>
+                  </view>
+              </view>
+              <view class="listBoot" wx:if="{{item.pay_status.value == 10}}">
+                <view class="cancel" bindtap="cancelOrder" data-id="{{item.order_id}}">取消订单</view>
+                <view class="pay">去付款</view>
+              </view>
+              <view class="listBoot" wx:else>
+                <view class="cancel">再来一单</view>
+              </view>
+          </view>
+          <view class="opera">
+              <view wx:if="{{loading}}">加载中...</view>
+              <view wx:if="{{noMore}}">没有更多了</view>
+            </view>
+    </scroll-view>
+   </view>
+   <!-- 当面付 -->
+   <view class="all" wx:if="{{checkIndex == 3}}">
+       <view class="payList">
+        <scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
+          <view class="payItem" wx:for="{{payList}}">
+                <view class="p1">
+                  <text>返利订单-{{item.shop.shop_name}}</text>
+                  <text>￥{{item.pay_price}}</text>
+                </view>
+                <view class="p2">
+                  <text>{{item.create_time}}</text>
+                  <text>返利：￥1.08</text>
+                </view>
+          </view>
+           <view class="opera">
+              <view wx:if="{{loading}}">加载中...</view>
+              <view wx:if="{{noMore}}">没有更多了</view>
+            </view>
+        </scroll-view>
+       </view>
+   </view>
+</view>

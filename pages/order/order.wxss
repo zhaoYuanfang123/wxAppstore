@@ -1,1 +1,142 @@
 /* pages/order/order.wxss */
+page{
+  background: #f5f5f5;
+}
+.topTab{
+  background: #fff;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.topTab view{
+  color: #9c9c9c;
+  flex: 1;
+  text-align: center;
+}
+.topTab .active{
+  color: #1890ff;
+  position: relative;
+}
+.topTab text{
+  padding: 40rpx 0;
+  display: inline-block;
+}
+.topTab .active text{
+  border-bottom: 1px solid #1890ff;
+}
+.all{
+  margin-top: 160rpx;
+}
+.listBox{
+  padding: 0 20rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.listBox .listTop{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #ddd;
+}
+.listBox .listTop .top_l .label{
+  background: linear-gradient(to right,#0c95ff,#026dff);
+  color: #fff;
+  font-size: 28rpx;
+  padding: 10rpx;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+.listBox .listTop .top_l .title{
+  color: #444;
+  font-size: 34rpx;
+}
+.listBox .listTop .top_r text{
+  color:#444;
+  font-size:28rpx;
+}
+.listBox  .listContent{
+   display: flex;
+   padding: 20rpx 0;
+   border-bottom: 1px solid #ddd;
+}
+.listBox  .listContent image{
+   max-width: 160rpx;
+}
+.listBox  .listContent .info{
+  margin-left: 20rpx;
+}
+.listBox  .listContent .info view{
+  color: #222;
+  font-size: 28rpx;
+}
+.listBox  .listContent .info view:nth-child(2){
+  margin: 20rpx 0;
+}
+.listBox .listBoot{
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.listBox .listBoot view{
+  width: 160rpx;
+  text-align: center;
+  padding: 10rpx 0;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+.listBox .listBoot .cancel{
+  border: 1px solid #ddd;
+  color: #999;
+}
+.listBox .listBoot .pay{
+  border: 1px solid #f26c60;
+  color: #f26c60;
+  margin-left: 20rpx;
+}
+.payList{
+  padding: 20rpx;
+  background: #fff;
+}
+.payList .payItem{
+  padding: 20rpx 0;
+  border-bottom: 1px solid #ddd;
+}
+.payList .payItem:last-child{
+  border: none;
+}
+.payList .payItem .p1,
+.payList .payItem .p2{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.payList .payItem .p1 text:nth-child(1){
+  color: #222;
+  font-size: 28rpx;
+}
+.payList .payItem .p1 text:nth-child(2){
+  color: #f26c60;
+  font-size: 28rpx;
+}
+.payList .payItem .p2{
+  margin-top: 20rpx;
+}
+.payList .payItem .p2 text:nth-child(1),
+.payList .payItem .p2 text:nth-child(2){
+  color: #999;
+  font-size: 28rpx;
+}
+.opera{
+  text-align: center;
+  margin-top: 10px;
+}
+.opera view{
+  color:#999;
+  padding:20rpx 0;
+  font-size: 28rpx;
+}

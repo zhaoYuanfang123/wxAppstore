@@ -127,7 +127,7 @@ Page({
   // 结算订单
   submitOrder(){
      var that = this;
-     if(that.data.checkIndex == 2){
+     if(that.data.checkIndex == 1){
        if(that.data.infoName == ''){
             wx.showToast({
               title: '请输入联系人姓名',
@@ -164,7 +164,7 @@ Page({
         wx.requestPayment({
           timeStamp: response.data.data.payment.timeStamp,
           nonceStr: response.data.data.payment.nonceStr,
-          package: response.data.data.payment.prepay_id,
+          package: 'prepay_id='+response.data.data.payment.prepay_id,
           signType: 'MD5',
           paySign: response.data.data.payment.paySign,
           success (res) { 

@@ -1,13 +1,14 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/order/order",
+    "pages/authorization/authorization",
     "pages/addressManagement/addressManagement",
     "pages/addAddress/addAddress",
     "pages/notice/notice",
     "pages/placeOrderSuccess/placeOrderSuccess",
     "pages/placeOrderDetail/placeOrderDetail",
     "pages/payinPerson/payinPerson",
-    
     "pages/myRebateDetail/myRebateDetail",
     "pages/myRebate/myRebate",
     "pages/memberService/memberService",
@@ -15,7 +16,7 @@
     "pages/placeOrder/placeOrder",
     "pages/user/user",
     "pages/storeDetail/storeDetail",
-    "pages/order/order",
+   
     "pages/components/index_nav/index_nav",
     "pages/noticeDetail/noticeDetail"
   ],

@@ -1,0 +1,10 @@
+<!--pages/authorization/authorization.wxml-->
+<!-- 授权 -->
+<view class="daka_explain">
+	<image src="/images/wx.png" class="weixin" mode="widthFix"></image>
+	<text class="title">{{name}}</text>
+  <view class="daka_explain_box">
+    <view style="font-size: 34rpx;color: #999;text-align: center;padding-top: 50rpx;">•授权使用您的头像与昵称</view>
+    <button class="sure" bindgetuserinfo='adduserinfo' open-type='getUserInfo'>一键授权</button>
+  </view>
+</view>

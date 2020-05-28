@@ -22,6 +22,10 @@ var addAddress_url = '/api/address/add';///新增收货地址
 var editAddress_url = '/api/address/edit';//编辑收货地址
 var setDefaultAddress_url = '/api/address/setDefault';//设置默认地址
 var addressDetail_url = '/api/address/detail';//地址详情
+var myOrderList_url='/api/user.order/lists';//我的订单
+var payOrderList_url = '/api/pay.order/lists';//当面付列表
+var cancelOrder_url = '/api/user.order/cancel';//取消订单
+var orderDetail_url = '/api/user.order/detail';//订单详情
 
 
 // 请求数据接口函数
@@ -46,7 +50,21 @@ function request(method, url, data, fnc){
       data: data,
       header: header,
       success: function (res) {
+        //  console.log(res,'rrr')
+         if(res.data.code == -1){
+           wx.navigateTo({
+             url: '/pages/authorization/authorization',
+           })
+         }else if(res.data.code == 1){
           fnc(res);
+         }else{
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 2000
+        })
+         }
+          
       },
       fail: function (res) {
         console.log(res)
@@ -275,3 +293,40 @@ function addressDetail(data,addressDetailFnc){
   }
 }
 module.exports.addressDetail = addressDetail
+
+// 我的订单
+function myOrderList(data,myOrderListFnc){
+  request('get',myOrderList_url,data,fnc);
+  function fnc(res){
+    myOrderListFnc(res)
+  }
+}
+module.exports.myOrderList = myOrderList
+
+
+// 当面付列表
+function payOrderList(data,payOrderListFnc){
+  request('get',payOrderList_url,data,fnc);
+  function fnc(res){
+    payOrderListFnc(res)
+  }
+}
+module.exports.payOrderList = payOrderList
+
+// 取消订单
+function cancelOrder(data,cancelOrderFnc){
+  request('post',cancelOrder_url,data,fnc);
+  function fnc(res){
+    cancelOrderFnc(res)
+  }
+}
+module.exports.cancelOrder = cancelOrder
+
+// 订单详情
+function orderDetail(data,orderDetailFnc){
+  request('get',orderDetail_url,data,fnc);
+  function fnc(res){
+    orderDetailFnc(res)
+  }
+}
+module.exports.orderDetail = orderDetail

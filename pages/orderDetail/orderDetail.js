@@ -1,4 +1,5 @@
 // pages/orderDetail/orderDetail.js
+var utils=require("../../utils/util.js")
 Page({
 
   /**
