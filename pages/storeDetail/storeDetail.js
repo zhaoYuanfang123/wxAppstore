@@ -14,6 +14,7 @@ Page({
   data: {
     order_price:'',//购物车总价
     order_total_num:'',//购物车商品数量
+    express_price:'',//配送费
     goodsnum:1,
     select_goods_id:'',//选择的商品id
     idStr:'',//选择的商品的skuid
@@ -293,6 +294,7 @@ Page({
        that.setData({
         cartList:res.data.data.goods_list,
         order_total_num:res.data.data.order_total_num,
+        express_price:res.data.data.express_price,
         order_price:res.data.data.order_price
        })
        that.getGoodsList();

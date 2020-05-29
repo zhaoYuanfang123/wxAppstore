@@ -5,12 +5,12 @@
          <view class="info">
             <view class="name">
                <view class="title">{{user_data.nickName}}</view>
-               <view class="member_dj">
+               <view class="member_dj" wx:if="{{user_data.grade}}">
                   <image src="/images/user/hg.png" mode="widthFix"></image>
-                  <text>黄金会员</text>
+                  <text>{{user_data.grade.name}}</text>
                </view>
             </view>
-            <view class="time">2020-09-01到期，续费可延长有效期</view>
+            <view class="time" wx:if="{{user_data.grade}}">{{user_data.grade.update_time}}</view>
          </view>
      </view>
      <view class="checkBox">
@@ -20,14 +20,18 @@
                 <view class="checkItem {{checkIndex == index ? 'checked':''}}" data-index = "{{index}}" bindtap="choose">
                     <view class="tj" wx:if="{{index==0}}">推荐</view>
                     <view class="n1">{{item.name}}</view>
-                    <view class="n2"><text>￥</text><text>{{item.upgrade.buy_money}}</text></view>
-                    <view class="n3">￥3/天</view>
+                    <view class="n2">
+                        <text>￥</text>
+                        <text>{{item.upgrade.buy_money}}</text>
+                        <text style="font-size: 26rpx;">/天</text>
+                     </view>
+                    <!-- <view class="n3">￥3/天</view> -->
                 </view>
             </block>
           </view>
           <view class="xy">
              <image src="/images/agreen.png" mode="widthFix"></image>
-             <text>您已同意《多门店小程序会员协议》</text>
+             <text>您已同意《小程序会员协议》</text>
           </view>
      </view>
      <view class="grade">

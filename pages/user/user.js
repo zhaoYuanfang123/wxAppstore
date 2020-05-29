@@ -118,7 +118,7 @@ Page({
         key: 'userInfo',
         data: JSON.stringify(res.data.data.userInfo),
       })
-      //  console.log(res,'会员信息')
+       console.log(res,'会员信息')
     }
   },
 

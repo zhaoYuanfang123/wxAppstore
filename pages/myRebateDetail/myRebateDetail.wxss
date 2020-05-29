@@ -83,3 +83,12 @@ page{
   color: #3eb544;
   font-size: 28rpx;
 }
+.opera{
+  text-align: center;
+  margin-top: 10px;
+}
+.opera view{
+  color:#999;
+  padding:20rpx 0;
+  font-size: 28rpx;
+}

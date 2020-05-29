@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabText:[{id:10,name:'外卖配送'},{id:20,name:'上门自提'}],
+     tabText:[{id:10,name:'外卖配送'},{id:20,name:'上门自提'}],
      checkIndex:0,
      defaultAddress:false,
      address:'',
@@ -21,7 +21,8 @@ Page({
      textareaVal:'',
      shopInfo:'',//店铺详情
      infoName:'',
-     infoPhone:''
+     infoPhone:'',
+     express_price:''
   },
 
   /**
@@ -34,29 +35,31 @@ Page({
       shopId:op.shop_id,
       shopName:op.shopName
     })
-    that.getCartList(op.shop_id);
     that.getAddressList();
     that.getShopDetail();
+    that.getorderInfo()
   },
-   // 获取购物车列表
-   getCartList(id){
-    var that = this;
-    var data = {
-      shop_id:id
-    }   
-    utils.cartList(data,(res)=>{
-       that.setData({
-        list:res.data.data.goods_list,
-        order_total_num:res.data.data.order_total_num,
-        order_price:res.data.data.order_price
+  // 结算订单信息
+  getorderInfo(){
+    let data = {
+      shop_id:this.data.shopId ,
+      delivery:this.data.tabText[this.data.checkIndex].id//10 配送 20 自提
+    }
+    utils.SettleorderInfo(data,res=>{
+       this.setData({
+         list:res.data.data.goods_list,
+         order_price:res.data.data.order_pay_price,
+         express_price:res.data.data.express_price,
+         order_total_num:res.data.data.order_total_num
        })
-        // console.log(res,'购物车列表')
+       console.log(res,'结算订单信息')
     })
   },
   choose(e){
     this.setData({
       checkIndex:e.currentTarget.dataset.index
     })
+    this.getorderInfo();
   },
   bindPickerChange: function(e) {
     this.setData({

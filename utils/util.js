@@ -26,6 +26,8 @@ var myOrderList_url='/api/user.order/lists';//我的订单
 var payOrderList_url = '/api/pay.order/lists';//当面付列表
 var cancelOrder_url = '/api/user.order/cancel';//取消订单
 var orderDetail_url = '/api/user.order/detail';//订单详情
+var myRebateWithdraw_url = '/api/balance.withdraw/submit' ;//我的返利提现
+var myRebateBalance_url = '/api/balance.log/lists';//返利明细
 
 
 // 请求数据接口函数
@@ -103,11 +105,7 @@ function detailPosition(lat,lng,detailpositionFnc){
 module.exports.detailPosition = detailPosition;
 
 // 门店列表
-function storeList(latitude,longitude,storeListFnc){
-  var data = {
-    longitude:longitude,
-    latitude:latitude
-  }
+function storeList(data,storeListFnc){
   request('get',storeListUrl,data,fnc)
   function fnc(res){
     storeListFnc(res)
@@ -221,6 +219,14 @@ function Settleorder(data,SettleorderFnc){
   }
 }
 module.exports.Settleorder = Settleorder
+// 结算订单信息
+function SettleorderInfo(data,SettleorderInfoFnc){
+  request('get',Settleorder_url,data,fnc);
+  function fnc(res){
+    SettleorderInfoFnc(res)
+  }
+}
+module.exports.SettleorderInfo = SettleorderInfo
 
 // 获取地区
 function getRegion(data,getRegionFnc){
@@ -330,3 +336,21 @@ function orderDetail(data,orderDetailFnc){
   }
 }
 module.exports.orderDetail = orderDetail
+
+// 我的返利提现 
+function myRebateWithdraw(data,myRebateWithdrawFnc){
+  request('post',myRebateWithdraw_url,data,fnc);
+  function fnc(res){
+    myRebateWithdrawFnc(res)
+  }
+}
+module.exports.myRebateWithdraw = myRebateWithdraw
+
+// 返利明细
+function myRebateBalance(data,myRebateBalanceFnc){
+  request('get',myRebateBalance_url,data,fnc);
+  function fnc(res){
+    myRebateBalanceFnc(res)
+  }
+}
+module.exports.myRebateBalance = myRebateBalance

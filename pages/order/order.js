@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabText:[{type:'all',name:'全部'},{type:'payment',name:'待支付'},{type:'delivery',name:'待收货'},{type:4,name:'当面付'}],
+    tabText:[{type:'all',name:'全部'},{type:'payment',name:'待支付'},{type:'received',name:'待收货'},{type:4,name:'当面付'}],
     checkIndex:0,
     goodsList:[],
     pageNum: 1,    //分页记录数
@@ -20,7 +20,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     this.getList(false);
     //  this.getPayList()
   },
   choose(e){
@@ -120,10 +119,12 @@ cancelOrder(e){
 
 },
 // 订单详情
-toDetail(){
-  wx.navigateTo({
-    url: '/pages/orderDetail/orderDetail',
-  })
+toDetail(e){
+  console.log(e);
+  
+  // wx.navigateTo({
+  //   url: '/pages/orderDetail/orderDetail',
+  // })
 },
 
   /**
@@ -137,7 +138,7 @@ toDetail(){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getList(false);
   },
 
   /**

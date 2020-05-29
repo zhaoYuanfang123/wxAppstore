@@ -8,7 +8,7 @@
          </view>
      </view>
      <view class="priceInfo">
-        <text>￥</text>5.21
+        <text>￥</text>{{balance}}
      </view>
   </view>
   <view class="listBox">
@@ -16,14 +16,20 @@
         <text class="title">返利历史明细</text>
         <view class="j_d"><text>即将到账返利:</text><text>￥0.8</text></view>
      </view>
-     <view class="listItem">
+   <scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
+     <view class="listItem" wx:for="{{list}}" wx:key="index">
        <view class="info">
-         <text>订单返利：有间茶馆（南城店）</text> 
-         <text>2020-05-21</text>
+         <text>{{item.describe}}</text> 
+         <text>{{item.create_time}}</text>
        </view>
-       <view class="sp">+￥0.70</view>
+       <view class="sp">{{item.money}}</view>
      </view>
-     <view class="listItem">
+      <view class="opera">
+         <view wx:if="{{loading}}">加载中...</view>
+         <view wx:if="{{noMore}}">没有更多了</view>
+       </view>
+   </scroll-view>
+     <!-- <view class="listItem">
        <view class="info">
           <text>订单返利：有间茶馆（南城店）</text> 
           <text>2020-05-21</text>
@@ -36,6 +42,6 @@
          <text>2020-05-21</text>
       </view>
        <view class="jian">-￥3.70</view>
-     </view>
+     </view> -->
   </view>
 </view>

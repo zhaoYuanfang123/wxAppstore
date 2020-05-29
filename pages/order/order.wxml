@@ -9,8 +9,8 @@
           <view class="listBox" wx:for="{{goodsList}}">
               <view class="listTop" bindtap="toDetail" data-name="{{item.shop.shop_name}}" data-shopid="{{item.shop.shop_id}}" data-price="{{item.total_price}}" data-goods="{{item.goods}}">
                 <view class="top_l">
-                    <text class="label">返利订单</text>
-                    <text class="title">有家小店（南城店）</text>
+                    <text class="label" wx:if="{{item.rebate}}">返利订单</text>
+                    <text class="title">{{item.shop.shop_name}}</text>
                 </view>
                 <view class="top_r">
                     <text>{{item.state_text}}</text>
@@ -21,7 +21,7 @@
                   <view class="info">
                       <view>下单时间：{{item.create_time}}</view>
                       <view>总价：￥{{item.total_price}}</view>
-                      <view>返利：￥1.18</view>
+                      <view wx:if="{{item.rebate}}">返利：￥{{item.rebate.money}}</view>
                   </view>
               </view>
               <view class="listBoot" wx:if="{{item.pay_status.value == 10}}">

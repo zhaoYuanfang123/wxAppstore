@@ -8,9 +8,9 @@
 	<view class="userinfo_right" wx:if='{{sq}}'>
 		<view class="username">
 			<text>{{user_data.nickName}}</text></view>
-		<view class="userlv">
+		<view class="userlv" wx:if="{{user_data.grade}}">
 			<image src="/images/user/hg.png" mode="widthFix"></image>
-			<text>等级LV3</text>
+			<text>{{user_data.grade.name}}</text>
 		</view>
 	</view>
 	<view class="userinfo_right" wx:else>

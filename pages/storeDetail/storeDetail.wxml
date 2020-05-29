@@ -116,7 +116,7 @@
           </view>
          <view class="text">
             <view class="priceps"><text>￥</text>{{order_price}}</view>
-            <view class="psf">另需配送费￥3.00</view>
+            <view class="psf">另需配送费￥{{express_price}}</view>
          </view>
          <view class="settlement" bindtap="payaddCart">去结算</view>
      </view>
@@ -174,7 +174,7 @@
                 <image src="{{item.goods_image}}" mode="widthFix" class="productImg"></image>
                 <view class="infoText">
                     <view class="title">{{item.goods_name}}</view>
-                    <view class="guig">8寸、至尊海鲜口味</view>
+                    <view class="guig">{{item.goods_sku.goods_attr}}</view>
                      <view class="price">
                         <view class="mainPrice"><text>￥</text>{{item.goods_sku.goods_price}}</view>
                         <view class="yprice">￥{{item.goods_sku.line_price}}</view>

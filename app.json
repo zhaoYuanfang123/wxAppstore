@@ -16,9 +16,9 @@
     "pages/placeOrder/placeOrder",
     "pages/user/user",
     "pages/storeDetail/storeDetail",
-   
     "pages/components/index_nav/index_nav",
-    "pages/noticeDetail/noticeDetail"
+    "pages/noticeDetail/noticeDetail",
+    "pages/searchShop/searchShop"
   ],
   "permission": {
     "scope.userLocation": {

@@ -9,17 +9,17 @@
          <view class="rb" bindtap="toDetail">明细</view>
      </view>
      <view class="priceInfo">
-        <text>￥</text>{{price}}
+        <text>￥</text>{{balance}}
      </view>
   </view>
   <view class="cashBox">
      <view class="title">提现到微信钱包</view>
      <view class="input-group">
         <text>￥</text>
-        <input type="number" value="{{cashNum}}" placeholder="最低1元起" placeholder-style="color:'#aaa'"></input>
+        <input type="number" value="{{cashNum}}" placeholder="最低1元起" placeholder-style="color:'#aaa'" bindinput="changeMoney"></input>
         <view class="all" bindtap="cashAll">全部</view>
      </view>
   </view>
   <view class="tips">提现免手续费，1个工作日到账</view>
-  <view class="btn">立即提现</view>
+  <view class="btn" bindtap="withdraw">立即提现</view>
 </view>

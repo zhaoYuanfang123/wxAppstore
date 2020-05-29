@@ -20,19 +20,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      var that = this;
-      wx.getStorage({
-        key: 'userInfo',
-        success (res) {
-          if(res.data){
-             that.setData({
-               user_data:JSON.parse(res.data)
-             })
-             that.user_grade()
-          }
-        }
-      })
-      
+      var that = this; 
+      that.user_Detail()     
   },
   choose(e){
     var that = this;
@@ -59,10 +48,37 @@ Page({
         grade_id:that.data.list[that.data.checkIndex].grade_id,
         pay_type:20 //10 余额 20 微信支付
        }
-       utils.buyGrade(data,(res)=>{
-          console.log(res)
+       utils.buyGrade(data,(response)=>{
+        if(response.data.code ==1){
+          wx.requestPayment({
+            timeStamp: response.data.data.payment.timeStamp,
+            nonceStr: response.data.data.payment.nonceStr,
+            package: 'prepay_id='+response.data.data.payment.prepay_id,
+            signType: 'MD5',
+            paySign: response.data.data.payment.paySign,
+            success (res) { 
+              wx.navigateBack({
+                delta: 1
+              })
+            },
+            fail (res) { }
+          })
+         }
+          // console.log(response,'下单')
        })
     },
+// 会员信息
+  user_Detail(){
+    var that = this;
+    utils.userDetail(fnc);
+    function fnc(res){
+      that.setData({
+        user_data:res.data.data.userInfo,
+      })
+      that.user_grade()
+       console.log(res,'会员信息')
+    }
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

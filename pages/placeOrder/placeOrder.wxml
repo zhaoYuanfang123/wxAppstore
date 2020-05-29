@@ -50,13 +50,13 @@
       </view>
    </view> -->
    <view class="list">
-      <view class="name">有家小店（南城店）</view>
+      <view class="name">{{shopInfo.shop_name}}</view>
       <view class="listItem" wx:for="{{list}}" wx:key="index">
           <view class="leftB">
              <image src="{{item.goods_image}}" mode="widthFix"></image>
              <view class="info">
                  <view class="title">{{item.goods_name}}</view>
-                 <view class="guige">规格</view>
+                 <view class="guige">{{item.goods_sku.goods_attr}}</view>
              </view>
           </view>
           <view class="rightB">
@@ -70,7 +70,7 @@
       </view> -->
       <view class="psf">
          <view class="psf_c">配送费</view>
-         <view class="psf_p">￥3.00</view>
+         <view class="psf_p">￥{{express_price}}</view>
       </view>
       <view class="amount">
           <text>合计：</text>
@@ -111,7 +111,7 @@
           </view>
          <view class="text">
             <view class="priceps"><text>合计：￥</text>{{order_price}}</view>
-            <view class="psf">送费￥12.00</view>
+            <view class="psf">送费￥{{express_price}}</view>
          </view>
          <view class="settlement" bindtap="submitOrder">提交订单</view>
      </view>

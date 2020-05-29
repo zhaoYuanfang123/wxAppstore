@@ -10,7 +10,7 @@
             </view>
             <view class="search">
               <view class="searchBox">
-                  <input type="text" placeholder="请输入门店名称" placeholder-style="color:#999999"></input>
+                  <input type="text" placeholder="请输入门店名称" placeholder-style="color:#999999" confirm-type="search" bindconfirm="search" bindinput="changeSearch"></input>
                   <image src="../../images/search.png" mode="widthFix"></image>
               </view>
             </view>
@@ -26,11 +26,11 @@
         </view>
     </view>
     <view class="regBox">
-       <image src="/images/index_reg.png" mode="widthFix"></image>
+       <image src="/images/index_reg.png" mode="widthFix" bindtap="tomenberService"></image>
     </view>
     <view class="centerMenu">
-        <image src="/images/fk.png" mode="widthFix"></image>
-        <image src="/images/wm.png" mode="widthFix"></image>
+        <image src="/images/fk.png" mode="widthFix" bindtap="toPay"></image>
+        <image src="/images/wm.png" mode="widthFix" bindtap="search"></image>
     </view>
     <view class="menuBox">
         <view class="menu">
@@ -79,34 +79,24 @@
             </view>
         </view>
     </view>
-    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" bindtap="go"></view>
+    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" bindtap="close"></view>
 
 <view class="modalDlg" wx:if="{{showModal}}">
 	<view class="checktitle">
 		<view class="check_ZH" bindtap="showzh">
-			<text>综合</text>
-			<van-icon name="arrow-down" />
+			<text>{{zonghe}}</text>
 		</view>
 		<view class="check_SX" bindtap="showsx" >
-			<text :class="redcolor?showsx===true">筛选</text>
+			<text>筛选</text>
 			<van-icon name="filter-o" />
 		</view>
 	</view>
-	<view class="zh__content" wx:if="{{showzh}}">
-		<view>
-			<text>起送价</text>
-		</view>
-		<view>
-			<text>配送费</text>
-		</view>
+	<view class="zh__content"  wx:if="{{showsx}}">
+		<view><text>起送价</text></view>
+		<view><text>配送费</text></view>
 	</view>
-	<view class="zh__content" wx:if="{{showsx}}" >
-		<view>
-			<text>距离</text>
-		</view>
-		<view>
-			<text>销量</text>
-		</view>
+	<view class="zh__content"  wx:if="{{showzh}}">
+		<view wx:for="{{comprehensive}}" wx:key="index" data-type="{{item.type}}" bindtap="sxList" data-index="{{index}}"><text>{{item.name}}</text></view>
 	</view>
 </view>
 </view>
