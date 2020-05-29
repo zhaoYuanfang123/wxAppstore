@@ -5,6 +5,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    baseUrl:'https://meal.jianzhanla.pro/index.php?s='
+    baseUrl:'https://meal.jianzhanla.pro/index.php?s=',
+    orderIndex:''
   }
 })

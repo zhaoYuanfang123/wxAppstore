@@ -28,6 +28,9 @@ var cancelOrder_url = '/api/user.order/cancel';//取消订单
 var orderDetail_url = '/api/user.order/detail';//订单详情
 var myRebateWithdraw_url = '/api/balance.withdraw/submit' ;//我的返利提现
 var myRebateBalance_url = '/api/balance.log/lists';//返利明细
+var paySubmit_url='/api/pay/submit';//当面付提交
+var rebateSet_url='/api/wxapp/rebate';//返利设置
+var shopSet_url = '/api/wxapp/store';//商城设置
 
 
 // 请求数据接口函数
@@ -354,3 +357,30 @@ function myRebateBalance(data,myRebateBalanceFnc){
   }
 }
 module.exports.myRebateBalance = myRebateBalance
+
+// 当面付提交
+function paySubmit(data,paySubmitFnc){
+  request('post',paySubmit_url,data,fnc);
+  function fnc(res){
+    paySubmitFnc(res)
+  }
+}
+module.exports.paySubmit = paySubmit
+
+// 返利设置
+function rebateSet(data,rebateSetFnc){
+  request('get',rebateSet_url,data,fnc);
+  function fnc(res){
+    rebateSetFnc(res)
+  }
+}
+module.exports.rebateSet = rebateSet
+
+// 商城设置
+function shopSet(data,shopSetFnc){
+  request('get',shopSet_url,data,fnc);
+  function fnc(res){
+    shopSetFnc(res)
+  }
+}
+module.exports.shopSet = shopSet

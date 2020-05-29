@@ -78,6 +78,15 @@
       </view>
    </view>
    <view class="remarkBox">
+    <picker bindchange="bindPickerChangeTime" value="{{timeIndex}}" range="{{array}}">
+       <view class="item">
+          <view>时间</view>
+          <view class="rig"> 
+              <text>{{array[timeIndex]}}</text>
+              <image src="/images/user/right.png" mode="widthFix"></image>
+          </view>
+        </view>
+     </picker>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{cj_array}}">
        <view class="item">
           <view>一次性餐具</view>

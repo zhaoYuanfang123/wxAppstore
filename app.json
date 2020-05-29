@@ -18,7 +18,8 @@
     "pages/storeDetail/storeDetail",
     "pages/components/index_nav/index_nav",
     "pages/noticeDetail/noticeDetail",
-    "pages/searchShop/searchShop"
+    "pages/searchShop/searchShop",
+    "pages/agreement/agreement"
   ],
   "permission": {
     "scope.userLocation": {

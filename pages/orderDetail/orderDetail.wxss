@@ -116,7 +116,6 @@ page{
 }
 .ps_address  .ps_item{
    display: flex;
-   align-items: center;
    justify-content: space-between;
    margin-top: 30rpx;
    font-size: 30rpx;
@@ -133,6 +132,7 @@ page{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 120rpx;
 }
 .arr_bottom .line{
   width: 100rpx;
@@ -141,4 +141,84 @@ page{
 }
 .arr_bottom .text{
   margin: 0 20rpx;
+}
+.footer{
+  font-size:30rpx;
+  color:#fff;
+  position:fixed;
+  left:0;
+  width:100%;
+  z-index: 1;
+  bottom:0;
+  top:auto;
+  padding:15rpx 25rpx;
+  text-align: left;
+  z-index: 3;
+  margin: 0;
+  box-sizing: border-box;
+}
+.footerBox{
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+}
+.footerBox .cart{
+  background: #1890ff;
+  color: #fff;
+  border-right: 1px solid #fff;
+  height: 100%;
+  font-size: 60rpx;
+  border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.footerBox .cart image{
+  max-width: 50rpx;
+}
+.footerBox .cart .cartNum{
+   position: absolute;
+   top: 0;
+   color: #fff;
+   border-radius: 50%;
+   width: 40rpx;
+   height: 40rpx;
+   background: #f26c60;
+   font-size: 26rpx;
+   text-align: center;
+   right: 0;
+}
+.footerBox  .text{
+  background: #1890ff;
+  padding: 10rpx 40rpx;
+  box-sizing: border-box;
+  height: 100%;
+  flex: 2;
+}
+.footerBox  .text .priceps{
+  color: #fff;
+  font-size: 34rpx;
+}
+.footerBox  .text .priceps text{
+  font-size: 24rpx;
+}
+.footerBox  .text .psf{
+  font-size: 22rpx;
+}
+.footerBox .settlement{
+  height: 100%;
+  background: #ffc44c;
+  color: #282828;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  border-top-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

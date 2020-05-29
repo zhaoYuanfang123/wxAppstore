@@ -22,18 +22,33 @@ Page({
      shopInfo:'',//店铺详情
      infoName:'',
      infoPhone:'',
-     express_price:''
+     express_price:'',
+     array: ['00:00','00:30','01:00','01:30','02:00','02:30','03:00','03:30','04:00','04:30','05:00','05:30','06:00','06:30','07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30','23:00','23:30','23:59',
+    ],
+    timeIndex:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title:'加载中'
+    })
     var that = this;
     var op = JSON.parse(options.data)
     that.setData({
       shopId:op.shop_id,
       shopName:op.shopName
+    })
+    let time = []
+    that.data.array.forEach((item,index) => {
+      if(new Date().getHours() == item.split(":")[0]){
+        time.push({item:item,index: index})
+      }
+    });
+    this.setData({
+      timeIndex:new Date().getMinutes() >30?time[1].index:time[0].index
     })
     that.getAddressList();
     that.getShopDetail();
@@ -46,6 +61,7 @@ Page({
       delivery:this.data.tabText[this.data.checkIndex].id//10 配送 20 自提
     }
     utils.SettleorderInfo(data,res=>{
+      wx.hideLoading();
        this.setData({
          list:res.data.data.goods_list,
          order_price:res.data.data.order_pay_price,
@@ -64,6 +80,11 @@ Page({
   bindPickerChange: function(e) {
     this.setData({
       index: e.detail.value
+    })
+  },
+  bindPickerChangeTime(e){
+    this.setData({
+      timeIndex:e.detail.value
     })
   },
   showRemark(){
@@ -85,6 +106,7 @@ Page({
   getAddressList(){
     var that = this;
     utils.addressList({},res=>{
+      wx.hideLoading();
       var address_=''
       if(res.data.data.default_id){
         address_ = res.data.data.list.map(item=>{
@@ -121,6 +143,7 @@ Page({
       shop_id:that.data.shopId
     }
     utils.shopDetail(data,(res)=>{
+      wx.hideLoading();
         that.setData({
           shopInfo:res.data.data.detail
         })
@@ -178,7 +201,7 @@ Page({
           fail (res) { }
         })
        }
-       console.log(res,'提交订单')
+       console.log(response,'提交订单')
      })
   },
   changeName(e){

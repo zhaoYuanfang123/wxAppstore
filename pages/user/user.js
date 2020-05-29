@@ -48,20 +48,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-       var that = this;
-       wx.getStorage({
-        key: 'userInfo',
-        success (res) {
-          
-          if(res.data){
-             that.setData({
-               sq:true,
-               user_data:JSON.parse(res.data)
-             })
-             that.user_Detail();
-          }
-        }
-      })
+      
       
   },
  
@@ -144,7 +131,19 @@ Page({
       url: '/pages/memberService/memberService',
     })
   },
-
+ toOrder(){
+  wx.switchTab({
+    url: '/pages/order/order'
+  })
+ },
+ orderLink(e){
+   let index = e.currentTarget.dataset.index;
+   console.log(index)
+   app.globalData.orderIndex = index
+   wx.switchTab({
+    url: '/pages/order/order?index'
+  })
+ },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -156,7 +155,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    wx.getStorage({
+     key: 'userInfo',
+     success (res) {
+       
+       if(res.data){
+          that.setData({
+            sq:true,
+            user_data:JSON.parse(res.data)
+          })
+          that.user_Detail();
+       }
+     }
+   })
   },
 
   /**
@@ -170,7 +182,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**

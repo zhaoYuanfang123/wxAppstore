@@ -1,0 +1,14 @@
+/* pages/agreement/agreement.wxss */
+.agreement{
+  padding: 20rpx 20rpx;
+}
+.agreement .title{
+  padding: 20rpx 0;
+  text-align: center;
+  color: #222;
+  font-size: 34rpx;
+}
+.agreement .content{
+  font-size: 28rpx;
+  color: #666;
+}

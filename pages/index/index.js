@@ -236,7 +236,7 @@ onShow:function(){
    },
    toPay(){
      wx.navigateTo({
-       url: '/pages/payinPerson/payinPerson',
+       url: '/pages/payinPerson/payinPerson?latitude='+this.data.latitude+'&longitude='+this.data.longitude
      })
    }
 })

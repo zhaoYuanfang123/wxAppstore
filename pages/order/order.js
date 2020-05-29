@@ -1,5 +1,6 @@
 // pages/order/order.js
 var utils=require("../../utils/util.js")
+const app = getApp();
 Page({
 
   /**
@@ -20,9 +21,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //  this.getPayList()
   },
   choose(e){
+    wx.showLoading({
+      title:'加载中'
+    })
     this.setData({
       checkIndex:e.currentTarget.dataset.index,
       pageNum:1
@@ -43,6 +46,7 @@ Page({
       dataType:that.data.type,//all全部 payment待付款 delivery待确认 received待出行 comment待评价
     }
     utils.myOrderList(data,res=>{
+      wx.hideLoading();
       this.setData({
         loading: false
       })
@@ -83,6 +87,7 @@ scrollToLower: function (e) {
 getPayList(isPage){
   var that = this;
   utils.payOrderList({page:that.data.pageNum},res=>{
+    wx.hideLoading();
     this.setData({
       loading: false
     })
@@ -122,9 +127,9 @@ cancelOrder(e){
 toDetail(e){
   console.log(e);
   
-  // wx.navigateTo({
-  //   url: '/pages/orderDetail/orderDetail',
-  // })
+  wx.navigateTo({
+    url: '/pages/orderDetail/orderDetail?order_id='+e.currentTarget.dataset.id,
+  })
 },
 
   /**
@@ -138,7 +143,25 @@ toDetail(e){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.showLoading({
+      title:'加载中'
+    })
+    if(app.globalData.orderIndex != ''){
+      console.log(11111111)
+      this.setData({
+        checkIndex:app.globalData.orderIndex
+      })
+    }
+    if(app.globalData.orderIndex == 0){
+      this.setData({
+        checkIndex:0
+      })
+    }
+    if(app.globalData.orderIndex == 3){
+      this.getPayList(false)
+    }
     this.getList(false);
+    console.log(app.globalData.orderIndex,'zzz')
   },
 
   /**

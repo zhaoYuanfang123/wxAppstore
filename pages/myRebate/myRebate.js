@@ -8,6 +8,7 @@ Page({
   data: {
      cashNum:'',
      balance:'',//可提现金额
+     placeh:''
   },
   changeMoney(e){
      this.setData({
@@ -24,6 +25,14 @@ Page({
   toDetail(){
     wx.navigateTo({
       url: '/pages/myRebateDetail/myRebateDetail?balance='+this.data.balance,
+    })
+  },
+  getInfo(){
+    utils.rebateSet({},res=>{
+      this.setData({
+        placeh:'最低'+res.data.data.rebate.settlement_min_money+'元起'
+      })
+      // console.log(res,'ffff')
     })
   },
   /**
@@ -81,7 +90,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-      this.user_Detail()
+      this.user_Detail();
+      this.getInfo();
   },
 
   /**

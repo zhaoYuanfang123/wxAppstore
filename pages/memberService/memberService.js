@@ -21,12 +21,21 @@ Page({
    */
   onLoad: function (options) {
       var that = this; 
-      that.user_Detail()     
+      wx.showLoading({
+        title:'加载中'
+      })
+      that.user_Detail(); 
+  },
+  argument(){
+    wx.navigateTo({
+      url: '/pages/agreement/agreement',
+    })
   },
   choose(e){
     var that = this;
     that.setData({
-      checkIndex:e.currentTarget.dataset.index
+      checkIndex:e.currentTarget.dataset.index,
+      payMoney:this.data.list[e.currentTarget.dataset.index].upgrade.buy_money
     })
   },
     // 会员级别
@@ -34,7 +43,7 @@ Page({
       var that = this;
       utils.userGrade(fnc);
       function fnc(res){
-        console.log(res,'会员级别')
+        // console.log(res,'会员级别')
         that.setData({
           list:res.data.data.list.data,
           payMoney:res.data.data.list.data[0].upgrade.buy_money
@@ -72,11 +81,12 @@ Page({
     var that = this;
     utils.userDetail(fnc);
     function fnc(res){
+      wx.hideLoading();
       that.setData({
         user_data:res.data.data.userInfo,
       })
       that.user_grade()
-       console.log(res,'会员信息')
+      //  console.log(res,'会员信息')
     }
   },
 

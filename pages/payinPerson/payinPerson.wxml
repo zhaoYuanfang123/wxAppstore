@@ -1,19 +1,21 @@
 <!--pages/payinPerson/payinPerson.wxml-->
 <view class="payinPerson">
    <view class="topBox">
-       <image class="logImg" src="/images/shopImg.png" mode="widthFix"></image>
-       <view class="shopName">有间茶馆（南城店）</view>
-       <view class="checkShop">
-          <text>切换门店</text>
-          <image src="/images/user/right.png" mode="widthFix"></image>
-       </view>
+       <image class="logImg" src="{{storeList[shopindex].logo.file_path}}" mode="widthFix"></image>
+       <view class="shopName">{{storeList[shopindex].shop_name}}</view>
+        <picker bindchange="bindPickerChange" value="{{shopindex}}" range="{{shopArr}}">
+            <view class="checkShop">
+               <text>切换门店</text>
+               <image src="/images/user/right.png" mode="widthFix"></image>
+            </view>
+         </picker>
    </view>
    <view class="payBox">
        <view class="text">消费金额</view>
        <view class="priceBox">
           <text>￥</text>
-          <input type="number" placeholder="请询问店员后输入" placeholder-style="color:#bfbfbf"></input>
+          <input type="number" placeholder="请询问店员后输入" placeholder-style="color:#bfbfbf" bindinput="changeMoney"></input>
        </view>
    </view>
-   <view class="pay">立即支付</view>
+   <view class="pay" bindtap="pay">立即支付</view>
 </view>

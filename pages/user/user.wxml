@@ -38,7 +38,7 @@
 </view>
 <!-- 我的订单 -->
 <view class="my_order">
-	<view class="top">
+	<view class="top" bindtap="toOrder">
 		<view class="left"><text>我的订单</text></view>
 		<view class="right">
 		  <text>查看所有订单</text>
@@ -46,7 +46,7 @@
 		</view>
 	</view>
 	<view class="all">
-		<view class="all_item" wx:for='{{iconlist}}' wx:key='index'>
+		<view class="all_item" wx:for='{{iconlist}}' wx:key='index' bindtap="orderLink" data-index="{{index}}">
 			<view>
 				<image src="{{item.iconurl}}" class="order_icon"></image>
 			</view>
