@@ -5,13 +5,13 @@
  <view class="topBox">
     <view class="topbg">
         <view class="infoBox">
-           <image src="{{shopInfo.logo.file_path}}" mode="widthFix"></image>
+           <image src="{{shopInfo.logo.file_path}}" mode="widthFix" class="logo"></image>
            <view class="rightInfo">
                <view class="name">{{shopInfo.shop_name}}</view>
                <view class="distance">
                     <view class="hot_">
                        <image src="/images/shop_detail_hot.png" mode="widthFix"></image>
-                       <text>销量345</text>
+                       <text>销量{{shopInfo.shop_sales}}</text>
                     </view>
                     <view class="juli">
                        <image src="/images/shop_detail_position.png" mode="widthFix"></image>
@@ -19,12 +19,12 @@
                     </view>
                </view>
                <view class="contact">联系电话：{{shopInfo.phone}}</view>
-               <view class="address">门店地址：门店地址门店地址</view>
+               <view class="address">门店地址：{{shopInfo.region.city}}{{shopInfo.region.province}}{{shopInfo.region.region}}</view>
            </view>
         </view>
     </view>
  </view>
-  <view class="body" style="padding-bottom:{{bodyPadding}}px">
+  <view class="body" style="height:{{bodyPadding}}px">
    <!-- 左侧菜单 -->
     <scroll-view class="mune-bar" scroll-y>
       <block wx:for="{{muneBar}}" wx:for-item="item" wx:for-index="id" wx:key="index">
@@ -115,7 +115,7 @@
              <text class="cartNum">{{order_total_num}}</text>
           </view>
          <view class="text">
-            <view class="priceps"><text>￥</text>{{order_price}}</view>
+            <view class="priceps"><text>￥</text>{{order_price}}<view style="margin-left:30rpx;font-size:30rpx"><text>￥</text>{{shopInfo.delivery_fee}}起送</view></view>
             <view class="psf">另需配送费￥{{express_price}}</view>
          </view>
          <view class="settlement" bindtap="payaddCart">去结算</view>

@@ -284,7 +284,7 @@ page{
 }
 .footerBox .cart .cartNum{
    position: absolute;
-   top: 0;
+   top: 4rpx;
    color: #fff;
    border-radius: 50%;
    width: 40rpx;
@@ -292,7 +292,7 @@ page{
    background: #f26c60;
    font-size: 26rpx;
    text-align: center;
-   right: 0;
+   right: 4rpx;
 }
 .footerBox  .text{
   background: #1890ff;

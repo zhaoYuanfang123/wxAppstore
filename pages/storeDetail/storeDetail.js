@@ -304,6 +304,39 @@ Page({
   },
   onShow:function(){
     var that = this;
+    var query1 = wx.createSelectorQuery();
+    var query2 = wx.createSelectorQuery();
+    var query3 = wx.createSelectorQuery();
+    var height1,height2,height3;
+    query1.select('.container1').boundingClientRect(function(rect) {
+      height1 = rect.height;
+      query2.select('.topBox').boundingClientRect(function(rect) {
+        height2 = rect.height
+        query3.select('.footer').boundingClientRect(function(rect) {
+          height3 = rect.height;
+          that.setData({
+            bodyPadding:height1-(height2+height3)-10
+          })
+        }).exec();
+      }).exec();
+    }).exec();
+    that.getCategory();
+    that.shopDetail();
+    that.getCartList();
+    // 获取当前机型
+    // wx.getSystemInfo({
+    //   success (res) {
+    //     if(res.model == 'iPhone 5' || res.model == 'Nexus 5' || res.model == 'Nexus 5X' || res.model == 'Nexus 6'){
+    //          that.setData({
+    //           bodyPadding:0
+    //          })
+    //     }else{
+    //       that.setData({
+    //         bodyPadding:0
+    //        })
+    //     }
+    //   }
+    // })
   },
   onLoad:function(options){
     var that=this;
@@ -314,23 +347,6 @@ Page({
       shopId:options.id,
       latitude:options.latitude,
       longitude:options.longitude
-    })
-    that.getCategory();
-    that.shopDetail();
-    that.getCartList();
-    // 获取当前机型
-    wx.getSystemInfo({
-      success (res) {
-        if(res.model == 'iPhone 5' || res.model == 'Nexus 5' || res.model == 'Nexus 5X' || res.model == 'Nexus 6'){
-             that.setData({
-              bodyPadding:50
-             })
-        }else{
-          that.setData({
-            bodyPadding:30
-           })
-        }
-      }
     })
 
   },

@@ -49,6 +49,7 @@ page{
   background: #fff;
   padding: 20rpx;
   margin-top: 40rpx;
+  border-radius: 10rpx;
 }
 .listBox .listItem .box .top{
   color: #454545;

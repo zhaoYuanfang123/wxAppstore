@@ -1,12 +1,12 @@
 /* pages/noticeDetail/noticeDetail.wxss */
 .top .title{
-  font-size: 34rpx;
-  color: #666;
+  font-size: 44rpx;
+  color: #444;
 }
 .top .time{
   font-size: 28rpx;
-  color: #bababa;
-  margin-top: 20rpx;
+  color: #999;
+  margin-top: 30rpx;
   margin-bottom: 20rpx;
 }
 .wxParse,.top{
@@ -15,4 +15,8 @@
 .wxParse image{
   display: block;
   margin: 0 auto;
+}
+.wxParse{
+  color: #444;
+  font-size: 32rpx;
 }

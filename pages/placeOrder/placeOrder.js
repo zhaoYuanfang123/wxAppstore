@@ -41,16 +41,6 @@ Page({
       shopId:op.shop_id,
       shopName:op.shopName
     })
-    let time = []
-    that.data.array.forEach((item,index) => {
-      if(new Date().getHours() == item.split(":")[0]){
-        time.push({item:item,index: index})
-      }
-    });
-    this.setData({
-      timeIndex:new Date().getMinutes() >30?time[1].index:time[0].index
-    })
-    that.getAddressList();
     that.getShopDetail();
     that.getorderInfo()
   },
@@ -98,7 +88,7 @@ Page({
     })
   },
   changeText(e){
-     that.setData({
+     this.setData({
       textareaVal:e.detail.value
      })
   },
@@ -183,7 +173,9 @@ Page({
       pay_type:20,//10 余额 20 微信支付
       linkman:that.data.infoName,//联系人姓名
       phone:that.data.infoPhone,//联系人手机号码
-      remark:that.data.textareaVal
+      remark:that.data.textareaVal,
+      tableware:that.data.cj_array[that.data.index],//餐具
+      expected_delivery_time:that.data.array[that.data.timeIndex]//时间
      }
      utils.Settleorder(data,(response)=>{
        if(response.data.code ==1){
@@ -225,7 +217,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getAddressList();
+    let time = []
+    this.data.array.forEach((item,index) => {
+      if(new Date().getHours() == item.split(":")[0]){
+        console.log(new Date().getHours(),'new Date().getHours()');
+        console.log(item.split(":")[0],'item.split(":")[0]')
+        time.push({item:item,index: index})
+      }
+    });
+    this.setData({
+      timeIndex:new Date().getMinutes() >30?time[1].index:time[0].index+1
+    })
   },
 
   /**

@@ -4,6 +4,7 @@
   position: fixed;
   top: 0;
   z-index: 2;
+  height: 280rpx;
 }
 .topBox .topbg{
   background: #0782ff;
@@ -15,9 +16,9 @@
    background: #fff;
    border-radius: 20rpx;
    padding: 20rpx;
-   box-shadow: 0px 5px 5px rgba(167, 164, 164, 0.9)
+   box-shadow: 0px 2px 5px rgba(167, 164, 164, 0.9)
 }
-.topBox .topbg .infoBox image{
+.topBox .topbg .infoBox .logo{
    max-width: 200rpx;
    border-radius: 10rpx;
 }
@@ -60,7 +61,7 @@
 
 /**index.wxss**/
 .container1{
-  height:100%;
+  height:100vh;
   font-size:30rpx;
   overflow:hidden;
 }
@@ -74,6 +75,7 @@
   left:0;
   width:100%;
   z-index: 1;
+  height: 127rpx;
 }
 .footer{
   bottom:0;
@@ -108,7 +110,7 @@
 }
 .footerBox .cart .cartNum{
    position: absolute;
-   top: 0;
+   top: 4rpx;
    color: #fff;
    border-radius: 50%;
    width: 40rpx;
@@ -116,7 +118,7 @@
    background: #f26c60;
    font-size: 26rpx;
    text-align: center;
-   right: 0;
+   right: 4rpx;
 }
 .footerBox  .text{
   background: #1890ff;
@@ -128,6 +130,8 @@
 .footerBox  .text .priceps{
   color: #fff;
   font-size: 34rpx;
+  display: flex;
+  align-items: center;
 }
 .footerBox  .text .priceps text{
   font-size: 24rpx;
@@ -161,7 +165,8 @@
     position: fixed;
     bottom: 50rpx;
     top: 20rpx;
-    height:73vh;
+    /* height:63vh; */
+    height: 65%;
 }
 .mune-bar{
   float: left;
@@ -218,6 +223,7 @@
     vertical-align: middle;
     float: left;
     margin-top: 20rpx;
+    border-radius: 10rpx;
 }
 
 .food-right {
@@ -266,6 +272,7 @@
   text-decoration: line-through;
   font-size: 24rpx;
   color: #999999;
+  margin-left: 10rpx;
 }
 
 .food__price {
@@ -431,7 +438,7 @@ line-height:63rpx;
    color: #888;
    margin-top: 5rpx;
    display: flex;
-   line-height: 20rpx;
+   line-height: 10rpx;
 }
 .tkFot .rnum{
    display: flex;

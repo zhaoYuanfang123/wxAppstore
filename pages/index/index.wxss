@@ -83,7 +83,7 @@ page{
   background: #fff;
 }
 .menuBox .menu{
-   border-top: 1px solid #dddddd;
+   border-top: 1px solid #eee;
    display: flex;
    align-items: center;
    flex-wrap:wrap;
@@ -91,7 +91,7 @@ page{
 }
 .menuBox .menu .item{
   width: 33.3%;
-  margin-bottom: 20rpx;
+  margin-bottom: 40rpx;
 }
 .menuBox .menu .item image{
   max-width: 60rpx;
@@ -105,7 +105,7 @@ page{
   font-size: 30rpx;
 }
 .shopList{
-  padding: 20rpx;
+  padding: 24rpx;
   margin-top: 20rpx;
   background: #fff;
 }
@@ -271,4 +271,7 @@ page{
 }
 .redcolor{
   color: red;
+}
+.color_ac{
+  color: #1890ff;
 }

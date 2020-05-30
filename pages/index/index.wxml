@@ -84,16 +84,15 @@
 <view class="modalDlg" wx:if="{{showModal}}">
 	<view class="checktitle">
 		<view class="check_ZH" bindtap="showzh">
-			<text>{{zonghe}}</text>
+			<text class="{{showzh ? 'color_ac':''}}">{{zonghe}}</text>
 		</view>
 		<view class="check_SX" bindtap="showsx" >
-			<text>筛选</text>
-			<van-icon name="filter-o" />
+			<text class="{{showsx ? 'color_ac' : ''}}">筛选</text>
 		</view>
 	</view>
 	<view class="zh__content"  wx:if="{{showsx}}">
-		<view><text>起送价</text></view>
-		<view><text>配送费</text></view>
+		<!-- <view><text>起送价</text></view>
+		<view><text>配送费</text></view> -->
 	</view>
 	<view class="zh__content"  wx:if="{{showzh}}">
 		<view wx:for="{{comprehensive}}" wx:key="index" data-type="{{item.type}}" bindtap="sxList" data-index="{{index}}"><text>{{item.name}}</text></view>

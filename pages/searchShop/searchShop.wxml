@@ -41,15 +41,14 @@
      </view>
      <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" bindtap="close"></view>
      <view class="modalDlg" wx:if="{{showModal}}">
-    <view class="checktitle">
-      <view class="check_ZH" bindtap="showzh">
-        <text>{{zonghe}}</text>
+      <view class="checktitle">
+          <view class="check_ZH" bindtap="showzh">
+            <text class="{{showzh ? 'color_ac':''}}">{{zonghe}}</text>
+          </view>
+          <view class="check_SX" bindtap="showsx" >
+            <text class="{{showsx ? 'color_ac' : ''}}">筛选</text>
+          </view>
       </view>
-      <view class="check_SX" bindtap="showsx" >
-        <text>筛选</text>
-        <van-icon name="filter-o" />
-      </view>
-    </view>
     <view class="zh__content"  wx:if="{{showsx}}">
       <view><text>起送价</text></view>
       <view><text>配送费</text></view>
