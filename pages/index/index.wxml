@@ -29,7 +29,8 @@
        <image src="/images/index_reg.png" mode="widthFix" bindtap="tomenberService"></image>
     </view>
     <view class="centerMenu">
-        <image src="/images/fk.png" mode="widthFix" bindtap="toPay"></image>
+        <image src="/images/fk.png" mode="widthFix" bindtap="toPay" data-id="1"></image>
+        <image src="/images/fk.png" mode="widthFix" bindtap="toPay" data-id="2"></image>
         <image src="/images/wm.png" mode="widthFix" bindtap="search"></image>
     </view>
     <view class="menuBox">

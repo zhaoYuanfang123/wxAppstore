@@ -33,7 +33,7 @@
           <text>￥{{orderInfo.pay_price}}</text>
       </view>
    </view>
-   <view class="ps_address">
+   <view class="ps_address" wx:if="{{orderInfo.address}}">
       <view class="ps_info">配送信息</view>
       <view class="ps_item">
          <view class="dz">配送地址</view>
@@ -46,6 +46,17 @@
          <view class="dz">配送时间</view>
          <view>2020-05-30 11:00</view>
       </view>
+   </view>
+   <view class="ps_address" wx:else>
+         <view class="ps_info">自提信息</view>
+         <view class="ps_item">
+            <view class="dz">联系人</view>
+            <view>{{orderInfo.extract.linkman}}</view>
+         </view>
+         <view class="ps_item">
+            <view class="dz">联系电话</view>
+            <view>{{orderInfo.extract.phone}}</view>
+         </view>
    </view>
    <view class="arr_bottom">
         <view class="line"></view>

@@ -30,7 +30,9 @@ Page({
   getDetail(){
       utils.orderDetail({order_id:this.data.order_id },res=>{
         wx.hideLoading();
-        res.data.data.order.address.phone = res.data.data.order.address.phone.substr(0,3) + "****" + res.data.data.order.address.phone.substr(7);
+        if(res.data.data.order.address){
+          res.data.data.order.address.phone = res.data.data.order.address.phone.substr(0,3) + "****" + res.data.data.order.address.phone.substr(7);
+        }
         this.setData({
           orderInfo:res.data.data.order
         })
@@ -40,14 +42,29 @@ Page({
     // 结算订单
     submitOrder(){
       var that = this;
-      var data = {
-       shop_id:that.data.orderInfo.shop_id,
-       delivery:that.data.orderInfo.delivery_type.value,//10 配送 20 自提
-       pay_type:that.data.orderInfo.pay_type.value,//10 余额 20 微信支付
-      //  linkman:that.data.infoName,//联系人姓名
-      //  phone:that.data.infoPhone,//联系人手机号码
-       remark:that.data.orderInfo.buyer_remark
+      let data;
+      if(that.data.orderInfo.delivery_type.value == 10){
+         data = {
+          shop_id:that.data.orderInfo.shop_id,
+          delivery:that.data.orderInfo.delivery_type.value,//10 配送 20 自提
+          pay_type:that.data.orderInfo.pay_type.value,//10 余额 20 微信支付
+          remark:that.data.orderInfo.buyer_remark,
+          tableware:that.data.orderInfo.tableware,//餐具
+          expected_delivery_time:that.data.orderInfo.expected_delivery_time//时间
+         }
+      }else{
+        data = {
+          shop_id:that.data.orderInfo.shop_id,
+          delivery:that.data.orderInfo.delivery_type.value,//10 配送 20 自提
+          pay_type:that.data.orderInfo.pay_type.value,//10 余额 20 微信支付
+          remark:that.data.orderInfo.buyer_remark,
+          linkman:that.data.orderInfo.extract.linkman,//联系人姓名 
+          phone:that.data.orderInfo.extract.phone,//联系人手机号码
+          tableware:that.data.orderInfo.tableware,//餐具
+          expected_delivery_time:that.data.orderInfo.expected_delivery_time//时间
+         }
       }
+      
       utils.Settleorder(data,(response)=>{
         if(response.data.code ==1){
          wx.requestPayment({
@@ -61,7 +78,11 @@ Page({
                 url: '/pages/placeOrderSuccess/placeOrderSuccess?order_id='+response.data.data.order_id,
               })
            },
-           fail (res) { }
+           fail (err) { 
+            wx.switchTab({
+              url: '/pages/order/order'
+            })
+           }
          })
         }
         console.log(res,'提交订单')

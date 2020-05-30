@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    order_id:''
+    order_id:'',
+    shop_id:''
   },
 
   /**
@@ -13,7 +14,8 @@ Page({
    */
   onLoad: function (options) {
       this.setData({
-        order_id:options.order_id
+        order_id:options.order_id,
+        shop_id:options.shop_id
       })
   },
 
@@ -24,13 +26,15 @@ Page({
     
   },
   toDetail(){
-    wx.navigateTo({
-      url: '/pages/placeOrderDetail/placeOrderDetail',
+    wx.redirectTo({
+      url: '/pages/orderDetail/orderDetail?order_id='+this.data.order_id,
     })
   },
   // 继续下单
   buy(){
-
+    wx.redirectTo({
+      url:"/pages/storeDetail/storeDetail?id="+this.data.shop_id
+    })
   },
   /**
    * 生命周期函数--监听页面显示

@@ -100,7 +100,6 @@ onShow:function(){
            that.openConfirm()
         }else{
            // 获取当前地理位置 授权验证
-           console.log(2)
             wx.getLocation({
               type: 'wgs84',
               success: function (res) {
@@ -234,9 +233,9 @@ onShow:function(){
        url: '/pages/memberService/memberService',
      })
    },
-   toPay(){
+   toPay(e){
      wx.navigateTo({
-       url: '/pages/payinPerson/payinPerson?latitude='+this.data.latitude+'&longitude='+this.data.longitude
+       url: '/pages/payinPerson/payinPerson?latitude='+this.data.latitude+'&longitude='+this.data.longitude+'&type='+e.currentTarget.dataset.id
      })
    }
 })

@@ -28,7 +28,7 @@ Page({
     ],
     iconlist2:[{
       'iconurl': '/images/user/user_ico5.png',
-      "title": '收获地址',
+      "title": '收货地址',
       'id':1
     },
     {

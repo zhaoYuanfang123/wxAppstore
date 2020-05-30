@@ -16,12 +16,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options,'o')
     wx.showLoading({
       title:'加载中'
     })
     this.setData({
       latitude:options.latitude,
-      longitude:options.longitude
+      longitude:options.longitude,
+      type:options.type //1是当面付，2是购买食材
     })
     this.getStoreList()
   },
@@ -60,7 +62,8 @@ Page({
       let data = {
         shop_id:this.data.storeList[this.data.shopindex].shop_id,
         pay_price:this.data.money,
-        pay_type:20//10 余额 20 微信支付
+        pay_type:20,//10 余额 20 微信支付
+        order_source:this.data.type == 1 ? 10 :20
       }
       utils.paySubmit(data,response=>{
         if(response.data.code ==1){

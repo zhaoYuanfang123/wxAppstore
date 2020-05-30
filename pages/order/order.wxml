@@ -21,15 +21,16 @@
                   <view class="info">
                       <view>下单时间：{{item.create_time}}</view>
                       <view>总价：￥{{item.total_price}}</view>
-                      <view wx:if="{{item.rebate}}">返利：￥{{item.rebate.money}}</view>
+                      <view wx:if="{{item.rebate}}">返利：￥{{item.rebate.money}}
+                          <text wx:if="{{item.rebate.is_settled}}">已结算</text>
+                          <text wx:else>未结算</text>
+                      </view>
                   </view>
               </view>
-              <view class="listBoot" wx:if="{{item.pay_status.value == 10}}">
-                <view class="cancel" bindtap="cancelOrder" data-id="{{item.order_id}}">取消订单</view>
-                <view class="pay">去付款</view>
-              </view>
-              <view class="listBoot" wx:else>
-                <view class="cancel">再来一单</view>
+              <view class="listBoot">
+                 <view wx:if="{{item.order_status.value == 10 && item.pay_status.value == 10}}" class="cancel" bindtap="cancelOrder" data-id="{{item.order_id}}">取消订单</view>
+                 <view wx:if="{{item.order_status.value == 10 && item.pay_status.value == 10}}" class="pay" data-id="{{item.order_id}}" bindtap="topaymoney" >去付款</view>
+                 <view wx:if="{{item.pay_status.value!=10 || item.order_status.value == 20}}" class="cancel" bindtap="againBuy" data-shopid="{{item.shop_id}}">再来一单</view>
               </view>
           </view>
           <view class="opera">
@@ -39,17 +40,18 @@
     </scroll-view>
    </view>
    <!-- 当面付 -->
-   <view class="all" wx:if="{{checkIndex == 3}}">
+   <view class="all" wx:if="{{checkIndex == 3 || checkIndex == 4}}">
        <view class="payList">
         <scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
           <view class="payItem" wx:for="{{payList}}">
                 <view class="p1">
-                  <text>返利订单-{{item.shop.shop_name}}</text>
+                  <view>
+                     <text wx:if="{{item.rebate}}">返利订单-</text>{{item.shop.shop_name}}</view>
                   <text>￥{{item.pay_price}}</text>
                 </view>
                 <view class="p2">
-                  <text>{{item.create_time}}</text>
-                  <text>返利：￥1.08</text>
+                   <text>{{item.create_time}}</text>
+                   <text wx:if="{{item.rebate}}">返利：￥{{item.rebate.money}}</text>
                 </view>
           </view>
            <view class="opera">

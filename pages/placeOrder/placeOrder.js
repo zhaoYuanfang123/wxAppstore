@@ -187,10 +187,14 @@ Page({
           paySign: response.data.data.payment.paySign,
           success (res) { 
              wx.navigateTo({
-               url: '/pages/placeOrderSuccess/placeOrderSuccess?order_id='+response.data.data.order_id,
+               url: '/pages/placeOrderSuccess/placeOrderSuccess?order_id='+response.data.data.order_id+'&shop_id='+response.data.data.shop_id,
              })
           },
-          fail (res) { }
+          fail (err) {
+            wx.switchTab({
+              url: '/pages/order/order'
+            })
+           }
         })
        }
        console.log(response,'提交订单')

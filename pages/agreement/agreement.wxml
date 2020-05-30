@@ -1,6 +1,6 @@
 <!--pages/agreement/agreement.wxml-->
 <view class="agreement">
-    <view class="title">{{info.name}}</view>
+    <!-- <view class="title">{{info.name}}</view> -->
     <view class="content">
        <rich-text nodes="{{info.license}}"></rich-text>
     </view>

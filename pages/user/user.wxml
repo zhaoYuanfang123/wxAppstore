@@ -26,7 +26,7 @@
 		<image src="/images/user/bg.png" mode="widthFix"></image>
 	<view class="user_cardleft">
 		<view class="car_pic">
-			<text>您已获得返利红包<text>233.9</text>元</text>
+			<text>可提现<text>{{user_data.balance}}</text>元</text>
 		</view>
 	</view>
 

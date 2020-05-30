@@ -221,7 +221,7 @@ Page({
       _sku.spec_list.forEach(val => {
           if(val.spec_sku_id == idStr){
               that.setData({
-                skuPrice: val.form.goods_price
+                skuPrice: val.form.goods_price,
                 // skuPrice: val.form.goods_price + '(' + idStr + ')'
               })
           }
@@ -270,11 +270,19 @@ Page({
   // 获取店铺详情
   shopDetail(){
     var that = this;
-    var data = {
-      shop_id:that.data.shopId,
-      latitude:that.data.latitude,
-      longitude:that.data.longitude
+    let data;
+    if(that.data.latitude==undefined || that.data.longitude == undefined){
+       data={
+        shop_id:that.data.shopId,
+       }
+    }else{
+      data = {
+        shop_id:that.data.shopId,
+        latitude:that.data.latitude,
+        longitude:that.data.longitude
+      }
     }
+    
     utils.shopDetail(data,(res)=>{
         that.setData({
           shopInfo:res.data.data.detail
@@ -477,6 +485,30 @@ Page({
           duration: 2000
       })
     }
+    
+  },
+  // 清空购物车
+  clearCart(){
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定清空此商家的购物车吗？',
+      success (res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '加载中',
+          })
+          utils.clearCart({shop_id:that.data.shopId},res=>{
+            console.log(res,'清除')
+            wx.hideLoading()
+            that.getCartList();
+            that.hideCartList()
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
     
   }
 })

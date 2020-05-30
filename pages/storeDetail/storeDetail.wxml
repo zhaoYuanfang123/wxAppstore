@@ -165,7 +165,7 @@
   <view class="purchaseLayer {{isPurchase?'isShow action_skew1':'isHide'}}" bindtap="hideCartList"></view>
   <view class="{{isPurchase?'isShow action_skew1':'isHide'}}">
     <scroll-view scrollY class="purchaseList">
-        <view class="operation" style="" >
+        <view class="operation" style="" bindtap="clearCart">
              <image src="/images/del.png" mode="widthFix" ></image>
              <text>清空购物车</text>
         </view>

@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabText:[{type:'all',name:'全部'},{type:'payment',name:'待支付'},{type:'received',name:'待收货'},{type:4,name:'当面付'}],
+    tabText:[{type:'all',name:'全部'},{type:'payment',name:'待支付'},{type:'received',name:'待收货'},{type:4,name:'当面付'},{type:5,name:'食材购买'}],
     checkIndex:0,
     goodsList:[],
     pageNum: 1,    //分页记录数
@@ -30,7 +30,7 @@ Page({
       checkIndex:e.currentTarget.dataset.index,
       pageNum:1
     })
-    if(e.currentTarget.dataset.type != 4){
+    if(e.currentTarget.dataset.type != 4 && e.currentTarget.dataset.type != 5){
         this.setData({
           type:this.data.tabText[this.data.checkIndex].type
         })
@@ -86,7 +86,18 @@ scrollToLower: function (e) {
 // 获取当面付列表
 getPayList(isPage){
   var that = this;
-  utils.payOrderList({page:that.data.pageNum},res=>{
+  let or ;
+  if(that.data.checkIndex == 3){
+    or = 10
+  }
+  if(that.data.checkIndex == 4){
+    or = 20
+  }
+  let data = {
+    page:that.data.pageNum,
+    order_source:or
+  }
+  utils.payOrderList(data,res=>{
     wx.hideLoading();
     this.setData({
       loading: false
@@ -123,6 +134,18 @@ cancelOrder(e){
  })
 
 },
+// 去付款
+topaymoney(e){
+   wx.navigateTo({
+     url: '/pages/orderDetail/orderDetail?order_id='+e.currentTarget.dataset.id,
+   })
+},
+// 再来一单
+againBuy(e){
+   wx.navigateTo({
+     url: '/pages/storeDetail/storeDetail?id='+e.currentTarget.dataset.shopid,
+   })
+},
 // 订单详情
 toDetail(e){
   console.log(e);
@@ -147,7 +170,6 @@ toDetail(e){
       title:'加载中'
     })
     if(app.globalData.orderIndex != ''){
-      console.log(11111111)
       this.setData({
         checkIndex:app.globalData.orderIndex
       })
@@ -157,11 +179,11 @@ toDetail(e){
         checkIndex:0
       })
     }
-    if(app.globalData.orderIndex == 3){
+    if(app.globalData.orderIndex == 3 || app.globalData.orderIndex == 4){
       this.getPayList(false)
     }
     this.getList(false);
-    console.log(app.globalData.orderIndex,'zzz')
+    // console.log(app.globalData.orderIndex,'zzz')
   },
 
   /**

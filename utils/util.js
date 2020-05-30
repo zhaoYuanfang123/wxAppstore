@@ -31,6 +31,7 @@ var myRebateBalance_url = '/api/balance.log/lists';//返利明细
 var paySubmit_url='/api/pay/submit';//当面付提交
 var rebateSet_url='/api/wxapp/rebate';//返利设置
 var shopSet_url = '/api/wxapp/store';//商城设置
+var clearCart_url ='/api/cart/clean';//清空购物车
 
 
 // 请求数据接口函数
@@ -384,3 +385,12 @@ function shopSet(data,shopSetFnc){
   }
 }
 module.exports.shopSet = shopSet
+
+// 清空购物车
+function clearCart(data,clearCartFnc){
+  request('post',clearCart_url,data,fnc);
+  function fnc(res){
+    clearCartFnc(res)
+  }
+}
+module.exports.clearCart = clearCart

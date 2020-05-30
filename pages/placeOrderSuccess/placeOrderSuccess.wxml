@@ -3,7 +3,7 @@
     <view class="top">
         <image src="/images/orderSuccess.png" mode="widthFix"></image>
         <view class="p1">订单已成功提交，等待商家接单</view>
-        <view class="p2">预计送餐时间2020-05-23 17:00</view>
+        <!-- <view class="p2">预计送餐时间2020-05-23 17:00</view> -->
     </view>
     <view class="btn">
         <view class="detail" bindtap="toDetail">订单详情</view>
