@@ -222,7 +222,7 @@
     height: 200rpx;
     vertical-align: middle;
     float: left;
-    margin-top: 20rpx;
+    /* margin-top: 20rpx; */
     border-radius: 10rpx;
 }
 

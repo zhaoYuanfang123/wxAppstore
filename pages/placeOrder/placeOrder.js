@@ -58,7 +58,7 @@ Page({
          express_price:res.data.data.express_price,
          order_total_num:res.data.data.order_total_num
        })
-       console.log(res,'结算订单信息')
+      //  console.log(res,'结算订单信息')
     })
   },
   choose(e){
@@ -99,11 +99,9 @@ Page({
       wx.hideLoading();
       var address_=''
       if(res.data.data.default_id){
-        address_ = res.data.data.list.map(item=>{
-           item.id = res.data.data.default_id
-           return item
+        address_ = res.data.data.list.filter(item=>{
+           return item.address_id == res.data.data.default_id
         })
-        console.log(address_,'adddddd')
         that.setData({
           defaultAddress:true,
           address:address_[0]
@@ -113,7 +111,7 @@ Page({
           defaultAddress:false
         })
       }
-      console.log(res,'收货地址列表')
+      // console.log(res,'收货地址列表')
     })
   },
   toAddress(){
@@ -123,7 +121,7 @@ Page({
   },
   checkAddress(){
     wx.navigateTo({
-      url: '/pages/addressManagement/addressManagement',
+      url: '/pages/addressManagement/addressManagement?type=check',
     })
   },
   // 获取店铺详情
@@ -137,7 +135,7 @@ Page({
         that.setData({
           shopInfo:res.data.data.detail
         })
-        console.log(res,'店铺详情')
+        // console.log(res,'店铺详情')
     })
   },
   // 结算订单
@@ -197,7 +195,7 @@ Page({
            }
         })
        }
-       console.log(response,'提交订单')
+      //  console.log(response,'提交订单')
      })
   },
   changeName(e){
@@ -222,15 +220,20 @@ Page({
    */
   onShow: function () {
     this.getAddressList();
+  //今天的时间
+  // var day2 = new Date();
+  // day2.setTime(day2.getTime());
+  // var s2 = day2.getFullYear()+"-" + (day2.getMonth()+1) + "-" + day2.getDate();
+  // var week = day2.getDay()+1
+  // console.log(s2,'ss')
+
+
     let time = []
     this.data.array.forEach((item,index) => {
       if(new Date().getHours() == item.split(":")[0]){
-        console.log(new Date().getHours(),'new Date().getHours()');
-        console.log(item.split(":")[0],'item.split(":")[0]')
         time.push({item:item,index: index})
       }
     });
-    // console.log(time,'tt')
     this.setData({
       timeIndex:new Date().getMinutes() >30?time[1].index:time[0].index+1
     })

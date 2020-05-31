@@ -14,7 +14,7 @@
        <view class="text">消费金额</view>
        <view class="priceBox">
           <text>￥</text>
-          <input type="number" placeholder="请询问店员后输入" placeholder-style="color:#bfbfbf" bindinput="changeMoney"></input>
+          <input type="digit" placeholder="请询问店员后输入" placeholder-style="color:#bfbfbf" bindinput="changeMoney"></input>
        </view>
    </view>
    <view class="pay" bindtap="pay">立即支付</view>

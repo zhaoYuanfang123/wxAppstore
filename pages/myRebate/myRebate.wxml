@@ -16,7 +16,7 @@
      <view class="title">提现到微信钱包</view>
      <view class="input-group">
         <text>￥</text>
-        <input type="number" value="{{cashNum}}" placeholder="{{placeh}}" placeholder-style="color:'#aaa'" bindinput="changeMoney"></input>
+        <input type="digit" value="{{cashNum}}" placeholder="{{placeh}}" placeholder-style="color:'#aaa'" bindinput="changeMoney"></input>
         <view class="all" bindtap="cashAll">全部</view>
      </view>
   </view>

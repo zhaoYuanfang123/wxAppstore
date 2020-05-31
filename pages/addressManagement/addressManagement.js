@@ -7,14 +7,19 @@ Page({
    */
   data: {
      list:[],
-     default_id:''
+     default_id:'',
+     type:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    if(JSON.stringify(options) != "{}"){
+       this.setData({
+         type:options.type
+       })
+    }
   },
   // 获取收货地址列表
   getList(){
@@ -70,7 +75,14 @@ Page({
     }
      utils.setDefaultAddress(data,res=>{
        if(res.data.code == 1){
-         that.getList()
+        if(that.data.type != ''){
+          wx.navigateBack({
+            delta: 1
+          })
+        }else{
+          that.getList()
+        }
+        
        }
      })
   },
