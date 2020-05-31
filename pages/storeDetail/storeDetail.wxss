@@ -437,8 +437,6 @@ line-height:63rpx;
    font-size: 28rpx;
    color: #888;
    margin-top: 5rpx;
-   display: flex;
-   line-height: 10rpx;
 }
 .tkFot .rnum{
    display: flex;

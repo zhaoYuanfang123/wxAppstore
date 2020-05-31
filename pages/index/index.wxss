@@ -76,7 +76,7 @@ page{
   background: #fff;
 }
 .centerMenu image{
-  max-width: 48%;
+  max-width: 32%;
 }
 .menuBox{
   padding: 20rpx;

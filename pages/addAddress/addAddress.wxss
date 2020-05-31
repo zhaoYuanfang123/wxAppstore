@@ -11,6 +11,7 @@ page{
   align-items: center;
   padding: 30rpx 0;
   border-bottom: 1px solid #ebebeb;
+  font-size: 32rpx;
 }
 .input-group .item .pick{
   width: 100%;
@@ -25,6 +26,7 @@ page{
 .input-group .item input,
 .input-group .item textarea{
   width: 100%;
+  font-size: 32rpx;
 }
 .input-group .item image{
   max-width: 20rpx;

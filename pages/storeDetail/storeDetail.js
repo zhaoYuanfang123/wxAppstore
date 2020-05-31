@@ -169,25 +169,28 @@ Page({
   },
   // 显示选择规格弹框
   showgg:function(e){
-    // console.log(e,'显示选择规格弹框')
+    console.log(e,'显示选择规格弹框')
     var that = this;
     var par = [];//选择规格id
     var idStr = '';//选择规格id字符串
     var sel_skuname='';//选择规格名字的字符串
    var _sku = e.currentTarget.dataset.sku;
    _sku.spec_attr.forEach((item,index)=>{
-     par.push(item.spec_items[0])
+    //  par.push(item.spec_items[0]);
+     par.push({group_name:item.group_name,spec_value:item.spec_items[0].spec_value,item_id:item.spec_items[0].item_id})
    })
+   console.log(par,'pp')
     par.forEach((item,index)=>{
        idStr += item.item_id+'_';
-       sel_skuname += item.spec_value+'、';
+       sel_skuname += item.group_name+'：'+item.spec_value+'；  ';
     })
     idStr = idStr.substr(0,idStr.length-1);
     that.setData({
       idStr:idStr,
       select_goods_id:e.currentTarget.dataset.goodsid,
     })
-    sel_skuname = sel_skuname.substr(0,sel_skuname.length-1)
+    // sel_skuname = sel_skuname.substr(0,sel_skuname.length-1);
+
     // 寻找默认规格的价格
     var defSku_price = _sku.spec_list.filter((value,index)=>{
       if(value.spec_sku_id == idStr){
@@ -213,11 +216,34 @@ Page({
       var _indexs = e.currentTarget.dataset.i;
       var _sku = that.data.skuArr;
       var idStr = that.data.idStr.split("_");
+      var nameObj=[];
+      var sel_skuname='';//选择规格名字的字符串
+      var newStr;
+
       idStr[_indexs] = _sku.spec_attr[_indexs].spec_items[_index].item_id;
+      newStr = idStr
       idStr = idStr.join("_");
       that.setData({
         idStr:idStr
       })
+    
+      // 查找规格名字
+      _sku.spec_attr.forEach((item,i)=>{
+        item.spec_items.forEach((val,j)=>{
+         if(val.item_id == newStr[i]){
+            nameObj.push({group_name:item.group_name,spec_value:val.spec_value})
+         }
+        })
+     })
+     nameObj.forEach((item,index)=>{
+        sel_skuname += item.group_name+'：'+item.spec_value+'；  ';
+      })
+      console.log(nameObj,'nameObj')
+      that.setData({
+          select_skuName:sel_skuname
+      })
+
+      // 查找价格
       _sku.spec_list.forEach(val => {
           if(val.spec_sku_id == idStr){
               that.setData({
@@ -234,7 +260,6 @@ Page({
         item.spec_items[item.select].spec_value
         return item;
       })
-
       that.setData({
           skuArr:_sku
       })
@@ -286,6 +311,9 @@ Page({
     utils.shopDetail(data,(res)=>{
         that.setData({
           shopInfo:res.data.data.detail
+        })
+        wx.setNavigationBarTitle({
+          title: res.data.data.detail.shop_name
         })
         wx.hideLoading();
         // console.log(res,'店铺详情')

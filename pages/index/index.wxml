@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <!-- <index_nav title-text="首页" back-icon="/images/left.png" background="#f2f2f2" bindback="back"></index_nav> -->
-<index_nav title-text="首页" bindback="back"></index_nav>
+<index_nav title-text="{{wxAppname}}" bindback="back"></index_nav>
 <view class="index" style="margin-top:{{status + navHeight}}px">
     <view class="bg">
         <view class="topBox">
@@ -30,7 +30,7 @@
     </view>
     <view class="centerMenu">
         <image src="/images/fk.png" mode="widthFix" bindtap="toPay" data-id="1"></image>
-        <image src="/images/fk.png" mode="widthFix" bindtap="toPay" data-id="2"></image>
+        <image src="/images/sc.png" mode="widthFix" bindtap="toPay" data-id="2"></image>
         <image src="/images/wm.png" mode="widthFix" bindtap="search"></image>
     </view>
     <view class="menuBox">

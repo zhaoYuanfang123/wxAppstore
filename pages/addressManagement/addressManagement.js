@@ -14,10 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title:'加载中'
-    })
-    this.getList()
+    
   },
   // 获取收货地址列表
   getList(){
@@ -40,6 +37,29 @@ Page({
     wx.navigateTo({
       url: '/pages/addAddress/addAddress?type=edit&address_id='+e.currentTarget.dataset.id,
     })
+  },
+  // 删除收货地址
+  del(e){
+    wx.showModal({
+      title: '提示',
+      content: '地址删除后无法恢复，是否删除地址？',
+      success (res) {
+        if (res.confirm) {
+          utils.delAddress({address_id:e.currentTarget.dataset.id},res=>{
+             console.log(res)
+             wx.showToast({
+              title: res.data.msg,
+              icon: 'success',
+              duration: 2000
+            })
+             this.getList();
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+      
   },
   // 默认地址
   radioDefault:function(e){
@@ -66,7 +86,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.showLoading({
+      title:'加载中'
+    })
+    this.getList()
   },
 
   /**

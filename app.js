@@ -6,6 +6,7 @@ App({
   globalData: {
     userInfo: null,
     baseUrl:'https://meal.jianzhanla.pro/index.php?s=',
-    orderIndex:''
+    orderIndex:'',
+    wxAppName:''
   }
 })

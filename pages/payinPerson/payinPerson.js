@@ -25,6 +25,16 @@ Page({
       longitude:options.longitude,
       type:options.type //1是当面付，2是购买食材
     })
+    if(options.type==1){
+      wx.setNavigationBarTitle({
+        title: '当面付' 
+      })
+    }else{
+      wx.setNavigationBarTitle({
+        title: '食材购买' 
+      })
+    }
+    
     this.getStoreList()
   },
   // 门店列表

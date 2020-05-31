@@ -139,6 +139,8 @@
                  data-i="{{index}}"
                  class="item {{item.select == skuidx?'active':''}}"
                  data-id="{{sku.item_id}}"
+                 data-groupnamw="{{item.group_name}}"
+                 data-specvalue="{{sku.spec_value}}"
                  >{{sku.spec_value}}</view>
              </view>
           </view>
@@ -147,9 +149,10 @@
             <view class="linfo">
                 <view class="price"><text>￥</text>{{skuPrice}}元</view>
                 <view class="chooText">
-                  <text wx:for="{{skuArr.spec_attr}}" wx:key="i">
+                  <text>{{select_skuName}}</text>
+                  <!-- <text wx:for="{{skuArr.spec_attr}}" wx:key="i">
                   {{item.spec_items[item.select].spec_value}}
-                  </text> 
+                  </text>  -->
                 </view>
             </view>
             <view class="rnum" style="display:none">

@@ -36,36 +36,17 @@ Page({
         this.setData({
           orderInfo:res.data.data.order
         })
-          console.log(res,'订单详情')
+          // console.log(res,'订单详情')
       })
   },
     // 结算订单
     submitOrder(){
       var that = this;
-      let data;
-      if(that.data.orderInfo.delivery_type.value == 10){
-         data = {
-          shop_id:that.data.orderInfo.shop_id,
-          delivery:that.data.orderInfo.delivery_type.value,//10 配送 20 自提
-          pay_type:that.data.orderInfo.pay_type.value,//10 余额 20 微信支付
-          remark:that.data.orderInfo.buyer_remark,
-          tableware:that.data.orderInfo.tableware,//餐具
-          expected_delivery_time:that.data.orderInfo.expected_delivery_time//时间
-         }
-      }else{
-        data = {
-          shop_id:that.data.orderInfo.shop_id,
-          delivery:that.data.orderInfo.delivery_type.value,//10 配送 20 自提
-          pay_type:that.data.orderInfo.pay_type.value,//10 余额 20 微信支付
-          remark:that.data.orderInfo.buyer_remark,
-          linkman:that.data.orderInfo.extract.linkman,//联系人姓名 
-          phone:that.data.orderInfo.extract.phone,//联系人手机号码
-          tableware:that.data.orderInfo.tableware,//餐具
-          expected_delivery_time:that.data.orderInfo.expected_delivery_time//时间
-         }
+      let data={
+        order_id :that.data.order_id,
+        payType:20
       }
-      
-      utils.Settleorder(data,(response)=>{
+      utils.orderPay(data,(response)=>{
         if(response.data.code ==1){
          wx.requestPayment({
            timeStamp: response.data.data.payment.timeStamp,
@@ -85,7 +66,7 @@ Page({
            }
          })
         }
-        console.log(res,'提交订单')
+        // console.log(res,'提交订单')
       })
    },
 

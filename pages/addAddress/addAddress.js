@@ -111,7 +111,11 @@ submit(){
               icon: 'none',
               duration: 2000
           })
-          
+          setTimeout(()=>{
+            wx.navigateBack({
+              delta: 1
+            })
+          },2000)
         }
      })
 },

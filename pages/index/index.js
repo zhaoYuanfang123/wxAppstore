@@ -8,7 +8,7 @@ Page({
     navbarData:{
       back:true,
       home:true,
-      title:"首页"
+      title:""
     },
     swiperBanner: [],
     swiperSet:{
@@ -46,7 +46,8 @@ Page({
     showzh:false,
     showModal: false,
     showsx:false,
-    searchText:''
+    searchText:'',
+    wxAppname:''
   },
   submitzh: function() {
     this.setData({
@@ -92,6 +93,31 @@ this.setData({
 },
 onShow:function(){
     var that = this;   
+    // 计算导航栏高度
+    var sysinfo = wx.getSystemInfoSync();
+    var  statusHeight = sysinfo.statusBarHeight;
+    var  isiOS = sysinfo.system.indexOf('iOS') > -1;
+    var navHeight;
+    if (!isiOS) {
+        navHeight = 48;
+    } else {
+        navHeight = 44;
+    }
+    that.setData({
+        status: statusHeight,
+        navHeight: navHeight
+    })
+    wx.showLoading({
+      title:'加载中'
+    })
+    //首页banner图
+    utils.indexBanner(res=>{
+      that.setData({
+        swiperBanner:res.data.data.list
+      })
+      wx.hideLoading();
+    });
+    that.getInfo();
     //判断是否获得了用户地理位置授权
     wx.getSetting({
       success: (res) => {
@@ -133,33 +159,7 @@ onShow:function(){
     })
   },
   onLoad: function () {
-    var that = this;
-    // 计算导航栏高度
-    var sysinfo = wx.getSystemInfoSync();
-    var  statusHeight = sysinfo.statusBarHeight;
-    var  isiOS = sysinfo.system.indexOf('iOS') > -1;
-    var navHeight;
-    if (!isiOS) {
-        navHeight = 48;
-    } else {
-        navHeight = 44;
-    }
-    that.setData({
-        status: statusHeight,
-        navHeight: navHeight
-    })
-    wx.showLoading({
-      title:'加载中'
-    })
-    //首页banner图
-    utils.indexBanner(res=>{
-      that.setData({
-        swiperBanner:res.data.data.list
-      })
-      wx.hideLoading();
-    });
-
-   
+  
   },
   openConfirm: function () {
     wx.showModal({
@@ -237,5 +237,14 @@ onShow:function(){
      wx.navigateTo({
        url: '/pages/payinPerson/payinPerson?latitude='+this.data.latitude+'&longitude='+this.data.longitude+'&type='+e.currentTarget.dataset.id
      })
-   }
+   },
+  //  获取商城信息
+  getInfo(){
+    utils.shopSet({},res=>{
+      this.setData({
+        wxAppname:res.data.data.store.name
+      })
+      app.globalData.wxAppName = res.data.data.store.name
+    })
+  },
 })

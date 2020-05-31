@@ -230,6 +230,7 @@ Page({
         time.push({item:item,index: index})
       }
     });
+    // console.log(time,'tt')
     this.setData({
       timeIndex:new Date().getMinutes() >30?time[1].index:time[0].index+1
     })

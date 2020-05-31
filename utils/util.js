@@ -12,6 +12,7 @@ var cartList_url= '/api/cart/lists'; //购物车列表
 var addCart_url='/api/cart/add';//加入购物车
 var buyGrade_url='/api/user.grade.order/submit';//购买会员级别
 var addressList_url='/api/address/lists';//收货地址列表
+var delAddress_url = '/api/address/delete';//删除收货地址
 var reductCart_url='/api/cart/sub';//减少购物车
 var Settleorder_url='/api/order/cart';//结算订单
 var getRegion_url='/api/region/index';//获取地区
@@ -32,6 +33,7 @@ var paySubmit_url='/api/pay/submit';//当面付提交
 var rebateSet_url='/api/wxapp/rebate';//返利设置
 var shopSet_url = '/api/wxapp/store';//商城设置
 var clearCart_url ='/api/cart/clean';//清空购物车
+var orderPay_url = '/api/user.order/pay';//立即支付
 
 
 // 请求数据接口函数
@@ -215,6 +217,15 @@ function addressList(data,addressListFnc){
 }
 module.exports.addressList = addressList
 
+// 删除收货地址
+function delAddress(data,delAddressFnc){
+  request('post',delAddress_url,data,fnc);
+  function fnc(res){
+    delAddressFnc(res)
+  }
+}
+module.exports.delAddress = delAddress
+
 // 结算订单
 function Settleorder(data,SettleorderFnc){
   request('post',Settleorder_url,data,fnc);
@@ -394,3 +405,12 @@ function clearCart(data,clearCartFnc){
   }
 }
 module.exports.clearCart = clearCart
+
+// 立即支付
+function orderPay(data,orderPayFnc){
+  request('post',orderPay_url,data,fnc);
+  function fnc(res){
+    orderPayFnc(res)
+  }
+}
+module.exports.orderPay = orderPay

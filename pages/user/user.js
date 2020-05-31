@@ -156,6 +156,9 @@ Page({
    */
   onShow: function () {
     var that = this;
+    wx.setNavigationBarTitle({
+      title: app.globalData.wxAppName
+    })
     wx.getStorage({
      key: 'userInfo',
      success (res) {

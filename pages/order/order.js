@@ -121,17 +121,28 @@ getPayList(isPage){
 },
 // 取消订单
 cancelOrder(e){
-  let data = {
-    order_id:e.currentTarget.dataset.id
-  }
- utils.cancelOrder(data,res=>{
-    wx.showToast({
-      title: res.data.msg,
-      icon: 'none',
-      duration: 2000
-    })
-    this.getList(false)
- })
+  var that = this;
+  wx.showModal({
+    title: '提示',
+    content: '确定要取消订单吗',
+    success (res) {
+      if (res.confirm) {
+        let data = {
+          order_id:e.currentTarget.dataset.id
+        }
+       utils.cancelOrder(data,res=>{
+          wx.showToast({
+            title: res.data.data,
+            icon: 'success',
+            duration: 2000
+          })
+          that.getList(false)
+       })
+      } else if (res.cancel) {
+        console.log('用户点击取消')
+      }
+    }
+  })
 
 },
 // 去付款
