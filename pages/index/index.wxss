@@ -87,7 +87,7 @@ page{
    display: flex;
    align-items: center;
    flex-wrap:wrap;
-   padding: 60rpx 0 40rpx;
+   padding: 40rpx 0 0rpx;
 }
 .menuBox .menu .item{
   width: 33.3%;
@@ -108,6 +108,7 @@ page{
   padding: 24rpx;
   margin-top: 20rpx;
   background: #fff;
+  margin-bottom: 40rpx;
 }
 .shopList .topscreen{
   display: flex;
@@ -141,7 +142,7 @@ page{
 .listItem{
   display: flex;
   padding: 30rpx 0;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #eee;
 }
 .listItem:last-child{
   border: none;

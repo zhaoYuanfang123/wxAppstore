@@ -234,9 +234,16 @@ Page({
         time.push({item:item,index: index})
       }
     });
+    
     this.setData({
       timeIndex:new Date().getMinutes() >30?time[1].index:time[0].index+1
     })
+    let _arr = this.data.array.slice(this.data.timeIndex);
+    _arr.unshift('尽快送达')
+    this.setData({
+      array:_arr
+    })
+    // console.log(_arr,'lll')
   },
 
   /**

@@ -10,7 +10,7 @@
                   <text>{{user_data.grade.name}}</text>
                </view>
             </view>
-            <view class="time" wx:if="{{user_data.grade}}">{{user_data.grade.update_time}}</view>
+            <view class="time" wx:if="{{user_data.grade}}">{{user_data.grade_end_time}}</view>
          </view>
      </view>
      <view class="checkBox">

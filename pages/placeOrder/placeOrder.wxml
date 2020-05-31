@@ -82,7 +82,8 @@
        <view class="item">
           <view>时间</view>
           <view class="rig"> 
-              <text>{{array[timeIndex]}}</text>
+              <!-- <text>{{array[timeIndex]}}</text> -->
+              <text>{{array[0]}}</text>
               <image src="/images/user/right.png" mode="widthFix"></image>
           </view>
         </view>

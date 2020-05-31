@@ -12,7 +12,7 @@ page{
   z-index: 999;
   padding: 0 20rpx;
   box-sizing: border-box;
-  font-size: 36rpx;
+  font-size: 32rpx;
 }
 .topTab view{
   color: #9c9c9c;
@@ -36,7 +36,7 @@ page{
 .listBox{
   padding: 0 20rpx;
   background: #fff;
-  margin-bottom: 20rpx;
+  margin-bottom: 30rpx;
 }
 .listBox .listTop{
   display: flex;

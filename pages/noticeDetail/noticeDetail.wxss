@@ -10,7 +10,7 @@
   margin-bottom: 20rpx;
 }
 .wxParse,.top{
-  padding: 20rpx;
+  padding: 40rpx 40rpx 0rpx;
 }
 .wxParse image{
   display: block;

@@ -7,9 +7,9 @@ Page({
    */
   data: {
     list:[
-      {name:'黄金会员',mainprice:3,price:5},
-      {name:'白银会员',mainprice:2,price:4},
-      {name:'普通会员',mainprice:1,price:3}
+      // {name:'黄金会员',mainprice:3,price:5},
+      // {name:'白银会员',mainprice:2,price:4},
+      // {name:'普通会员',mainprice:1,price:3}
     ],
     checkIndex:0,
     user_data:'',
