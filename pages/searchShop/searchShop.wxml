@@ -14,7 +14,7 @@
 			</view>
         </view>
         <view class="listItem" wx:for="{{storeList}}" wx:key="index" bindtap="toshopDetail" data-id="{{item.shop_id}}">
-            <image src="/images/shopImg.png" mode="widthFix" class="shopImg"></image>
+            <image src="{{item.logo.file_path}}" mode="widthFix" class="shopImg"></image>
             <view class="rightInfo">
                <view class="title"><text>外卖</text>{{item.shop_name}}</view>
                <view class="star">

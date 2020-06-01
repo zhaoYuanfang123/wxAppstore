@@ -57,6 +57,9 @@
 }
 .topBox .topbg .infoBox .rightInfo .address{
   margin-top: 10rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 /**index.wxss**/

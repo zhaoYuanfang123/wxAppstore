@@ -19,7 +19,7 @@
                     </view>
                </view>
                <view class="contact">联系电话：{{shopInfo.phone}}</view>
-               <view class="address">门店地址：{{shopInfo.region.city}}{{shopInfo.region.province}}{{shopInfo.region.region}}</view>
+               <view class="address">门店地址：{{shopInfo.region.city}}{{shopInfo.region.province}}{{shopInfo.region.region}}{{shopInfo.address}}</view>
            </view>
         </view>
     </view>
