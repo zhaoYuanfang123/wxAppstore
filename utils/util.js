@@ -35,7 +35,33 @@ var shopSet_url = '/api/wxapp/store';//商城设置
 var clearCart_url ='/api/cart/clean';//清空购物车
 var orderPay_url = '/api/user.order/pay';//立即支付
 
-
+function formatNumber2(n) {  
+  n = n.toString()  
+  return n[1] ? n : '0' + n  
+}  
+function formatTime2(number,format) {  
+  
+  var formateArr  = ['Y','M','D','h','m','s'];  
+  var returnArr   = [];  
+  
+  var date = new Date(number * 1000);  
+  returnArr.push(date.getFullYear());  
+  returnArr.push(formatNumber2(date.getMonth() + 1));  
+  returnArr.push(formatNumber2(date.getDate()));  
+  
+  returnArr.push(formatNumber2(date.getHours()));  
+  returnArr.push(formatNumber2(date.getMinutes()));  
+  returnArr.push(formatNumber2(date.getSeconds()));  
+  
+  for (var i in returnArr)  
+  {  
+    format = format.replace(formateArr[i], returnArr[i]);  
+  }  
+  return format;  
+}  
+module.exports = {
+  formatTime2: formatTime2
+}
 // 请求数据接口函数
 function request(method, url, data, fnc){
   var header = "";
@@ -124,6 +150,11 @@ function userDetail(userDetailFnc){
  var data = {};
  request('get',userDetail_url,data,fnc);
  function fnc(res){
+   if(res.data.code == 1){
+     if(res.data.data.userInfo.grade){
+      res.data.data.userInfo.grade.grade_end_time = formatTime2(res.data.data.userInfo.grade.grade_end_time,'Y-M-D h:m:s')
+     }
+   }
   userDetailFnc(res)
  }
 }

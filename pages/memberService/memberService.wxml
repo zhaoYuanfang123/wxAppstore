@@ -8,7 +8,7 @@
                <view class="member_dj" wx:if="{{user_data.grade}}">
                   <image src="/images/user/hg.png" mode="widthFix"></image>
                   <text>{{user_data.grade.name}}</text>
-               </view>
+               </view> 
             </view>
             <view class="time" wx:if="{{user_data.grade}}">{{user_data.grade_end_time}}</view>
          </view>
