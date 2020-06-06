@@ -83,7 +83,7 @@ Page({
     function fnc(res){
       wx.hideLoading();
       that.setData({
-        user_data:res.data.data.userInfo,
+        user_data:res.data.data.userInfo
       })
       that.user_grade()
       //  console.log(res,'会员信息')

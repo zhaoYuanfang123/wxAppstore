@@ -152,7 +152,7 @@ function userDetail(userDetailFnc){
  function fnc(res){
    if(res.data.code == 1){
      if(res.data.data.userInfo.grade){
-      res.data.data.userInfo.grade.grade_end_time = formatTime2(res.data.data.userInfo.grade.grade_end_time,'Y-M-D h:m:s')
+      res.data.data.userInfo.grade_end_time = formatTime2(res.data.data.userInfo.grade_end_time,'Y-M-D h:m:s')
      }
    }
   userDetailFnc(res)
