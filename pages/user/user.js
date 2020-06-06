@@ -97,13 +97,13 @@ Page({
     utils.userDetail(fnc);
     function fnc(res){
       that.setData({
-        user_data:res.data.data.userInfo,
+        user_data:res.data.data,
         sq:true
       })
       // 缓存用户信息
       wx.setStorage({
         key: 'userInfo',
-        data: JSON.stringify(res.data.data.userInfo),
+        data: JSON.stringify(res.data.data),
       })
        console.log(res,'会员信息')
     }

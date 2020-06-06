@@ -1,18 +1,18 @@
 <view class="heard">
 	<view class="userinfo">
-	 <image src="{{user_data.avatarUrl}}" class="infoimg" wx:if='{{sq}}'></image>
+	 <image src="{{user_data.userInfo.avatarUrl}}" class="infoimg" wx:if='{{sq}}'></image>
 	 <image src="/images/shopImg.png" class="infoimg" wx:else></image>
 	
 	</view>
 	<!-- 已授权显示 -->
 	<view class="userinfo_right" wx:if='{{sq}}'>
 		<view class="username">
-			<text>{{user_data.nickName}}</text></view>
-		<view class="userlv" wx:if="{{user_data.grade}}">
+			<text>{{user_data.userInfo.nickName}}</text></view>
+		<view class="userlv" wx:if="{{user_data.userInfo.grade}}">
 			<image src="/images/user/hg.png" mode="widthFix"></image>
-			<text>{{user_data.grade.name}}</text>
+			<text>{{user_data.userInfo.grade.name}}</text>
 		</view>
-	  <view class="time" wx:if="{{user_data.grade}}">到期时间：{{user_data.grade_end_time}}</view>
+	  <view class="time" wx:if="{{user_data.userInfo.grade}}">到期时间：{{user_data.userInfo.grade_end_time}}</view>
 	</view>
 	<view class="userinfo_right" wx:else>
 		<view class="username">
@@ -27,7 +27,7 @@
 		<image src="/images/user/bg.png" mode="widthFix"></image>
 	<view class="user_cardleft">
 		<view class="car_pic">
-			<text>可提现<text>{{user_data.balance}}</text>元  待返现{{user_data.rebate_wait_settle_money}}元</text>
+			<text>可提现<text>{{user_data.userInfo.balance}}</text>元  待返现{{user_data.rebate.wait_settle_money}}元</text>
 		</view>
 	</view>
 
