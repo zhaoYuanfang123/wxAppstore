@@ -9,6 +9,7 @@ page{
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 99;
 }
 .topTab view{
   color: #9c9c9c;
@@ -19,19 +20,35 @@ page{
   color: #1890ff;
   position: relative;
 }
-.topTab text{
+.topTab .name{
   padding: 40rpx 0;
   display: inline-block;
 }
-.topTab .active text{
+.topTab .tipNum{
+  position: absolute;
+  top: 10rpx;
+  width: 35rpx;
+  height: 35rpx;
+  background: #f26c60;
+  font-size: 24rpx;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  padding: 2rpx;
+  line-height: 35rpx;
+}
+.topTab .active .name{
   border-bottom: 1px solid #1890ff;
+}
+.scroBox{
+  margin-top: 130rpx;
 }
 .listBox{
   padding: 20rpx;
-  margin-top: 130rpx;
+  /* margin-top: 130rpx; */
 }
 .listBox .listItem{
-  margin-top: 50rpx;
+  margin-top: 20rpx;
 }
 .listBox .listItem .time{
   text-align: center;
@@ -50,6 +67,7 @@ page{
   padding: 20rpx;
   margin-top: 40rpx;
   border-radius: 10rpx;
+  margin-bottom: 20rpx;
 }
 .listBox .listItem .box .top{
   color: #454545;
@@ -68,4 +86,13 @@ page{
 }
 .listBox .listItem .box .bottom image{
   max-width: 15rpx;
+}
+.opera{
+  text-align: center;
+  margin-top: 10px;
+}
+.opera view{
+  color:#999;
+  padding:20rpx 0;
+  font-size: 28rpx;
 }

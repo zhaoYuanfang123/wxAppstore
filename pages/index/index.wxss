@@ -167,17 +167,17 @@ page{
    margin-right: 10rpx;
 }
 .listItem .rightInfo .star{
-   display: flex;
+   /* display: flex;
    align-items: center;
-   justify-content: space-between;
+   justify-content: space-between; */
    font-size: 28rpx;
    margin: 30rpx 0;
 }
-.listItem .rightInfo .star .stLf,
+/* .listItem .rightInfo .star .stLf,
 .listItem .rightInfo .star .stRt{
   display: flex;
   align-items: center;
-}
+} */
 .listItem .rightInfo .star .pf{
   display: flex;
   align-items: center;

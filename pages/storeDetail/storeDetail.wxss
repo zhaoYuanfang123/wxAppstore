@@ -261,6 +261,7 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 20rpx;
+  text-align: left;
 }
 .priceBox .price{
   display: flex;
@@ -268,16 +269,16 @@
 }
 .priceBox .price .mainPrice{
   color: #f26c60;
-  font-size: 28rpx;
+  font-size: 26rpx;
 }
 .priceBox .price .mainPrice text{
   font-size: 24rpx;
 }
-.priceBox .price .linePrice{
+.food-right  .linePrice{
   text-decoration: line-through;
   font-size: 24rpx;
   color: #999999;
-  margin-left: 10rpx;
+  text-align: left;
 }
 
 .food__price {

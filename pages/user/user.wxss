@@ -225,3 +225,8 @@ text-align: right;
   color: #666;
 
 }
+.userinfo_right .time{
+  font-size: 28rpx;
+   color: #999;
+   margin-top: 20rpx;
+}

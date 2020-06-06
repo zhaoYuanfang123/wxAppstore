@@ -12,6 +12,7 @@
 			<image src="/images/user/hg.png" mode="widthFix"></image>
 			<text>{{user_data.grade.name}}</text>
 		</view>
+	  <view class="time" wx:if="{{user_data.grade}}">到期时间：{{user_data.grade_end_time}}</view>
 	</view>
 	<view class="userinfo_right" wx:else>
 		<view class="username">
@@ -26,7 +27,7 @@
 		<image src="/images/user/bg.png" mode="widthFix"></image>
 	<view class="user_cardleft">
 		<view class="car_pic">
-			<text>可提现<text>{{user_data.balance}}</text>元</text>
+			<text>可提现<text>{{user_data.balance}}</text>元  待返现{{user_data.rebate_wait_settle_money}}元</text>
 		</view>
 	</view>
 

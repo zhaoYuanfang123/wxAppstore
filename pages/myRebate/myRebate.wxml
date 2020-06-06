@@ -20,6 +20,6 @@
         <view class="all" bindtap="cashAll">全部</view>
      </view>
   </view>
-  <view class="tips">提现免手续费，1个工作日到账</view>
+  <view class="tips">3个工作日内到账</view>
   <view class="btn" bindtap="withdraw">立即提现</view>
 </view>

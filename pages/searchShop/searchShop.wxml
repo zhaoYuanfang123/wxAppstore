@@ -20,7 +20,7 @@
                <view class="star">
                     <view class="stLf">
                           <!-- <view class="pf"><image src="/images/star.png" mode="widthFix"></image><text>4.8</text></view> -->
-                          <view class="xl">销量{{item.shop_sales}}</view>
+                          <!-- <view class="xl">销量{{item.shop_sales}}</view> -->
                     </view>
                     <view class="stRt">
                           <!-- <view class="xl">30分钟</view> -->

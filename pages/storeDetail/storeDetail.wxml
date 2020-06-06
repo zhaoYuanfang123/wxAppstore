@@ -9,10 +9,10 @@
            <view class="rightInfo">
                <view class="name">{{shopInfo.shop_name}}</view>
                <view class="distance">
-                    <view class="hot_">
+                    <!-- <view class="hot_">
                        <image src="/images/shop_detail_hot.png" mode="widthFix"></image>
                        <text>销量{{shopInfo.shop_sales}}</text>
-                    </view>
+                    </view> -->
                     <view class="juli">
                        <image src="/images/shop_detail_position.png" mode="widthFix"></image>
                        <text>距离{{shopInfo.distance_unit}}</text>
@@ -44,13 +44,14 @@
           <view class="food-right">
             <view class="food__name eli2">{{food.goods_name}}</view>
             <view class="food_dec">
-                  <rich-text nodes="{{food.content}}"></rich-text>
+                  <rich-text nodes="{{food.selling_point}}"></rich-text>
             </view>
-            <view class="sales_volume">销量127</view>
+            <view class="linePrice">原价:￥{{food.goods_sku.line_price}}</view>
+            <!-- <view class="sales_volume">销量127</view> -->
             <view class="priceBox">
                 <view class="price">
-                     <view class="mainPrice"><text>￥</text>{{food.goods_sku.goods_price}}</view>
-                     <view class="linePrice">￥{{food.goods_sku.line_price}}</view>
+                     <view class="mainPrice">会员价:<text>￥</text>{{food.goods_sku.goods_price}}</view>
+                     
                 </view>
                 <view wx:if="{{food.goods_multi_spec}}" class="haveg"
                   data-goodsid="{{food.goods_id}}" 

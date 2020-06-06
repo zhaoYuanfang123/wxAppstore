@@ -38,7 +38,7 @@ Page({
     zonghe:'综合',
     comprehensive:[
       {name:'综合排序',type:'all'},
-      {name:'销量最高',type:'sales'},
+      // {name:'销量最高',type:'sales'},
       {name:'起送价最低',type:'delivery_fee'},
       {name:'配送费最低',type:'express_price'}
     ],

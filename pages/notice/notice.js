@@ -8,37 +8,74 @@ Page({
   data: {
     tabText:[{id:10,name:'未读'},{id:20,name:'已读'}],
     checkIndex:0,
-    list:''
+    list:'',
+    pageNum: 1, //分页
+    loading:false,
+    noMore:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title:'加载中'
-    })
+  
       // var that = this;
       // this.getList(that.data.tabText[that.data.checkIndex].id)
   },
- getList(id){
+ getList(isPage){
    var that = this;
    let data = {
-     readed:id
+     readed:that.data.tabText[that.data.checkIndex].id,
+     page:that.data.pageNum
    }
    utils.noticeList(data,res=>{
+    this.setData({
+      loading: false
+    })
+    if(isPage){
+      //下一页的数据拼接在原有数据后面
+      that.setData({
+        list: that.data.list.concat(res.data.data.list.data),
+      })
+   }else{
      that.setData({
-       list:res.data.data.list
+      list:res.data.data.list.data
      })
+   }
+   if(res.data.data.list.data.length == 0){
+    that.setData({
+      noMore:true
+    })
+  }
+     if(that.data.checkIndex == 0){
+        that.setData({
+          tipNum:res.data.data.list.total
+        })
+     }
      wx.hideLoading();
-      console.log(this.data.list,'未读列表')
+      // console.log(this.data.list,'未读列表')
    })
  },
+ //到达底部
+scrollToLower: function (e) {
+  if (!this.data.loading && !this.data.noMore){
+    this.setData({
+      loading: true,
+      pageNum: this.data.pageNum + 1
+    })
+    this.getList(true);
+    
+  }
+},
  choose(e){
-  this.setData({
-    checkIndex:e.currentTarget.dataset.index
+  wx.showLoading({
+    title:'加载中'
   })
-  this.getList(e.currentTarget.dataset.id)
+  this.setData({
+    checkIndex:e.currentTarget.dataset.index,
+    pageNum:1
+  })
+  this.getList(false)
 },
 toDetail(e){
   wx.navigateTo({
@@ -57,7 +94,10 @@ toDetail(e){
    */
   onShow: function () {
     var that = this;
-    this.getList(that.data.tabText[that.data.checkIndex].id)
+    wx.showLoading({
+      title:'加载中'
+    })
+    this.getList(false)
   },
 
   /**

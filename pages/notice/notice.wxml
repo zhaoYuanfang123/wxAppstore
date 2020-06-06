@@ -1,18 +1,29 @@
 <!--pages/notice.wxml-->
 <view class="notice">
    <view class="topTab">
-      <view class="{{checkIndex == index ? 'active' :''}}" wx:for="{{tabText}}" data-index = "{{index}}" data-id="{{item.id}}" bindtap="choose" wx:key="index"><text>{{item.name}}</text></view>
+      <view class="{{checkIndex == index ? 'active' :''}}" wx:for="{{tabText}}" data-index = "{{index}}" data-id="{{item.id}}" bindtap="choose" wx:key="index">
+          <text class="name">{{item.name}}</text>
+          <text class="tipNum" wx:if="{{index == 0 && tipNum}}">{{tipNum}}</text>
+      </view>
    </view>
-   <view class="listBox">
-       <view class="listItem" wx:for="{{list.data}}" wx:key="index" bindtap="toDetail" data-id="{{item.article_id}}">
-          <view class="time"><text>{{item.view_time}}</text></view>
-          <view class="box">
-             <view class="top">{{item.article_title}}</view>
-             <view class="bottom">
-                 <text>查看详情</text>
-                 <image src="/images/user/right.png" mode="widthFix"></image>
-             </view>
+   <view class="scroBox">
+      <scroll-view bindscrolltoupper="fresh" scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
+         <view class="listBox">
+            <view class="listItem" wx:for="{{list}}" wx:key="index" bindtap="toDetail" data-id="{{item.article_id}}">
+               <view class="time"><text>{{item.view_time}}</text></view>
+               <view class="box">
+                  <view class="top">{{item.article_title}}</view>
+                  <view class="bottom">
+                     <text>查看详情</text>
+                     <image src="/images/user/right.png" mode="widthFix"></image>
+                  </view>
+               </view>
+            </view>
+         </view>
+          <view class="opera">
+            <view wx:if="{{loading}}">加载中...</view>
+            <view wx:if="{{noMore}}">没有更多了</view>
           </view>
-       </view>
+      </scroll-view>
    </view>
 </view>
