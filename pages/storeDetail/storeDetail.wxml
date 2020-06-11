@@ -189,6 +189,7 @@
                <image src="/images/reduce.png" mode="widthFix" class="reduce"
                   data-goodsid="{{item.goods_id}}" 
                   data-skuid="{{item.goods_sku.spec_sku_id}}" 
+                  data-num="{{item.total_num}}"
                   bindtap="cartReduce"
                ></image>
                <view class="num">{{item.total_num}}</view>

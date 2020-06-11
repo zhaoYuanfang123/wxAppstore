@@ -14,6 +14,7 @@ var buyGrade_url='/api/user.grade.order/submit';//购买会员级别
 var addressList_url='/api/address/lists';//收货地址列表
 var delAddress_url = '/api/address/delete';//删除收货地址
 var reductCart_url='/api/cart/sub';//减少购物车
+var delCart_url = '/api/cart/delete';//删除购物车
 var Settleorder_url='/api/order/cart';//结算订单
 var getRegion_url='/api/region/index';//获取地区
 var noticeList_url = '/api/article/lists';//公告列表
@@ -230,6 +231,14 @@ function reductCart(data,reductCartFnc){
 }
 module.exports.reductCart = reductCart
 
+// 删除购物车
+function delCart(data,delCartFnc){
+  request('post',delCart_url,data,fnc);
+  function fnc(res){
+    delCartFnc(res)
+  }
+}
+module.exports.delCart = delCart
 // 购买会员级别
 function buyGrade(data,buyGradeFnc){
   request('post',buyGrade_url,data,fnc);

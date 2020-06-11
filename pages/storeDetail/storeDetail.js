@@ -57,26 +57,39 @@ Page({
   },
   // 购物车列表数量减
   cartReduce(e){
+    console.log(e)
     var that = this;
-    var dd = that.data.cartList
+    var dd = that.data.cartList;
     let data = {
       shop_id : that.data.shopId,
       goods_id : e.currentTarget.dataset.goodsid,
       goods_sku_id :e.currentTarget.dataset.skuid
     }
-    utils.reductCart(data,(res)=>{
-      if(res.data.code == 1){
-       that.getCartList();//更新购物车列表
-       
-      }else{
-       wx.showToast({
-         title: res.data.msg,
-         icon: 'none',
-         duration: 2000
-       })
-      }
-    })
+    if(e.currentTarget.dataset.num == 1){
+      that.delCart(data)
+    }else{
+      utils.reductCart(data,(res)=>{
+        if(res.data.code == 1){
+            that.getCartList();//更新购物车列表
+        }else{
+         wx.showToast({
+           title: res.data.msg,
+           icon: 'none',
+           duration: 2000
+         })
+        }
+      })
+    }
+    
+    
   },
+    // 删除购物车
+    delCart(data){
+      var that = this;
+      utils.delCart(data,res=>{
+          that.getCartList()//更新购物车列表
+      })
+    },
   // 减
   reduceF(e){
     var that = this;
@@ -325,7 +338,6 @@ Page({
     var data = {
       shop_id:that.data.shopId
     }
-    
     utils.cartList(data,(res)=>{
        that.setData({
         cartList:res.data.data.goods_list,
@@ -335,7 +347,7 @@ Page({
        })
        that.getGoodsList();
        wx.hideLoading();
-        console.log(res,'购物车列表')
+        // console.log(res,'购物车列表')
     })
   },
   onShow:function(){
