@@ -86,12 +86,13 @@ Page({
     // 删除购物车
     delCart(data){
       var that = this;
-      utils.delCart(data,res=>{
+      utils.delCart({shop_id:data.shop_id,goods_sku_id:data.goods_id+'_'+data.goods_sku_id},res=>{
           that.getCartList()//更新购物车列表
       })
     },
   // 减
   reduceF(e){
+    console.log(e,'ee');
     var that = this;
     var parentindex = e.currentTarget.dataset.parentindex;
     var childindex = e.currentTarget.dataset.childindex;
@@ -105,18 +106,23 @@ Page({
       goods_id : e.currentTarget.dataset.goodsid,
       goods_sku_id :e.currentTarget.dataset.skuid
     }
-     utils.reductCart(data,(res)=>{
-       if(res.data.code == 1){
-        that.getCartList();//更新购物车列表
-       }else{
-        wx.showToast({
-          title: res.data.msg,
-          icon: 'none',
-          duration: 2000
-        })
-       }
-      //  console.log(res,'减少购物车')
-     })
+    if(e.currentTarget.dataset.num == 1){
+      that.delCart(data)
+    }else{
+      utils.reductCart(data,(res)=>{
+        if(res.data.code == 1){
+         that.getCartList();//更新购物车列表
+        }else{
+         wx.showToast({
+           title: res.data.msg,
+           icon: 'none',
+           duration: 2000
+         })
+        }
+       //  console.log(res,'减少购物车')
+      })
+    }
+     
   },
   // 加
   add(e){
@@ -251,7 +257,7 @@ Page({
      nameObj.forEach((item,index)=>{
         sel_skuname += item.group_name+'：'+item.spec_value+'；  ';
       })
-      console.log(nameObj,'nameObj')
+      // console.log(nameObj,'nameObj')
       that.setData({
           select_skuName:sel_skuname
       })
@@ -339,6 +345,9 @@ Page({
       shop_id:that.data.shopId
     }
     utils.cartList(data,(res)=>{
+      if(!res.data.data.goods_list.length){
+        that.hideCartList()
+      }
        that.setData({
         cartList:res.data.data.goods_list,
         order_total_num:res.data.data.order_total_num,
@@ -388,9 +397,6 @@ Page({
   },
   onLoad:function(options){
     var that=this;
-    wx.showLoading({
-      title:'加载中'
-    })
     that.setData({
       shopId:options.id,
       latitude:options.latitude,
@@ -400,6 +406,9 @@ Page({
   },
   // 获取商品分类
   getCategory(){
+    wx.showLoading({
+      title:'加载中'
+    })
     var that = this;
     utils.goodsCategory(that.data.shopId,fnc);
     function fnc(res){
@@ -436,7 +445,7 @@ Page({
           if(items.child.length){
                let child = items.child.map((itemChild,indexChild) =>{
                   if(itemChild.goods_id == item.goods_id){
-                    items.child[indexChild].addNum = item.total_num
+                    items.child[indexChild].addNum += item.total_num
                   }
                })
           }
@@ -445,7 +454,7 @@ Page({
      items = cartLists[0]
      return items
   })
-    // console.log(dd,'商品列表11')
+    console.log(dd,'商品列表11')
     // console.log(_menu,'商品列表')
     that.setData({
       foodList:_menu

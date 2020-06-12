@@ -73,7 +73,8 @@
                   data-childIndex="{{foodidx}}">+</view>
                 <view wx:if="{{!food.goods_multi_spec && food.addNum!=0}}" class="listRight">
                      <image src="/images/reduce.png" mode="widthFix" class="reduce"      bindtap="reduceF"
-                       data-goodsid="{{food.goods_id}}" 
+                        data-num = "{{food.addNum}}"
+                        data-goodsid="{{food.goods_id}}" 
                         data-skuid="{{food.sku[0].spec_sku_id}}" 
                         data-sku="{{food.goods_multi_spec}}" 
                         data-goodname="{{food.goods_name}}"

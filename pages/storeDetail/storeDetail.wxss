@@ -42,9 +42,9 @@
   align-items: center;
   text-align: center;
 }
-.topBox .topbg .infoBox .rightInfo .distance .juli{
+/* .topBox .topbg .infoBox .rightInfo .distance .juli{
   margin-left: 20rpx;
-}
+} */
 .topBox .topbg .infoBox .rightInfo .distance .hot_ image,
 .topBox .topbg .infoBox .rightInfo .distance .juli image{
   max-width: 25rpx;
