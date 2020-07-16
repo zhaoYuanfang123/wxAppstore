@@ -47,7 +47,7 @@ Page({
     goods_id : e.currentTarget.dataset.goodsid,
     goods_num:1,
     goods_sku_id :e.currentTarget.dataset.skuid,
-    is_take_out:10//是否外卖 10开启 20关闭
+    order_type:10 // 10外卖 20当面付 30食材购买
    }
    utils.addCart(data,(res)=>{
      wx.showToast({
@@ -67,7 +67,7 @@ Page({
       shop_id : that.data.shopId,
       goods_id : e.currentTarget.dataset.goodsid,
       goods_sku_id :e.currentTarget.dataset.skuid,
-      is_take_out:10//是否外卖 10开启 20关闭
+      order_type:10 // 10外卖 20当面付 30食材购买
     }
     if(e.currentTarget.dataset.num == 1){
       that.delCart(data)
@@ -93,7 +93,7 @@ Page({
       utils.delCart({
           shop_id:data.shop_id,
           goods_sku_id:data.goods_id+'_'+data.goods_sku_id,
-          is_take_out:10
+          order_type:10 // 10外卖 20当面付 30食材购买
         },res=>{
           that.getCartList()//更新购物车列表
       })
@@ -113,7 +113,7 @@ Page({
       shop_id : that.data.shopId,
       goods_id : e.currentTarget.dataset.goodsid,
       goods_sku_id :e.currentTarget.dataset.skuid,
-      is_take_out:10//是否外卖 10开启 20关闭
+      order_type:10 // 10外卖 20当面付 30食材购买
     }
     if(e.currentTarget.dataset.num == 1){
       that.delCart(data)
@@ -175,7 +175,7 @@ Page({
      goods_id : e.currentTarget.dataset.goodsid,
      goods_num:1,
      goods_sku_id :e.currentTarget.dataset.skuid,
-     is_take_out:10//是否外卖 10开启 20关闭
+     order_type:10 // 10外卖 20当面付 30食材购买
     }
     utils.addCart(data,(res)=>{
       wx.showToast({
@@ -354,7 +354,7 @@ Page({
       goods_id : that.data.select_goods_id,
       goods_num:that.data.goodsnum,
       goods_sku_id :that.data.idStr,
-      is_take_out:10//是否外卖 10开启 20关闭
+      order_type:10 // 10外卖 20当面付 30食材购买
      }
      utils.addCart(data,(res)=>{
         // console.log(res,'有规格加入购物车');
@@ -407,7 +407,7 @@ Page({
     var that = this;
     var data = {
       shop_id:that.data.shopId,
-      is_take_out:10//是否外卖 10开启 20关闭
+      order_type:10 // 10外卖 20当面付 30食材购买
     }
     utils.cartList(data,(res)=>{
       if(!res.data.data.goods_list.length){
@@ -481,7 +481,7 @@ Page({
     var that = this;
     let data = {
       shop_id:that.data.shopId,
-      is_take_out:10//是否外卖 10开启 20关闭
+      order_type:10 // 10外卖 20当面付 30食材购买
     }
     utils.goodsCategory(data,fnc);
     function fnc(res){
@@ -498,7 +498,7 @@ Page({
     var menu = that.data.muneBar;
     let data = {
       shop_id:this.data.shopId,
-      is_take_out:10//是否外卖 10开启 20关闭
+      order_type:10 // 10外卖 20当面付 30食材购买
     }
     utils.goodsList(data,(response) =>{
       // console.log(JSON.stringify(response),'商品列表')
@@ -624,7 +624,7 @@ Page({
           wx.showLoading({
             title: '加载中',
           })
-          utils.clearCart({shop_id:that.data.shopId, is_take_out:10},res=>{
+          utils.clearCart({shop_id:that.data.shopId, order_type:10},res=>{
             // console.log(res,'清除')
             wx.hideLoading()
             that.getCartList();

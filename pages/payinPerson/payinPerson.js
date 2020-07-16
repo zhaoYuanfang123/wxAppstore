@@ -42,12 +42,23 @@ Page({
   },
   cartAdd(e){
    var that = this;
-   let data = {
-    shop_id : that.data.shopId,
-    goods_id : e.currentTarget.dataset.goodsid,
-    goods_num:1,
-    goods_sku_id :e.currentTarget.dataset.skuid,
-    is_face_to_face:10//是否当面付 10开启 20关闭
+  if(that.data.type == 1){
+    var data = {
+      shop_id : that.data.shopId,
+      goods_id : e.currentTarget.dataset.goodsid,
+      goods_num:1,
+      goods_sku_id :e.currentTarget.dataset.skuid,
+      order_type:20 // 10外卖 20当面付 30食材购买
+     }
+  }
+   if(that.data.type == 2){
+     var data = {
+      shop_id : that.data.shopId,
+      goods_id : e.currentTarget.dataset.goodsid,
+      goods_num:1,
+      goods_sku_id :e.currentTarget.dataset.skuid,
+      order_type:30 // 10外卖 20当面付 30食材购买
+     }
    }
    utils.addCart(data,(res)=>{
      wx.showToast({
@@ -63,11 +74,21 @@ Page({
     console.log(e)
     var that = this;
     var dd = that.data.cartList;
-    let data = {
-      shop_id : that.data.shopId,
-      goods_id : e.currentTarget.dataset.goodsid,
-      goods_sku_id :e.currentTarget.dataset.skuid,
-      is_face_to_face:10//是否当面付 10开启 20关闭
+    if(that.data.type == 1){
+      var data = {
+        shop_id : that.data.shopId,
+        goods_id : e.currentTarget.dataset.goodsid,
+        goods_sku_id :e.currentTarget.dataset.skuid,
+        order_type:20 // 10外卖 20当面付 30食材购买
+      }
+    }
+    if(that.data.type == 2){
+      var data = {
+        shop_id : that.data.shopId,
+        goods_id : e.currentTarget.dataset.goodsid,
+        goods_sku_id :e.currentTarget.dataset.skuid,
+        order_type:30 // 10外卖 20当面付 30食材购买
+      }
     }
     if(e.currentTarget.dataset.num == 1){
       that.delCart(data)
@@ -90,11 +111,21 @@ Page({
     // 删除购物车
     delCart(data){
       var that = this;
-      utils.delCart({
-          shop_id:data.shop_id,
-          goods_sku_id:data.goods_id+'_'+data.goods_sku_id,
-          is_face_to_face:10//是否当面付 10开启 20关闭
-        },res=>{
+      if(that.data.type == 1){
+          var data = {
+            shop_id:data.shop_id,
+            goods_sku_id:data.goods_id+'_'+data.goods_sku_id,
+            order_type:20 // 10外卖 20当面付 30食材购买
+          }
+      }
+      if(that.data.type == 2){
+           var data = {
+            shop_id:data.shop_id,
+            goods_sku_id:data.goods_id+'_'+data.goods_sku_id,
+            order_type:30 // 10外卖 20当面付 30食材购买
+           }
+      }
+      utils.delCart(data,res=>{
           that.getCartList()//更新购物车列表
       })
     },
@@ -109,11 +140,21 @@ Page({
     that.setData({
      foodList:list
     })
-    let data = {
+   if(that.data.type == 1){
+    var data = {
       shop_id : that.data.shopId,
       goods_id : e.currentTarget.dataset.goodsid,
       goods_sku_id :e.currentTarget.dataset.skuid,
-      is_face_to_face:10//是否当面付 10开启 20关闭
+      order_type:20 // 10外卖 20当面付 30食材购买
+    }
+   }
+    if(that.data.type == 2){
+      var data = {
+        shop_id : that.data.shopId,
+        goods_id : e.currentTarget.dataset.goodsid,
+        goods_sku_id :e.currentTarget.dataset.skuid,
+        order_type:30 // 10外卖 20当面付 30食材购买
+      }
     }
     if(e.currentTarget.dataset.num == 1){
       that.delCart(data)
@@ -145,12 +186,23 @@ Page({
     //  feiBox: list[parentindex].child[childindex].goods_image
     })
  
-    let data = {
-     shop_id : that.data.shopId,
-     goods_id : e.currentTarget.dataset.goodsid,
-     goods_num:1,
-     goods_sku_id :e.currentTarget.dataset.skuid,
-     is_face_to_face:10//是否当面付 10开启 20关闭
+    if(that.data.type == 1){
+      var data = {
+        shop_id : that.data.shopId,
+        goods_id : e.currentTarget.dataset.goodsid,
+        goods_num:1,
+        goods_sku_id :e.currentTarget.dataset.skuid,
+        order_type:20 // 10外卖 20当面付 30食材购买
+       }
+    }
+    if(that.data.type == 2){
+      var data = {
+        shop_id : that.data.shopId,
+        goods_id : e.currentTarget.dataset.goodsid,
+        goods_num:1,
+        goods_sku_id :e.currentTarget.dataset.skuid,
+        order_type:30 // 10外卖 20当面付 30食材购买
+      }
     }
     utils.addCart(data,(res)=>{
       wx.showToast({
@@ -298,12 +350,23 @@ Page({
   // 有规格加入购物车
   addCart(){
      var that = this;
-     let data = {
-      shop_id : that.data.shopId,
-      goods_id : that.data.select_goods_id,
-      goods_num:that.data.goodsnum,
-      goods_sku_id :that.data.idStr,
-      is_face_to_face:10//是否当面付 10开启 20关闭
+     if(that.data.type == 1){
+      var data = {
+        shop_id : that.data.shopId,
+        goods_id : that.data.select_goods_id,
+        goods_num:that.data.goodsnum,
+        goods_sku_id :that.data.idStr,
+        order_type:20 // 10外卖 20当面付 30食材购买
+       }
+     }
+     if(that.data.type == 2){
+       var data = {
+        shop_id : that.data.shopId,
+        goods_id : that.data.select_goods_id,
+        goods_num:that.data.goodsnum,
+        goods_sku_id :that.data.idStr,
+        order_type:30 // 10外卖 20当面付 30食材购买
+       }
      }
      utils.addCart(data,(res)=>{
         // console.log(res,'有规格加入购物车');
@@ -354,9 +417,17 @@ Page({
   // 获取购物车列表
   getCartList(){
     var that = this;
-    var data = {
-      shop_id:that.data.shopId,
-      is_face_to_face:10//是否当面付 10开启 20关闭
+    if(that.data.type == 1){
+      var data = {
+        shop_id:that.data.shopId,
+        order_type:20 // 10外卖 20当面付 30食材购买
+      }
+    }
+    if(that.data.type == 2){
+      var data = {
+        shop_id:that.data.shopId,
+        order_type:30 // 10外卖 20当面付 30食材购买
+      }
     }
     utils.cartList(data,(res)=>{
       if(!res.data.data.goods_list.length){
@@ -404,7 +475,8 @@ Page({
     that.setData({
       shopId:options.id,
       latitude:options.latitude,
-      longitude:options.longitude
+      longitude:options.longitude,
+      type:options.type //1是当面付，2是购买食材
     })
 
 
@@ -415,10 +487,19 @@ Page({
       title:'加载中'
     })
     var that = this;
-    let data = {
-      shop_id:that.data.shopId,
-      is_face_to_face:10//是否当面付 10开启 20关闭
+    if(that.data.type == 1){
+      var data = {
+        shop_id:that.data.shopId,
+        order_type:20 // 10外卖 20当面付 30食材购买
+      }
     }
+    if(that.data.type == 2){
+      var data = {
+        shop_id:that.data.shopId,
+        order_type:30 // 10外卖 20当面付 30食材购买
+      }
+    }
+    
     utils.goodsCategory(data,fnc);
     function fnc(res){
       that.setData({
@@ -432,9 +513,17 @@ Page({
   getGoodsList(){
     var that = this;
     var menu = that.data.muneBar;
-    let data = {
-      shop_id:this.data.shopId,
-      is_face_to_face:10//是否当面付 10开启 20关闭
+    if(that.data.type == 1){
+      var data = {
+        shop_id:this.data.shopId,
+        order_type:20 // 10外卖 20当面付 30食材购买
+      }
+    }
+    if(that.data.type == 2){
+      var data = {
+        shop_id:this.data.shopId,
+        order_type:30 // 10外卖 20当面付 30食材购买
+      }
     }
     utils.goodsList(data,(response) =>{
       // console.log(JSON.stringify(response),'商品列表')
@@ -516,14 +605,36 @@ Page({
     }
 },
   payaddCart(){
-    if(this.data.cartList.length){
+    var that = this;
+    if(that.data.cartList.length){
       var data = {
-        shop_id:this.data.shopId,
-        shopName:this.data.shopInfo.shop_name
-      }
-      wx.navigateTo({
-        url: '/pages/placeOrder/placeOrder?data='+JSON.stringify(data),
-      })
+        shop_id:that.data.shopId,
+        delivery:20,//10 配送 20 自提
+        pay_type:20,//10 余额 20 微信支付
+        order_type: that.data.type == 1?20:30,//10外卖 20当面付 30食材购买
+       }
+       utils.Settleorder(data,(response)=>{
+         if(response.data.code ==1){
+          wx.requestPayment({
+            timeStamp: response.data.data.payment.timeStamp,
+            nonceStr: response.data.data.payment.nonceStr,
+            package: 'prepay_id='+response.data.data.payment.prepay_id,
+            signType: 'MD5',
+            paySign: response.data.data.payment.paySign,
+            success (res) { 
+               wx.navigateTo({
+                 url: '/pages/placeOrderSuccess/placeOrderSuccess?order_id='+response.data.data.order_id+'&shop_id='+response.data.data.shop_id,
+               })
+            },
+            fail (err) {
+              wx.switchTab({
+                url: '/pages/order/order'
+              })
+             }
+          })
+         }
+        //  console.log(response,'提交订单')
+       })
     }else{
       wx.showToast({
           title: '请选择商品',
@@ -544,7 +655,19 @@ Page({
           wx.showLoading({
             title: '加载中',
           })
-          utils.clearCart({shop_id:that.data.shopId, is_face_to_face:10},res=>{
+          if(that.data.type == 1){
+            var data = {
+              shop_id:that.data.shopId,
+              order_type:20 // 10外卖 20当面付 30食材购买
+            }
+          }
+          if(that.data.type == 2){
+            var data = {
+              shop_id:that.data.shopId,
+              order_type:30 // 10外卖 20当面付 30食材购买
+            }
+          }
+          utils.clearCart(data,res=>{
             // console.log(res,'清除')
             wx.hideLoading()
             that.getCartList();

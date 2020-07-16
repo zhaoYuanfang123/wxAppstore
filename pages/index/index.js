@@ -220,7 +220,7 @@ onShow:function(){
    },
    search(){
      wx.navigateTo({
-       url: '/pages/searchShop/searchShop?latitude='+this.data.latitude+'&longitude='+this.data.longitude+'&searchText='+this.data.searchText
+       url: '/pages/searchShop/searchShop?latitude='+this.data.latitude+'&longitude='+this.data.longitude+'&searchText='+this.data.searchText+'&type=0'
      })
    },
    changeSearch(e){
@@ -234,9 +234,12 @@ onShow:function(){
      })
    },
    toPay(e){
-     wx.navigateTo({
-       url: '/pages/payinPerson/payinPerson?latitude='+this.data.latitude+'&longitude='+this.data.longitude+'&type='+e.currentTarget.dataset.id
-     })
+    //  wx.navigateTo({
+    //    url: '/pages/payinPerson/payinPerson?latitude='+this.data.latitude+'&longitude='+this.data.longitude+'&type='+e.currentTarget.dataset.id
+    //  })
+    wx.navigateTo({
+      url: '/pages/searchShop/searchShop?latitude='+this.data.latitude+'&longitude='+this.data.longitude+'&type='+e.currentTarget.dataset.id
+    })
    },
   //  获取商城信息
   getInfo(){

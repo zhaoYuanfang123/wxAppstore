@@ -31,7 +31,8 @@ Page({
     that.setData({
       latitude:options.latitude,
       longitude:options.longitude,
-      searchText:options.searchText
+      searchText:options.searchText,
+      type:options.type //1是当面付，2是购买食材,0是外卖
     })
     that.getStoreList()
   },
@@ -82,13 +83,24 @@ showsx(){
   // 门店列表
   getStoreList(){
     var that = this;
-    let data={
-     latitude:that.data.latitude,
-     longitude:that.data.longitude,
-     search:that.data.searchText,
-     sortType:that.data.comprehensive[that.data.zhCheckecIndex].type,
-     sortPrice:0
+    if(this.data.type == 0){
+      var data={
+        latitude:that.data.latitude,
+        longitude:that.data.longitude,
+        search:that.data.searchText,
+        sortType:that.data.comprehensive[that.data.zhCheckecIndex].type,
+        sortPrice:0
+       }
     }
+    if(this.data.type == 1 || this.data.type == 2){
+      var data={
+        latitude:that.data.latitude,
+        longitude:that.data.longitude,
+        sortType:that.data.comprehensive[that.data.zhCheckecIndex].type,
+        sortPrice:0
+       }
+    }
+    
     utils.storeList(data,res=>{
      that.setData({
        storeList:res.data.data.list
@@ -98,9 +110,16 @@ showsx(){
   toshopDetail(e){
     var that = this;
     var id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '/pages/storeDetail/storeDetail?id='+id+'&latitude='+that.data.latitude+'&longitude='+that.data.longitude
-    })
+    if(this.data.type == 0){
+      wx.navigateTo({
+        url: '/pages/storeDetail/storeDetail?id='+id+'&latitude='+that.data.latitude+'&longitude='+that.data.longitude
+      })
+    }
+    if(this.data.type == 1 || this.data.type == 2){
+      wx.navigateTo({
+        url: '/pages/payinPerson/payinPerson?id='+id+'&latitude='+that.data.latitude+'&longitude='+that.data.longitude+'&type='+this.data.type
+      })
+    }    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

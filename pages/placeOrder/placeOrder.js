@@ -167,6 +167,7 @@ Page({
      }
      var data = {
       shop_id:that.data.shopId,
+      order_type:10,//10外卖 20当面付 30食材购买
       delivery:that.data.tabText[that.data.checkIndex].id,//10 配送 20 自提
       pay_type:20,//10 余额 20 微信支付
       linkman:that.data.infoName,//联系人姓名
