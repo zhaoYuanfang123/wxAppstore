@@ -37,6 +37,8 @@ Page({
       {id:1,pic:'/images/shopImg.png',name:'海鲜披萨',price:'52.80',yprice:'90.00',num:1,guige:'8寸、至尊海鲜口味'}
     ],
     isPurchase: false,    
+    hide_good_box: true,
+    feiBox: ""
   },
   cartAdd(e){
    var that = this;
@@ -44,7 +46,8 @@ Page({
     shop_id : that.data.shopId,
     goods_id : e.currentTarget.dataset.goodsid,
     goods_num:1,
-    goods_sku_id :e.currentTarget.dataset.skuid
+    goods_sku_id :e.currentTarget.dataset.skuid,
+    is_take_out:10//是否外卖 10开启 20关闭
    }
    utils.addCart(data,(res)=>{
      wx.showToast({
@@ -63,7 +66,8 @@ Page({
     let data = {
       shop_id : that.data.shopId,
       goods_id : e.currentTarget.dataset.goodsid,
-      goods_sku_id :e.currentTarget.dataset.skuid
+      goods_sku_id :e.currentTarget.dataset.skuid,
+      is_take_out:10//是否外卖 10开启 20关闭
     }
     if(e.currentTarget.dataset.num == 1){
       that.delCart(data)
@@ -86,7 +90,11 @@ Page({
     // 删除购物车
     delCart(data){
       var that = this;
-      utils.delCart({shop_id:data.shop_id,goods_sku_id:data.goods_id+'_'+data.goods_sku_id},res=>{
+      utils.delCart({
+          shop_id:data.shop_id,
+          goods_sku_id:data.goods_id+'_'+data.goods_sku_id,
+          is_take_out:10
+        },res=>{
           that.getCartList()//更新购物车列表
       })
     },
@@ -104,7 +112,8 @@ Page({
     let data = {
       shop_id : that.data.shopId,
       goods_id : e.currentTarget.dataset.goodsid,
-      goods_sku_id :e.currentTarget.dataset.skuid
+      goods_sku_id :e.currentTarget.dataset.skuid,
+      is_take_out:10//是否外卖 10开启 20关闭
     }
     if(e.currentTarget.dataset.num == 1){
       that.delCart(data)
@@ -132,13 +141,41 @@ Page({
     var list = that.data.foodList;
     list[parentindex].child[childindex].addNum++;
     that.setData({
-     foodList:list
+     foodList:list,
+    //  feiBox: list[parentindex].child[childindex].goods_image
     })
+    // 
+    // 如果good_box正在运动
+    // if (!this.data.hide_good_box) return;
+    //当前点击位置的x，y坐标
+    // this.finger = {};
+    // var topPoint = {};
+    // this.finger['x'] = e.touches["0"].clientX;
+    // this.finger['y'] = e.touches["0"].clientY - 20;
+    // if (this.finger['y'] < this.busPos['y']) {
+    //     topPoint['y'] = this.finger['y'] - 150;
+    // } else {
+    //     topPoint['y'] = this.busPos['y'] - 150;
+    // }
+
+    // if (this.finger['x'] < this.busPos['x']) {
+    //     topPoint['x'] = Math.abs(this.finger['x'] - this.busPos['x']) / 2 + this.finger['x'];
+    // } else {
+    //     topPoint['x'] = this.busPos['x'];
+    //     this.finger['x'] = this.busPos['x']
+    // }
+    // console.log(this.finger,'第1个参数');
+    // console.log(this.topPoint,'第2个参数');
+    // console.log(this.busPos,'第3个参数');
+    // this.linePos = app.bezier([this.finger, topPoint, this.busPos], 30);
+    // this.startAnimation();
+    // 
     let data = {
      shop_id : that.data.shopId,
      goods_id : e.currentTarget.dataset.goodsid,
      goods_num:1,
-     goods_sku_id :e.currentTarget.dataset.skuid
+     goods_sku_id :e.currentTarget.dataset.skuid,
+     is_take_out:10//是否外卖 10开启 20关闭
     }
     utils.addCart(data,(res)=>{
       wx.showToast({
@@ -149,6 +186,32 @@ Page({
      that.getCartList();//更新购物车列表
     })
   },
+  //开始动画
+  startAnimation: function() {
+    var index = 0,
+        that = this,
+        bezier_points = that.linePos['bezier_points'];
+    this.setData({
+        hide_good_box: false,
+        bus_x: that.finger['x'],
+        bus_y: that.finger['y']
+    })
+    this.timer = setInterval(function() {
+        index++;
+        that.setData({
+            bus_x: bezier_points[index]['x'],
+            bus_y: bezier_points[index]['y']
+        })
+        if (index >= 28) {
+            clearInterval(that.timer);
+            that.setData({
+                hide_good_box: true,
+                hideCount: false,
+                count: that.data.count += 1
+            })
+        }
+    }, 33);
+},
   showPurchase:function() {
      this.setData({
        isPurchase:true
@@ -290,7 +353,8 @@ Page({
       shop_id : that.data.shopId,
       goods_id : that.data.select_goods_id,
       goods_num:that.data.goodsnum,
-      goods_sku_id :that.data.idStr
+      goods_sku_id :that.data.idStr,
+      is_take_out:10//是否外卖 10开启 20关闭
      }
      utils.addCart(data,(res)=>{
         // console.log(res,'有规格加入购物车');
@@ -342,7 +406,8 @@ Page({
   getCartList(){
     var that = this;
     var data = {
-      shop_id:that.data.shopId
+      shop_id:that.data.shopId,
+      is_take_out:10//是否外卖 10开启 20关闭
     }
     utils.cartList(data,(res)=>{
       if(!res.data.data.goods_list.length){
@@ -361,11 +426,15 @@ Page({
   },
   onShow:function(){
     var that = this;
+    //可视窗口x,y坐标
+    this.busPos = {};
+    this.busPos['x'] = app.globalData.ww * .85;
+    this.busPos['y'] = app.globalData.hh * .85;
     var query1 = wx.createSelectorQuery();
     var query2 = wx.createSelectorQuery();
     var query3 = wx.createSelectorQuery();
     var height1,height2,height3;
-    query1.select('.container1').boundingClientRect(function(rect) {
+     query1.select('.container1').boundingClientRect(function(rect) {
       height1 = rect.height;
       query2.select('.topBox').boundingClientRect(function(rect) {
         height2 = rect.height
@@ -410,7 +479,11 @@ Page({
       title:'加载中'
     })
     var that = this;
-    utils.goodsCategory(that.data.shopId,fnc);
+    let data = {
+      shop_id:that.data.shopId,
+      is_take_out:10//是否外卖 10开启 20关闭
+    }
+    utils.goodsCategory(data,fnc);
     function fnc(res){
       that.setData({
         muneBar:res.data.data.list
@@ -423,7 +496,11 @@ Page({
   getGoodsList(){
     var that = this;
     var menu = that.data.muneBar;
-    utils.goodsList(this.data.shopId,(response) =>{
+    let data = {
+      shop_id:this.data.shopId,
+      is_take_out:10//是否外卖 10开启 20关闭
+    }
+    utils.goodsList(data,(response) =>{
       // console.log(JSON.stringify(response),'商品列表')
       var child = [] ;
       var dat = response.data.data.list.data;
@@ -454,7 +531,7 @@ Page({
      items = cartLists[0]
      return items
   })
-    console.log(dd,'商品列表11')
+    // console.log(dd,'商品列表11')
     // console.log(_menu,'商品列表')
     that.setData({
       foodList:_menu
@@ -547,8 +624,8 @@ Page({
           wx.showLoading({
             title: '加载中',
           })
-          utils.clearCart({shop_id:that.data.shopId},res=>{
-            console.log(res,'清除')
+          utils.clearCart({shop_id:that.data.shopId, is_take_out:10},res=>{
+            // console.log(res,'清除')
             wx.hideLoading()
             that.getCartList();
             that.hideCartList()

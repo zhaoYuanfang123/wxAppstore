@@ -172,10 +172,7 @@ function userGrade(userGradeFnc){
 module.exports.userGrade = userGrade;
 
 // 商品分类
-function goodsCategory(shop_id,goodsCategoryFnc){
-  var data = {
-    shop_id:shop_id
-  }
+function goodsCategory(data,goodsCategoryFnc){
   request('get',goodsCategory_url,data,fnc);
   function fnc(res){
     goodsCategoryFnc(res)
@@ -184,10 +181,7 @@ function goodsCategory(shop_id,goodsCategoryFnc){
 module.exports.goodsCategory = goodsCategory
 
 // 商品列表
-function goodsList(shop_id,goodsListFnc){
-  var data = {
-    shop_id:shop_id
-  }
+function goodsList(data,goodsListFnc){
   request('get',goodsList_url,data,fnc);
   function fnc(res){
     goodsListFnc(res)

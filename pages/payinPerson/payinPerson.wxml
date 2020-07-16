@@ -1,21 +1,211 @@
-<!--pages/payinPerson/payinPerson.wxml-->
-<view class="payinPerson">
-   <view class="topBox">
-       <image class="logImg" src="{{storeList[shopindex].logo.file_path}}" mode="widthFix"></image>
-       <view class="shopName">{{storeList[shopindex].shop_name}}</view>
-        <picker bindchange="bindPickerChange" value="{{shopindex}}" range="{{shopArr}}">
-            <view class="checkShop">
-               <text>切换门店</text>
-               <image src="/images/user/right.png" mode="widthFix"></image>
+<!--pages/storeDetail/storeDetail.wxml-->
+<!--index.wxml-->
+<view class="container1">
+<!-- 头部店铺信息 -->
+ <view class="topBox">
+    <view class="topbg">
+        <view class="infoBox">
+           <image src="{{shopInfo.logo.file_path}}" mode="widthFix" class="logo"></image>
+           <view class="rightInfo">
+               <view class="name">{{shopInfo.shop_name}}</view>
+               <view class="distance">
+                    <!-- <view class="hot_">
+                       <image src="/images/shop_detail_hot.png" mode="widthFix"></image>
+                       <text>销量{{shopInfo.shop_sales}}</text>
+                    </view> -->
+                    <view class="juli">
+                       <image src="/images/shop_detail_position.png" mode="widthFix"></image>
+                       <text>距离{{shopInfo.distance_unit}}</text>
+                    </view>
+               </view>
+               <view class="contact">联系电话：{{shopInfo.phone}}</view>
+               <view class="address">门店地址：{{shopInfo.region.city}}{{shopInfo.region.province}}{{shopInfo.region.region}}{{shopInfo.address}}</view>
+           </view>
+        </view>
+    </view>
+ </view>
+  <view class="body" style="height:{{bodyPadding}}px">
+   <!-- 左侧菜单 -->
+    <scroll-view class="mune-bar" scroll-y>
+      <block wx:for="{{muneBar}}" wx:for-item="item" wx:for-index="id" wx:key="index">
+        <view class="bar-item {{selectedSub == id?'act':''}}" id="{{id}}" bindtap="muneTap" data-index="{{id}}">
+          {{item.name}}
+        </view>
+      </block>
+    </scroll-view>
+    <!-- 右侧商品 -->
+    <scroll-view class="mune-list" scroll-y  scroll-into-view="{{toView}}" scroll-top="0" bindscroll="scrollTo" scroll-with-animation enable-back-to-top>
+      <view class="food-list list-item" wx:for="{{foodList}}" wx:for-item="item" id="position{{index}}" wx:key="{{item.goods_id}}">
+        <view class="food__title" style="">
+          <view class="food_titleName" style="">{{item.name}}</view>
+        </view>
+        <view class="food-item" wx:for="{{item.child}}" wx:for-item="food" wx:for-index="foodidx" wx:key="{{foodidx}}" id="food{{foodidx}}">
+          <image class="food-left" src='{{food.goods_image}}'></image>
+          <view class="food-right">
+            <view class="food__name eli2">{{food.goods_name}}</view>
+            <view class="food_dec">
+                  <rich-text nodes="{{food.selling_point}}"></rich-text>
             </view>
-         </picker>
-   </view>
-   <view class="payBox">
-       <view class="text">消费金额</view>
-       <view class="priceBox">
-          <text>￥</text>
-          <input type="digit" placeholder="请询问店员后输入" placeholder-style="color:#bfbfbf" bindinput="changeMoney"></input>
-       </view>
-   </view>
-   <view class="pay" bindtap="pay">立即支付</view>
+            <view class="linePrice">原价:￥{{food.goods_sku.line_price}}</view>
+            <!-- <view class="sales_volume">销量127</view> -->
+            <view class="priceBox">
+                <view class="price">
+                     <view class="mainPrice">会员价:<text>￥</text>{{food.goods_sku.goods_price}}</view>
+                     
+                </view>
+                <view wx:if="{{food.goods_multi_spec}}" class="haveg"
+                  data-goodsid="{{food.goods_id}}" 
+                  data-skuid="{{food.sku[0].spec_sku_id}}" 
+                  catchtap="{{food.goods_multi_spec?'showgg':'addNum'}}"
+                  data-sku="{{food.goods_multi_spec}}" 
+                  data-goodname="{{food.goods_name}}"
+                  data-parentIndex="{{index}}"
+                  data-childIndex="{{foodidx}}"
+                >选规格<i wx:if="{{food.addNum}}">{{food.addNum}}</i></view>
+                <view wx:if="{{!food.goods_multi_spec && food.addNum==0}}"
+                  class="food__add"
+                  data-goodsid="{{food.goods_id}}" 
+                  data-skuid="{{food.sku[0].spec_sku_id}}" 
+                  catchtap="{{food.goods_multi_spec?'showgg':'add'}}"
+                  data-sku="{{food.goods_multi_spec}}" 
+                  data-goodname="{{food.goods_name}}"
+                  data-parentIndex="{{index}}"
+                  data-childIndex="{{foodidx}}">+</view>
+                <view wx:if="{{!food.goods_multi_spec && food.addNum!=0}}" class="listRight">
+                     <image src="/images/reduce.png" mode="widthFix" class="reduce"      bindtap="reduceF"
+                        data-num = "{{food.addNum}}"
+                        data-goodsid="{{food.goods_id}}" 
+                        data-skuid="{{food.sku[0].spec_sku_id}}" 
+                        data-sku="{{food.goods_multi_spec}}" 
+                        data-goodname="{{food.goods_name}}"
+                        data-parentIndex="{{index}}"
+                        data-childIndex="{{foodidx}}"
+                     ></image>
+                     <view class="num">{{food.addNum}}</view>
+                     <image src="/images/add.png" mode="widthFix" class="add" catchtap="add"
+                        data-goodsid="{{food.goods_id}}" 
+                        data-skuid="{{food.sku[0].spec_sku_id}}" 
+                        data-sku="{{food.goods_multi_spec}}" 
+                        data-goodname="{{food.goods_name}}"
+                        data-parentIndex="{{index}}"
+                        data-childIndex="{{foodidx}}"
+                     ></image>
+                </view>
+
+               <!-- <view
+                  class="{{food.goods_multi_spec?'haveg':'food__add'}}" 
+                  data-goodsid="{{food.goods_id}}" 
+                  data-skuid="{{food.sku[0].spec_sku_id}}" 
+                  catchtap="{{food.goods_multi_spec?'showgg':'addNum'}}"
+                  data-sku="{{food.goods_multi_spec}}" 
+                  data-goodname="{{food.goods_name}}"
+                  data-parentIndex="{{index}}"
+                  data-childIndex="{{foodidx}}"
+               >
+               {{food.goods_multi_spec?'选规格':'+'}}
+               </view> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="footer">
+     <view class="footerBox">
+         <view class="cart" bindtap="showPurchase">
+             <image src="/images/cart.png" mode="widthFix"></image>
+             <text class="cartNum">{{order_total_num}}</text>
+          </view>
+         <view class="text">
+            <view class="priceps"><text>￥</text>{{order_price}}<view style="margin-left:30rpx;font-size:30rpx"><text>￥</text>{{shopInfo.delivery_fee}}起送</view></view>
+            <view class="psf">另需配送费￥{{express_price}}</view>
+         </view>
+         <view class="settlement" bindtap="payaddCart">去结算</view>
+     </view>
+  </view>
+
+  <!-- 选规格 -->
+  <view class="mask" wx:if="{{Guige}}"></view>
+  <view class="chooseGg"  wx:if="{{Guige}}">
+      <view class="nameBox">
+         <view>{{goodsName}}</view>
+         <image src="/images/close.png" mode="widthFix" bindtap="closeguige"></image>
+      </view>
+      <view class="chooseBox">
+          <view class="chooseItem" wx:for="{{skuArr.spec_attr}}" wx:key="index">
+             <view class="text">{{item.group_name}}</view>
+             <view class="guigeItem" >
+                 <view wx:for="{{item.spec_items}}" wx:for-item="sku" wx:for-index="skuidx" wx:key="{{skuidx}}" bindtap="checkSku"
+                 data-select="{{select}}" 
+                 data-index="{{skuidx}}"
+                 data-i="{{index}}"
+                 class="item {{item.select == skuidx?'active':''}}"
+                 data-id="{{sku.item_id}}"
+                 data-groupnamw="{{item.group_name}}"
+                 data-specvalue="{{sku.spec_value}}"
+                 >{{sku.spec_value}}</view>
+             </view>
+          </view>
+        </view>
+        <view class="tkFot">
+            <view class="linfo">
+                <view class="price"><text>￥</text>{{skuPrice}}元</view>
+                <view class="chooText">
+                  <text>{{select_skuName}}</text>
+                  <!-- <text wx:for="{{skuArr.spec_attr}}" wx:key="i">
+                  {{item.spec_items[item.select].spec_value}}
+                  </text>  -->
+                </view>
+            </view>
+            <view class="rnum" style="display:none">
+               <view class="reduce">-</view>
+               <view class="num">1</view>
+               <view class="add">+</view>
+            </view>
+            <view class="g_addCart" bindtap="addCart">加入购物车</view>
+        </view>
+  </view>
+
+  <!-- 购物车展开 -->
+  <view class="purchaseLayer {{isPurchase?'isShow action_skew1':'isHide'}}" bindtap="hideCartList"></view>
+  <view class="{{isPurchase?'isShow action_skew1':'isHide'}}">
+    <scroll-view scrollY class="purchaseList">
+        <view class="operation" style="" bindtap="clearCart">
+             <image src="/images/del.png" mode="widthFix" ></image>
+             <text>清空购物车</text>
+        </view>
+        <view class="shopcart__item" style="" wx:for="{{cartList}}">
+           <view class="leftInfo">
+                <image src="{{item.goods_image}}" mode="widthFix" class="productImg"></image>
+                <view class="infoText">
+                    <view class="title">{{item.goods_name}}</view>
+                    <view class="guig">{{item.goods_sku.goods_attr}}</view>
+                     <view class="price">
+                        <view class="mainPrice"><text>￥</text>{{item.goods_sku.goods_price}}</view>
+                        <view class="yprice">￥{{item.goods_sku.line_price}}</view>
+                     </view>
+                </view>
+           </view>
+           <view class="rightNum">
+               <image src="/images/reduce.png" mode="widthFix" class="reduce"
+                  data-goodsid="{{item.goods_id}}" 
+                  data-skuid="{{item.goods_sku.spec_sku_id}}" 
+                  data-num="{{item.total_num}}"
+                  bindtap="cartReduce"
+               ></image>
+               <view class="num">{{item.total_num}}</view>
+               <image src="/images/add.png" mode="widthFix" class="add"
+                  data-goodsid="{{item.goods_id}}" 
+                  data-skuid="{{item.goods_sku.spec_sku_id}}" 
+                  bindtap="cartAdd"
+               ></image>
+           </view> 
+           
+        </view>
+    </scroll-view>
 </view>
+</view>
+
+
+
+

@@ -82,7 +82,7 @@
                         data-childIndex="{{foodidx}}"
                      ></image>
                      <view class="num">{{food.addNum}}</view>
-                     <image src="/images/add.png" mode="widthFix" class="add" bindtap="add"
+                     <image src="/images/add.png" mode="widthFix" class="add" catchtap="add"
                         data-goodsid="{{food.goods_id}}" 
                         data-skuid="{{food.sku[0].spec_sku_id}}" 
                         data-sku="{{food.goods_multi_spec}}" 
@@ -204,7 +204,10 @@
         </view>
     </scroll-view>
 </view>
-
+<!-- 加购物车时飞的图片 -->
+  <!-- <view class="fgood_box" hidden="{{hide_good_box}}"  style="left: {{bus_x}}px; top: {{bus_y}}px;">
+    <image src="{{feiBox}}"></image>
+  </view> -->
 </view>
 
 
