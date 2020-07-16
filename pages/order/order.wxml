@@ -4,7 +4,7 @@
       <view class="{{checkIndex == index ? 'active' :''}}" wx:for="{{tabText}}" data-index = "{{index}}" data-type="{{item.type}}" bindtap="choose" wx:key="index"><text>{{item.name}}</text></view>
    </view>
    <!-- 全部订单 -->
-   <view class="all" wx:if="{{checkIndex == 0 || checkIndex == 1 || checkIndex == 2}}">
+   <view class="all">
     <scroll-view bindscrolltoupper="fresh" scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
           <view class="listBox" wx:for="{{goodsList}}">
               <view class="listTop" bindtap="toDetail" data-id="{{item.order_id}}">
@@ -40,7 +40,7 @@
     </scroll-view>
    </view>
    <!-- 当面付 -->
-   <view class="all" wx:if="{{checkIndex == 3 || checkIndex == 4}}">
+   <!-- <view class="all" wx:if="{{checkIndex == 3 || checkIndex == 4}}">
        <view class="payList">
         <scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
           <view class="payItem" wx:for="{{payList}}">
@@ -60,5 +60,5 @@
             </view>
         </scroll-view>
        </view>
-   </view>
+   </view> -->
 </view>

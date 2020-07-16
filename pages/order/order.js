@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabText:[{type:'all',name:'全部'},{type:'payment',name:'待支付'},{type:'received',name:'待收货'},{type:4,name:'当面付'},{type:5,name:'食材购买'}],
+    tabText:[{type:'all',name:'全部'},{type:'payment',name:'待支付'},{type:'received',name:'待收货'},{type:'all',name:'当面付'},{type:'all',name:'食材购买'}],
     checkIndex:0,
     goodsList:[],
     pageNum: 1,    //分页记录数
@@ -45,20 +45,30 @@ Page({
       checkIndex:e.currentTarget.dataset.index,
       pageNum:1
     })
-    if(e.currentTarget.dataset.type != 4 && e.currentTarget.dataset.type != 5){
+    // if(e.currentTarget.dataset.type != 4 && e.currentTarget.dataset.type != 5){
         this.setData({
           type:this.data.tabText[this.data.checkIndex].type
         })
         this.getList(false)
-    }else{
-      this.getPayList(false)
-    }
+    // }
+    // else{
+    //   this.getPayList(false)
+    // }
   },
   getList(isPage){
     var that = this;
+    var oT;
+    if(that.data.checkIndex == 3){
+      oT = 20;
+    }else if(that.data.checkIndex == 4){
+      oT = 30;
+    }else{
+      oT = 10
+    }
     let data = {
       page:that.data.pageNum,
       dataType:that.data.type,//all全部 payment待付款 delivery待确认 received待出行 comment待评价
+      order_type:oT//10外卖 20当面付 30食材购买
     }
     utils.myOrderList(data,res=>{
       wx.hideLoading();
@@ -92,48 +102,49 @@ scrollToLower: function (e) {
     })
     if(this.data.checkIndex != 3){
       this.getList(true);
-    }else{
-      this.getPayList(true);
     }
+    // else{
+    //   this.getPayList(true);
+    // }
     
   }
 },
 // 获取当面付列表
-getPayList(isPage){
-  var that = this;
-  let or ;
-  if(that.data.checkIndex == 3){
-    or = 10
-  }
-  if(that.data.checkIndex == 4){
-    or = 20
-  }
-  let data = {
-    page:that.data.pageNum,
-    order_source:or
-  }
-  utils.payOrderList(data,res=>{
-    wx.hideLoading();
-    this.setData({
-      loading: false
-    })
-    if(isPage){
-      that.setData({
-        payList:this.data.payList.concat(res.data.data.list.data)
-      })
-    }else{
-      that.setData({
-        payList:res.data.data.list.data
-      })
-    }
-    if(res.data.data.list.data.length == 0){
-      that.setData({
-        noMore:true
-      })
-    }
-     console.log(res,'当面付列表')
-  })
-},
+// getPayList(isPage){
+//   var that = this;
+//   let or ;
+//   if(that.data.checkIndex == 3){
+//     or = 10
+//   }
+//   if(that.data.checkIndex == 4){
+//     or = 20
+//   }
+//   let data = {
+//     page:that.data.pageNum,
+//     order_source:or
+//   }
+//   utils.payOrderList(data,res=>{
+//     wx.hideLoading();
+//     this.setData({
+//       loading: false
+//     })
+//     if(isPage){
+//       that.setData({
+//         payList:this.data.payList.concat(res.data.data.list.data)
+//       })
+//     }else{
+//       that.setData({
+//         payList:res.data.data.list.data
+//       })
+//     }
+//     if(res.data.data.list.data.length == 0){
+//       that.setData({
+//         noMore:true
+//       })
+//     }
+//      console.log(res,'当面付列表')
+//   })
+// },
 // 取消订单
 cancelOrder(e){
   var that = this;
@@ -205,9 +216,9 @@ toDetail(e){
         checkIndex:0
       })
     }
-    if(app.globalData.orderIndex == 3 || app.globalData.orderIndex == 4){
-      this.getPayList(false)
-    }
+    // if(app.globalData.orderIndex == 3 || app.globalData.orderIndex == 4){
+    //   this.getPayList(false)
+    // }
     this.getList(false);
     // console.log(app.globalData.orderIndex,'zzz')
   },
