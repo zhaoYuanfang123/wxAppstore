@@ -16,7 +16,7 @@
         <view class="listItem" wx:for="{{storeList}}" wx:key="index" bindtap="toshopDetail" data-id="{{item.shop_id}}">
             <image src="{{item.logo.file_path}}" mode="widthFix" class="shopImg"></image>
             <view class="rightInfo">
-               <view class="title"><text>外卖</text>{{item.shop_name}}</view>
+               <view class="title"><text wx:if="{{type == 0}}">外卖</text>{{item.shop_name}}</view>
                <view class="star">
                     <view class="stLf">
                           <!-- <view class="pf"><image src="/images/star.png" mode="widthFix"></image><text>4.8</text></view> -->
@@ -27,7 +27,7 @@
                           <view class="rj">{{item.distance_unit}}</view>
                     </view>
                </view>
-               <view class="ps">
+               <view class="ps" wx:if="{{type == 0}}">
                   <view>起送￥{{item.delivery_fee}}</view>
                   <view>配送￥{{item.express_price}}</view>
                   <!-- <view>人均￥21</view> -->

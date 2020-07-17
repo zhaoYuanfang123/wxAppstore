@@ -34,6 +34,9 @@ Page({
       searchText:options.searchText,
       type:options.type //1是当面付，2是购买食材,0是外卖
     })
+    wx.setNavigationBarTitle({
+      title: that.data.type == 1?'当面付':that.data.type == 2 ?'食材购买':'店铺列表'
+    })
     that.getStoreList()
   },
   // 点击综合

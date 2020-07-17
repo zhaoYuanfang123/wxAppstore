@@ -124,6 +124,7 @@
    right: 4rpx;
 }
 .footerBox  .text{
+  display: flex;
   background: #1890ff;
   padding: 10rpx 40rpx;
   box-sizing: border-box;

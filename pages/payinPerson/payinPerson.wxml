@@ -117,8 +117,8 @@
              <text class="cartNum">{{order_total_num}}</text>
           </view>
          <view class="text">
-            <view class="priceps"><text>￥</text>{{order_price}}<view style="margin-left:30rpx;font-size:30rpx"><text>￥</text>{{shopInfo.delivery_fee}}起送</view></view>
-            <view class="psf">另需配送费￥{{express_price}}</view>
+            <view class="priceps">
+               <text>￥</text>{{order_price}}</view>
          </view>
          <view class="settlement" bindtap="payaddCart">去结算</view>
      </view>

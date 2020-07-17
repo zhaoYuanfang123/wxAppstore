@@ -408,7 +408,7 @@ Page({
           shopInfo:res.data.data.detail
         })
         wx.setNavigationBarTitle({
-          title: res.data.data.detail.shop_name
+          title: that.data.type == 1?'当面付':'食材购买'
         })
         wx.hideLoading();
         // console.log(res,'店铺详情')
